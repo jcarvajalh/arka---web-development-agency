@@ -1,0 +1,55 @@
+---
+const row1 = [
+    "Mantenimiento",
+    "Diseño de Interfaces",
+    "Experiencia de Usuario",
+    "Tasa de conversión",
+    "Ecommerce",
+    "Micro Animaciones",
+    "Branding Digital",
+    "Landing Pages",
+    "A/B Testing",
+];
+
+const row2 = [
+    "Optimización SEO",
+    "Desarrollo de aplicaciones",
+    "Integraciones API",
+    "Google Analytics",
+    "Google Tag Manager",
+    "Microsoft Clarity",
+    "Migración de CMS",
+    "Automatizaciones",
+    "Soporte Técnico",
+];
+---
+
+<section class="stack-section" aria-label="Tecnologías y habilidades">
+    <div class="stack-header text-center mb-14 px-6">
+        <h2 class="stack-title">
+            los clientes confían en nosotros también para
+        </h2>
+    </div>
+
+    <!-- Fila 1: se mueve hacia la DERECHA -->
+    <div class="marquee-wrapper overflow-hidden mb-4" aria-hidden="true">
+        <div class="marquee-track marquee-right">
+            {
+                [...row1, ...row1].map((item) => (
+                    <span class="stack-tag">{item}</span>
+                ))
+            }
+        </div>
+    </div>
+
+    <!-- Fila 2: se mueve hacia la IZQUIERDA -->
+    <div class="marquee-wrapper overflow-hidden" aria-hidden="true">
+        <div class="marquee-track marquee-left">
+            {
+                [...row2, ...row2].map((item) => (
+                    <span class="stack-tag">{item}</span>
+                ))
+            }
+        </div>
+    </div>
+</section>

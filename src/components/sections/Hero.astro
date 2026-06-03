@@ -2,98 +2,159 @@
 // Hero.astro
 ---
 
-<section
-  class="
-    relative min-h-screen w-full bg-[#0a0a0a]
-    flex flex-col items-center justify-center
-    px-6 pt-32 pb-24 sm:px-10 md:px-16 overflow-hidden
-  "
->
+<!-- ── Sección hero ── -->
+<section class="hero-section relative h-screen w-full overflow-hidden bg-[#0a0a0a]">
 
-  <!-- Contenido -->
-  <div class="relative z-10 flex flex-col items-center text-center max-w-3xl w-full">
+  <!-- Stack image — centrada absolutamente en el hero -->
+  <div class="hero-stack absolute z-[1] w-full animate-fade-up" style="animation-delay:480ms">
+    <img
+      src="/ARKA-Stack.png"
+      alt="ARKA Stack de tecnologías"
+      class="hero-stack-img block w-full h-auto"
+      loading="lazy"
+    />
+  </div>
 
+  <!-- Contenido — borde inferior en el 50% del hero -->
+  <div class="hero-content absolute left-1/2 z-10 flex w-full max-w-[900px] flex-col items-center text-center animate-fade-up">
     <!-- Eyebrow -->
-    <p
-      class="
-        text-[#e05c2a] text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase
-        mb-6
-        animate-fade-up [animation-delay:0ms]
-      "
-    >
+    <h1 class="hero-eyebrow animate-fade-up">
       Agencia de Desarrollo Web
-      <span class="text-[#444] mx-2">·</span>
+      <span class="eyebrow-dot">·</span>
       Cali, Colombia
-    </p>
-
-    <!-- Título principal -->
-    <h1
-      class="
-        font-semibold leading-[1] tracking-[-0.04em]
-        text-[clamp(40px,7vw,65px)]
-        text-white
-        mb-5
-        animate-fade-up [animation-delay:120ms]
-      "
-    >
-      Construimos sitios web<br />
-      <span class="text-[#e05c2a]">que aumentan tus ventas</span>
     </h1>
 
+    <!-- Título principal -->
+    <h2 class="hero-title animate-fade-up" style="animation-delay:120ms">
+      Construimos sitios web<br />
+      <span class="text-[#e05c2a]">que aumentan tus ventas</span>
+    </h2>
+
     <!-- Descripción -->
-    <p
-      class="
-        text-[#777] text-sm sm:text-base leading-relaxed
-        max-w-lg sm:max-w-xl
-        mb-7
-        animate-fade-up [animation-delay:240ms]
-      "
-    >
-      Diseño personalizado + SEO + tasa de conversión.<br />
-      Sitios web, e-commerce y landing pages con tecnologías modernas.
+    <p class="hero-desc animate-fade-up" style="animation-delay:240ms">
+      Diseño personalizado + SEO + tasa de conversión. Sitios web, e-commerce y
+      landing pages con tecnologías modernas.
     </p>
 
-    <!-- Tecnologías -->
-    <div
-      class="
-        flex items-center gap-2
-        mb-8
-        animate-fade-up [animation-delay:360ms]
-      "
-    >
-      <p class="text-[#777] text-xs tracking-wide text-[13px] sm:text-[14px]">
-        Next.js · Astro · IA
-      </p>
+    <!-- CTA — este botón queda exactamente en el 50% del hero -->
+    <div class="animate-fade-up" style="animation-delay:360ms">
+      <a href="#contacto" class="hero-btn"> Cotiza tu proyecto </a>
     </div>
-
-    <!-- CTA -->
-    <div class="animate-fade-up [animation-delay:480ms]">
-      <a
-        href="#contacto"
-        class="
-          inline-block
-          bg-[#E84522] hover:bg-[#c74e22] active:scale-95
-          text-white text-[13px] sm:text-[14px] font-semibold tracking-[0.03em]
-          px-[28px] sm:px-[25px] py-[6px] sm:py-[8px]
-          rounded-full
-          transition-all duration-200
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e05c2a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]
-        "
-      >
-        Cotiza tu proyecto
-      </a>
-    </div>
-
-    <!-- Shopify Partner -->
-    <div class="mt-14 sm:mt-20 flex flex-col items-center gap-3 animate-fade-up [animation-delay:600ms]">
-      <!-- <p class="text-[#333] text-[10px] font-medium tracking-[0.2em] uppercase">Shopify Partner oficial</p> -->
-      <img
-        src="/shopify-partner-en-cali-colombia.webp"
-        alt="ARKA - Shopify Partner en Cali, Colombia"
-        class="h-8 sm:h-10 w-auto opacity-40 hover:opacity-70 transition-opacity duration-300"
-        loading="lazy"
-      />
-    </div>
-
   </div>
+
+  <!-- Shopify Partner — fondo del hero, centrado -->
+  <div class="absolute bottom-7 left-0 z-10 flex w-full items-center justify-center animate-fade-up" style="animation-delay:600ms">
+    <img
+      src="/shopify-partner-en-cali-colombia.webp"
+      alt="ARKA - Shopify Partner en Cali, Colombia"
+      class="hero-shopify-img h-8 w-auto"
+      loading="lazy"
+    />
+  </div>
+
 </section>
+
+<style>
+  /* ── Contenido: borde inferior = 50% del hero ── */
+  .hero-content {
+    bottom: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Eyebrow */
+  .hero-eyebrow {
+    color: #e05c2a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+
+  .eyebrow-dot {
+    color: #444;
+    margin: 0 8px;
+  }
+
+  /* Título */
+  .hero-title {
+    font-size: clamp(32px, 5.5vw, 58px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin: 0 0 14px;
+  }
+
+  /* Descripción */
+  .hero-desc {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-bottom: 22px;
+  }
+
+  /* CTA */
+  .hero-btn {
+    display: inline-block;
+    background: #e84522;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 9px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .hero-btn:hover  { background: #c74e22; }
+  .hero-btn:active { transform: scale(0.95); }
+
+  /* Shopify logo */
+  .hero-shopify-img {
+    opacity: 0.45;
+    transition: opacity 0.3s ease;
+  }
+  .hero-shopify-img:hover { opacity: 0.75; }
+
+  /* ── Animaciones ── */
+
+  /* Stack image */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 16px)); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  .hero-stack.animate-fade-up {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  /* Contenido */
+  @keyframes fadeUpContent {
+    from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  .hero-content.animate-fade-up {
+    animation: fadeUpContent 0.6s ease both;
+  }
+
+  /* Hijos genéricos */
+  @keyframes fadeUpSimple {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    animation: fadeUpSimple 0.6s ease both;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero-content { padding: 0 20px 16px; }
+    .hero-title   { font-size: clamp(26px, 8vw, 40px); }
+    .hero-desc    { font-size: 11px; white-space: normal; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stack { width: 200%; }
+  }
+</style>

@@ -1,11 +1,19 @@
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap');
+/* ============================================================
+   GLOBAL CSS — ARKA Web Development Agency
+   Importaciones, tema, variables y estilos base compartidos
+============================================================ */
 
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Inter:wght@400..800&display=swap');
+
+/* ── Tema Tailwind: tokens globales ── */
 @theme {
+    /* Fuentes */
     --font-sans: "Inter", sans-serif;
     --font-inter: "Inter", sans-serif;
-    --font-syne: "Syne", sans-serif;
+    --font-Inter: "Inter", sans-serif;
 
+    /* Animación reutilizable fade-up */
     --animate-fade-up: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
     @keyframes fadeUp {
@@ -13,6 +21,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -20,6 +29,580 @@
     }
 }
 
+/* ── Base ── */
 body {
     font-family: "Inter", sans-serif;
+}
+
+/* ── Clases de tipografía compartidas entre secciones ──
+   .section-label  → etiqueta naranja superior (ej: "CÓMO TRABAJAMOS")
+   .section-title  → título grande de sección
+   .section-sub    → subtítulo / descripción
+*/
+.section-label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e05c2a;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.section-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.65;
+}
+
+/* ── Botón CTA global (usado en Hero y Proceso) ── */
+.hero-btn {
+    display: inline-block;
+    background: #e84522;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 9px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.hero-btn:hover {
+    background: #c74e22;
+}
+
+.hero-btn:active {
+    transform: scale(0.95);
+}
+
+
+/* ============================================================
+   SERVICIOS — Carousel de tarjetas de servicio
+============================================================ */
+
+/* Contenedor principal de la sección */
+.services-section {
+    background: #0a0a0a;
+    padding: 90px 0 80px;
+    overflow: hidden;
+}
+
+/* Encabezado centrado con ancho máximo */
+.services-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 56px;
+    padding: 0 24px;
+}
+
+/* ── Carousel ── */
+
+/* Wrapper con overflow oculto para el efecto de desplazamiento */
+.carousel-outer {
+    overflow: hidden;
+    padding-left: clamp(24px, 6vw, 80px);
+}
+
+/* Pista arrastrable de tarjetas */
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+}
+
+/* Estado activo al arrastrar */
+.carousel-track:active {
+    cursor: grabbing;
+}
+
+/* ── Card de servicio ── */
+.service-card {
+    flex: 0 0 580px;
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 16px;
+    overflow: hidden;
+    transition:
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: #2e2e2e;
+}
+
+/* Contenedor de la imagen (altura fija) */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: #161616;
+    overflow: hidden;
+}
+
+/* Placeholder visible por defecto, debajo de la imagen real */
+.card-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #333;
+    border: 1px dashed #252525;
+    margin: 0;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+/* Imagen real: flota encima del placeholder.
+   Empieza invisible; cuando carga, .loaded la muestra */
+.card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition:
+        transform 0.5s ease,
+        opacity 0.4s ease;
+    z-index: 1;
+}
+
+/* Se revela cuando la imagen termina de cargar */
+.card-img.loaded {
+    opacity: 1;
+}
+
+/* Zoom sutil al hacer hover */
+.service-card:hover .card-img {
+    transform: scale(1.04);
+}
+
+/* Gradiente inferior para suavizar el corte imagen → fondo */
+.card-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: linear-gradient(to top, #111111, transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ── Cuerpo de la card ── */
+.card-body {
+    padding: 28px 28px 26px;
+}
+
+/* Número decorativo grande y desaturado */
+.card-number {
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #222222;
+    line-height: 1;
+    margin-bottom: 14px;
+}
+
+/* Título del servicio */
+.card-title {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+/* Descripción del servicio */
+.card-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: #888888;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+/* Contenedor de tags / tecnologías */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Tag individual (ej: "Next.js", "Astro") */
+.tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: #666;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+}
+
+/* ── Controles del carousel (flechas prev / next) ── */
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding-left: clamp(24px, 6vw, 80px);
+}
+
+/* Botón circular de navegación */
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #222;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+    flex-shrink: 0;
+}
+
+/* Hover: relleno naranja-rojo ARKA */
+.nav-btn:hover {
+    border-color: #ff4d1c;
+    background: #ff4d1c;
+}
+
+/* ── Responsive — Servicios ── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .service-card {
+        flex: 0 0 460px;
+    }
+
+    .card-image {
+        height: 260px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 64px 0 60px;
+    }
+
+    .service-card {
+        flex: 0 0 340px;
+    }
+
+    .card-image {
+        height: 210px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .service-card {
+        flex: 0 0 280px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+}
+
+
+/* ============================================================
+   PROCESO — Sección de pasos / flujo de trabajo
+============================================================ */
+
+/* Encabezado centrado con ancho máximo */
+.proceso-header {
+    max-width: 700px;
+}
+
+/* Título principal de la sección Proceso */
+.proceso-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0 0 18px;
+    text-align: center;
+}
+
+/* Subtítulo descriptivo */
+.proceso-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* Grid de 4 columnas para los pasos */
+.proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    padding: 0 clamp(24px, 6vw, 80px);
+}
+
+/* ── Tarjeta de paso ── */
+.paso-card {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 14px;
+    padding: 28px 24px 32px;
+    transition: border-color 0.3s ease;
+}
+
+.paso-card:hover {
+    border-color: #2e2e2e;
+}
+
+/* Número del paso (01, 02, 03, 04) en naranja */
+.paso-num {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e05c2a;
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+}
+
+/* Título del paso */
+.paso-title {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    margin: 0 0 14px;
+}
+
+/* Descripción del paso */
+.paso-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Responsive — Proceso ── */
+
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+    .proceso-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile landscape: 2 columnas con menos espacio */
+@media (max-width: 768px) {
+    .proceso-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Reduce el margen inferior del header */
+    .proceso-header {
+        margin-bottom: 40px;
+    }
+}
+
+/* Mobile portrait: 1 columna */
+@media (max-width: 480px) {
+    .proceso-section {
+        padding-bottom: 56px;
+    }
+
+    .proceso-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Oculta el <br> decorativo del subtítulo en pantallas pequeñas */
+    .hide-mobile {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   STACK — Marquee de tecnologías / habilidades (dos filas)
+============================================================ */
+
+/* Contenedor principal de la sección */
+.stack-section {
+    background: #0a0a0a;
+    padding: 10px 0 80px;
+    overflow: hidden;
+}
+
+/* Título de la sección Stack */
+.stack-title {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* ── Marquee: wrapper y pista ── */
+
+/*
+ * El wrapper recorta el contenido desbordante.
+ * Al hacer hover SOBRE EL WRAPPER, se pausa la animación de SU pista.
+ */
+.marquee-wrapper {
+    position: relative;
+    /* Bordes difuminados en los extremos para efecto "infinito" */
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 10%,
+            #000 90%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 10%,
+            #000 90%,
+            transparent 100%);
+}
+
+/* Fila de tags: flex sin ruptura para desplazamiento continuo */
+.marquee-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    padding: 6px 0;
+    will-change: transform;
+}
+
+/* ── Animaciones de desplazamiento ── */
+@keyframes scrollRight {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Fila 1 → se mueve hacia la derecha */
+.marquee-right {
+    animation: scrollRight 28s linear infinite;
+}
+
+/* Fila 2 → se mueve hacia la izquierda */
+.marquee-left {
+    animation: scrollLeft 28s linear infinite;
+}
+
+/*
+ * Hover sobre el wrapper pausa SOLO la fila que contiene.
+ * La otra fila (en su propio wrapper) continúa moviéndose.
+ */
+.marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* ── Tag individual ── */
+.stack-tag {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    color: #aaaaaa;
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 999px;
+    padding: 8px 20px;
+    letter-spacing: 0.02em;
+    cursor: default;
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+/* Hover sutil sobre el tag */
+.stack-tag:hover {
+    color: #ffffff;
+    border-color: #333333;
+    background: #181818;
+}
+
+/* ── Responsive — Stack ── */
+@media (max-width: 768px) {
+    .stack-section {
+        padding: 64px 0 60px;
+    }
+
+    .stack-tag {
+        font-size: 12px;
+        padding: 7px 16px;
+    }
+
+    .marquee-right,
+    .marquee-left {
+        animation-duration: 20s;
+    }
+}
+
+@media (max-width: 480px) {
+    .stack-tag {
+        font-size: 11px;
+        padding: 6px 14px;
+    }
+
+    .marquee-right,
+    .marquee-left {
+        animation-duration: 16s;
+    }
 }

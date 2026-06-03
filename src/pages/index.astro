@@ -1,10 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import ServicesCarousel from '../components/sections/Servicios.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import ServicesCarousel from "../components/sections/Servicios.astro";
+import Proceso from "../components/sections/Proceso.astro";
+import Stack from "../components/sections/Stack.astro";
 ---
 
-<BaseLayout title="ARKA - Agencia de Desarrollo Web" description="Soluciones web profesionales para transformar tu negocio">
+<BaseLayout
+  title="ARKA - Agencia de Desarrollo Web en Cali, Colombia"
+  description="En Arka se desarrollan sitios web profesionales para transformar tu negocio y aumentar tus ventas"
+>
   <Hero />
   <ServicesCarousel />
+  <Proceso />
+  <Stack />
 </BaseLayout>

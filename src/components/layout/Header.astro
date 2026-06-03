@@ -6,43 +6,99 @@ const links = [
 ];
 ---
 
-<header class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[min(780px,calc(100%-32px))] font-sans" role="banner">
-  <nav class="flex items-center justify-center gap-2 bg-[#0a0a0ad9] backdrop-blur-[20px] rounded-full px-[14px] py-[10px] shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-[#1a1a1a]" aria-label="Navegación principal">
-    <a href="#" class="shrink-0 flex items-center mr-1" aria-label="Ir al inicio">
-      <img src="/arka-agencia-web-cali.webp" alt="ARKA Logo" class="w-8 h-8 object-contain" width="35" height="35" />
+<header
+  class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[min(780px,calc(100%-32px))] font-sans"
+  role="banner"
+>
+  <nav
+    class="flex items-center justify-center gap-2 bg-[#0a0a0ad9] backdrop-blur-[20px] rounded-full px-[14px] py-[10px] shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-[#1a1a1a]"
+    aria-label="Navegación principal"
+  >
+    <a
+      href="#"
+      class="shrink-0 flex items-center mr-1"
+      aria-label="Ir al inicio"
+    >
+      <img
+        src="/arka-agencia-web-cali.webp"
+        alt="ARKA Logo"
+        class="w-8 h-8 object-contain"
+        width="35"
+        height="35"
+      />
     </a>
-    <ul class="flex items-center gap-1 list-none m-0 p-0 flex-1 justify-center max-sm:hidden" role="list">
-      {links.map(({ label, href }) => (
-        <li>
-          <a href={href} class="inline-block px-3.5 py-[7px] rounded-full text-[#e8e8e8] no-underline text-sm font-medium tracking-[0.02em] transition-colors duration-200 hover:text-[#ff6b3d] [&.active]:text-[#ff4d1c]" data-navlink>
-            {label}
-          </a>
-        </li>
-      ))}
+    <ul
+      class="flex items-center gap-1 list-none m-0 p-0 flex-1 justify-center max-sm:hidden"
+      role="list"
+    >
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="inline-block px-3.5 py-[7px] rounded-full text-[#e8e8e8] no-underline text-sm font-medium tracking-[0.02em] transition-colors duration-200 hover:text-[#ff6b3d] [&.active]:text-[#ff4d1c]"
+              data-navlink
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
-    <a href="#contacto" class="shrink-0 px-3 py-1.5 bg-[#e05c2a] text-white rounded-full no-underline text-xs font-semibold tracking-[0.03em] transition-all duration-200 hover:bg-[#c74e22] active:scale-95 whitespace-nowrap max-[400px]:hidden max-sm:text-[11px] max-sm:px-[10px] max-sm:py-[5px]" aria-label="Cotiza tu proyecto">
+    <a
+      href="#contacto"
+      class="shrink-0 px-3 py-1.5 bg-[#e05c2a] text-white rounded-full no-underline text-xs font-semibold tracking-[0.03em] transition-all duration-200 hover:bg-[#c74e22] active:scale-95 whitespace-nowrap max-[400px]:hidden max-sm:text-[11px] max-sm:px-[10px] max-sm:py-[5px]"
+      aria-label="Cotiza tu proyecto"
+    >
       Cotiza tu proyecto
     </a>
 
-    <button class="burger group hidden max-sm:flex flex-col justify-center gap-[5px] bg-none border-none cursor-pointer p-1.5 ml-auto" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-      <span class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:translate-y-[7px] group-aria-expanded:rotate-45"></span>
-      <span class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:opacity-0"></span>
-      <span class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:-translate-y-[7px] group-aria-expanded:-rotate-45"></span>
+    <button
+      class="burger group hidden max-sm:flex flex-col justify-center gap-[5px] bg-none border-none cursor-pointer p-1.5 ml-auto"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span
+        class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:translate-y-[7px] group-aria-expanded:rotate-45"
+      ></span>
+      <span
+        class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:opacity-0"
+      ></span>
+      <span
+        class="block w-[22px] h-[2px] bg-[#e8e8e8] rounded-[2px] transition-all duration-250 group-aria-expanded:-translate-y-[7px] group-aria-expanded:-rotate-45"
+      ></span>
     </button>
   </nav>
 
-  <div class="mobile-menu hidden flex flex-col gap-1.5 bg-[#0a0a0ad9] backdrop-blur-[20px] rounded-2xl p-4 mt-2 shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-[#1a1a1a]" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú móvil">
+  <div
+    class="mobile-menu hidden flex flex-col gap-1.5 bg-[#0a0a0ad9] backdrop-blur-[20px] rounded-2xl p-4 mt-2 shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-[#1a1a1a]"
+    id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú móvil"
+  >
     <ul role="list">
-      {links.map(({ label, href }) => (
-        <li>
-          <a href={href} class="mobile-link block px-3.5 py-2.5 text-[#e8e8e8] no-underline text-[15px] font-medium rounded-lg transition-colors duration-200 hover:text-[#ff6b3d] [&.active]:text-[#ff4d1c]" data-navlink>
-            {label}
-          </a>
-        </li>
-      ))}
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="mobile-link block px-3.5 py-2.5 text-[#e8e8e8] no-underline text-[15px] font-medium rounded-lg transition-colors duration-200 hover:text-[#ff6b3d] [&.active]:text-[#ff4d1c]"
+              data-navlink
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
-    <a href="#contacto" class="block text-center mt-2 w-full px-3 py-1.5 bg-[#e05c2a] text-white rounded-full no-underline text-xs font-semibold tracking-[0.03em] transition-all duration-200 hover:bg-[#c74e22] active:scale-95">Cotiza tu proyecto</a>
+    <a
+      href="#contacto"
+      class="block text-center mt-2 w-full px-3 py-1.5 bg-[#e05c2a] text-white rounded-full no-underline text-xs font-semibold tracking-[0.03em] transition-all duration-200 hover:bg-[#c74e22] active:scale-95"
+      >Cotiza tu proyecto</a
+    >
   </div>
 </header>
 
@@ -80,7 +136,7 @@ const links = [
         });
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   sections.forEach((section) => observer.observe(section));
