@@ -1,0 +1,99 @@
+---
+// Hero.astro
+---
+
+<section
+  class="
+    relative min-h-screen w-full bg-[#0a0a0a]
+    flex flex-col items-center justify-center
+    px-6 pt-32 pb-24 sm:px-10 md:px-16 overflow-hidden
+  "
+>
+
+  <!-- Contenido -->
+  <div class="relative z-10 flex flex-col items-center text-center max-w-3xl w-full">
+
+    <!-- Eyebrow -->
+    <p
+      class="
+        text-[#e05c2a] text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase
+        mb-6
+        animate-fade-up [animation-delay:0ms]
+      "
+    >
+      Agencia de Desarrollo Web
+      <span class="text-[#444] mx-2">·</span>
+      Cali, Colombia
+    </p>
+
+    <!-- Título principal -->
+    <h1
+      class="
+        font-semibold leading-[1] tracking-[-0.04em]
+        text-[clamp(40px,7vw,65px)]
+        text-white
+        mb-5
+        animate-fade-up [animation-delay:120ms]
+      "
+    >
+      Construimos sitios web<br />
+      <span class="text-[#e05c2a]">que aumentan tus ventas</span>
+    </h1>
+
+    <!-- Descripción -->
+    <p
+      class="
+        text-[#777] text-sm sm:text-base leading-relaxed
+        max-w-lg sm:max-w-xl
+        mb-7
+        animate-fade-up [animation-delay:240ms]
+      "
+    >
+      Diseño personalizado + SEO + tasa de conversión.<br />
+      Sitios web, e-commerce y landing pages con tecnologías modernas.
+    </p>
+
+    <!-- Tecnologías -->
+    <div
+      class="
+        flex items-center gap-2
+        mb-8
+        animate-fade-up [animation-delay:360ms]
+      "
+    >
+      <p class="text-[#777] text-xs tracking-wide text-[13px] sm:text-[14px]">
+        Next.js · Astro · IA
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="animate-fade-up [animation-delay:480ms]">
+      <a
+        href="#contacto"
+        class="
+          inline-block
+          bg-[#E84522] hover:bg-[#c74e22] active:scale-95
+          text-white text-[13px] sm:text-[14px] font-semibold tracking-[0.03em]
+          px-[28px] sm:px-[25px] py-[6px] sm:py-[8px]
+          rounded-full
+          transition-all duration-200
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e05c2a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]
+        "
+      >
+        Cotiza tu proyecto
+      </a>
+    </div>
+
+    <!-- Shopify Partner -->
+    <div class="mt-14 sm:mt-20 flex flex-col items-center gap-3 animate-fade-up [animation-delay:600ms]">
+      <!-- <p class="text-[#333] text-[10px] font-medium tracking-[0.2em] uppercase">Shopify Partner oficial</p> -->
+      <img
+        src="/shopify-partner-en-cali-colombia.webp"
+        alt="ARKA - Shopify Partner en Cali, Colombia"
+        class="h-8 sm:h-10 w-auto opacity-40 hover:opacity-70 transition-opacity duration-300"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>

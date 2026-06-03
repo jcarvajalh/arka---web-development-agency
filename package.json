@@ -10,8 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/starlight": "^0.39.3",
+    "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.1",
-    "sharp": "^0.34.5"
+    "astro-robots-txt": "^1.0.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.3.0"
   }
 }
