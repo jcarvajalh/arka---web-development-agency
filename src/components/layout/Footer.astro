@@ -19,8 +19,8 @@ const servicios = [
 
 const contacto = [
   { label: "hola@arka.agency",  href: "mailto:hola@arka.agency" },
-  { label: "Agendar reunión",   href: "#contacto" },
-  { label: "WhatsApp",          href: "https://wa.me/573000000000" },
+  { label: "Agendar reunión",   href: "https://cal.com/arkaagency/reunion-acercamiento" },
+  { label: "WhatsApp",          href: "https://wa.link/r77o0d" },
 ];
 
 const año = new Date().getFullYear();
@@ -66,10 +66,26 @@ const año = new Date().getFullYear();
       <span class="footer__col-titulo text-[10px] font-bold tracking-[0.18em] uppercase mb-1">Contacto</span>
       <ul class="footer__lista flex flex-col gap-2.5 m-0 p-0 list-none">
         {contacto.map(({ label, href }) => (
-          <li><a href={href} class="footer__link text-sm text-decoration-none">{label}</a></li>
+          <li>
+            <a 
+              href={href} 
+              class="footer__link text-sm text-decoration-none"
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              {label}
+            </a>
+          </li>
         ))}
       </ul>
-      <a href="#contacto" class="footer__cta inline-flex items-center justify-center mt-2 px-5 py-2 rounded-full text-xs font-bold w-fit text-decoration-none">Cotiza tu proyecto</a>
+      <a 
+        href="https://cal.com/arkaagency/reunion-acercamiento" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer__cta inline-flex items-center justify-center mt-2 px-5 py-2 rounded-full text-xs font-bold w-fit text-decoration-none"
+      >
+        Cotiza tu proyecto
+      </a>
     </div>
 
   </div>
