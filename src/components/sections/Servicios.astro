@@ -1,235 +1,120 @@
 ---
-// ServicesCarousel.astro
-
-const services = [
+const servicios = [
   {
-    number: "01",
-    title: "Diseño Personalizado",
-    description:
-      "Interfaces únicas diseñadas para tu marca. Cada pixel pensado para guiar a tu visitante hacia la acción. Versión desktop y mobile perfectamente adaptadas.",
-    tags: ["UI/UX", "Responsive", "Figma"],
-    image: "../public/diseño-personalizado.webp",
-    alt: "Diseño Personalizado",
+    id: "diseno",
+    titulo: "DISEÑO\nPERSONALIZADO",
+    descripcion:
+      "Interfaces únicas diseñadas para tu marca. Cada píxel pensado para guiar a tu cliente hacia la acción. Versión desktop y mobile perfectamente adaptadas.",
+    imagenSrc: "/servicio-diseño.png",
+    imagenAlt: "Diseño personalizado",
+    light: false,
   },
   {
-    number: "02",
-    title: "SEO & Conversiones",
-    description:
-      "No solo creamos sitios bonitos. Implementamos SEO en cada página y estructuramos el contenido para alcanzar tasas de conversión ideales.",
-    tags: ["SEO Técnico", "CRO", "Analytics"],
-    image: "../public/seo-cali.webp",
-    alt: "SEO y Conversiones",
+    id: "seo",
+    titulo: "SEO",
+    descripcion:
+      "Implementamos SEO en cada página y estructuramos el contenido para alcanzar tasas de conversión ideales.",
+    imagenSrc: "/servicio-seo.png",
+    imagenAlt: "SEO",
+    light: true,
   },
   {
-    number: "03",
-    title: "Inteligencia Artificial",
-    description:
-      "Integramos herramientas de inteligencia artificial que automatizan procesos: Sistemas inteligentes, y análisis predictivo de comportamiento.",
-    tags: ["AI Agents", "Automatización"],
-    image: "../public/inteligencia-artificial.webp",
-    alt: "Inteligencia Artificial",
+    id: "ia",
+    titulo: "IA",
+    descripcion:
+      "Priorizamos herramientas de inteligencia artificial que automatizan procesos. Sistemas inteligentes para tu negocio.",
+    imagenSrc: "/servicios-ai.png",
+    imagenAlt: "Inteligencia Artificial",
+    light: false,
   },
   {
-    number: "04",
-    title: "Tecnologias modernas",
-    description:
-      "Construimos sitios web de alto rendimiento con tecnologías modernas. Velocidad, seguridad y escalabilidad para que tu negocio crezca sin límites técnicos.",
-    tags: ["Astro", "Next.js", "Shopify"],
-    image: "../public/tecnologias.webp",
-    alt: "Tecnologias modernas",
+    id: "tech",
+    titulo: "TECNOLOGÍAS\nMODERNAS",
+    descripcion:
+      "Construimos sitios web de alto rendimiento con tecnologías modernas. Velocidad, seguridad y escalabilidad.",
+    imagenSrc: "/servicio-tech.png",
+    imagenAlt: "Tecnologías modernas",
+    light: true,
   },
 ];
 ---
 
-<section class="services-section">
-  <!-- Header -->
-  <div class="services-header">
-    <p class="section-label">Nuestros Servicios</p>
-    <h2 class="section-title">
-      Todo lo que tu negocio necesita para crecer online
-    </h2>
-    <p class="section-sub">
-      Cuatro pilares estratégicos que convierten tu sitio web en una máquina de
-      ventas.
-    </p>
-  </div>
+<section id="servicios" class="servicios-section">
+  <div class="servicios-inner">
 
-  <!-- Carousel -->
-  <div class="carousel-outer">
-    <div class="carousel-track" id="servicesTrack">
-      {
-        [...services, ...services].map((service, i) => (
-          <div
-            class="service-card"
-            aria-hidden={i >= services.length ? "true" : undefined}
-          >
-            <div class="card-image">
-              <img
-                src={service.image}
-                alt={service.alt}
-                loading="lazy"
-                class="card-img"
-              />
-              <div class="card-gradient" />
-            </div>
-
-            <div class="card-body">
-              <div class="card-number">{service.number}</div>
-              <h3 class="card-title">{service.title}</h3>
-              <p class="card-desc">{service.description}</p>
-              <div class="tags">
-                {service.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))
-      }
+    <!-- Header centrado -->
+    <div class="servicios-header">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2>Nuestros Servicios</h2>
     </div>
-  </div>
 
-  <!-- Controls -->
-  <div class="carousel-controls">
-    <button class="nav-btn" id="prevBtn" aria-label="Anterior">
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-      >
-        <path d="M15 19l-7-7 7-7"></path>
-      </svg>
-    </button>
-    <button class="nav-btn" id="nextBtn" aria-label="Siguiente">
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-      >
-        <path d="M9 5l7 7-7 7"></path>
-      </svg>
-    </button>
+    <!-- Cards -->
+    <div class="cards-track" role="list">
+      {servicios.map((s, i) => (
+        <article
+          class={`card${i === 0 ? " is-active" : ""}${s.light ? " card--light" : ""}`}
+          role="listitem"
+          id={`card-${s.id}`}
+          data-index={i}
+        >
+          <div class="card-inner flex flex-col h-full p-7">
+
+            <div class="card-top mb-4 shrink-0">
+              <h3 class="card-title">
+                {s.titulo.split("\n").map((line: string, j: number, arr: string[]) => (
+                  <span>{line}{j < arr.length - 1 ? <br /> : ""}</span>
+                ))}
+              </h3>
+            </div>
+
+            <div class="card-img-wrap" aria-label={s.imagenAlt}>
+              {s.imagenSrc
+                ? <img src={s.imagenSrc} alt={s.imagenAlt} class="card-img" loading="lazy" />
+                : (
+                  <div class="card-placeholder" aria-hidden="true">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="1" y="1" width="42" height="42" rx="8" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                      <path d="M14 30l6-7 4.5 5.5 3.5-4 6 7.5H14z" fill="rgba(255,255,255,0.07)"/>
+                      <circle cx="17" cy="17" r="3" fill="rgba(255,255,255,0.1)"/>
+                      <text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.2)" font-family="Inter,sans-serif" letter-spacing="0.06em" font-weight="600">TU IMAGEN</text>
+                    </svg>
+                  </div>
+                )
+              }
+            </div>
+
+            <div class="card-bottom">
+              <p class="card-desc">{s.descripcion}</p>
+              <a href="#contacto" class="cta-btn" aria-label={`Cotizar ${s.titulo.replace('\n', ' ')}`}>
+                <span>Cotiza tu proyecto</span>
+                <span class="cta-icon" aria-hidden="true">›</span>
+              </a>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </div>
+
   </div>
 </section>
 
 <script>
-  // DOMContentLoaded garantiza que el DOM esté listo antes de buscar los elementos
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById(
-      "servicesTrack",
-    ) as HTMLElement | null;
-    const prevBtn = document.getElementById(
-      "prevBtn",
-    ) as HTMLButtonElement | null;
-    const nextBtn = document.getElementById(
-      "nextBtn",
-    ) as HTMLButtonElement | null;
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('#servicios .card'));
 
-    if (!track || !prevBtn || !nextBtn) return;
+  function activate(card: HTMLElement) {
+    cards.forEach(c => c.classList.remove('is-active'));
+    card.classList.add('is-active');
+  }
 
-    const GAP = 20;
-    const allCards = Array.from(
-      track.querySelectorAll<HTMLElement>(".service-card"),
-    );
-    const total = allCards.length / 2; // la segunda mitad son clones
+  const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
 
-    let currentIndex = 0;
-    let isTransitioning = false;
-
-    /* ── Imágenes: añade .loaded cuando cargan, silencia el error de consola ── */
-    track.querySelectorAll<HTMLImageElement>(".card-img").forEach((img) => {
-      // Si ya cargó (caché)
-      if (img.complete && img.naturalWidth > 0) {
-        img.classList.add("loaded");
-      } else {
-        img.addEventListener("load", () => img.classList.add("loaded"));
-        img.addEventListener("error", () => {
-          /* no hacer nada; placeholder queda visible */
-        });
+  // Desktop: mouseenter
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      if (!isMobile()) {
+        activate(card);
       }
     });
-
-    /* ── Helpers ── */
-    function getCardWidth(): number {
-      return allCards[0].offsetWidth + GAP;
-    }
-
-    function setPosition(index: number, animate: boolean) {
-      track.style.transition = animate
-        ? "transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-        : "none";
-      track.style.transform = `translateX(-${index * getCardWidth()}px)`;
-    }
-
-    function goNext() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      currentIndex++;
-      setPosition(currentIndex, true);
-    }
-
-    function goPrev() {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      currentIndex--;
-      setPosition(currentIndex, true);
-    }
-
-    /* ── Loop infinito ──
-       Cuando llega al clon del primer elemento (index === total)
-       salta silenciosamente al original sin animación, y viceversa. */
-    track.addEventListener("transitionend", () => {
-      isTransitioning = false;
-
-      if (currentIndex >= total) {
-        currentIndex -= total;
-        setPosition(currentIndex, false);
-      } else if (currentIndex < 0) {
-        currentIndex += total;
-        setPosition(currentIndex, false);
-      }
-    });
-
-    nextBtn.addEventListener("click", goNext);
-    prevBtn.addEventListener("click", goPrev);
-
-    /* ── Drag / Swipe ── */
-    let startX = 0;
-    let dragging = false;
-
-    track.addEventListener("mousedown", (e) => {
-      dragging = true;
-      startX = e.clientX;
-    });
-    track.addEventListener("mouseup", (e) => {
-      if (!dragging) return;
-      dragging = false;
-      const diff = startX - e.clientX;
-      if (Math.abs(diff) > 50) diff > 0 ? goNext() : goPrev();
-    });
-    track.addEventListener("mouseleave", () => {
-      dragging = false;
-    });
-
-    track.addEventListener(
-      "touchstart",
-      (e) => {
-        startX = e.touches[0].clientX;
-      },
-      { passive: true },
-    );
-    track.addEventListener("touchend", (e) => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) diff > 0 ? goNext() : goPrev();
-    });
-
-    /* ── Resize ── */
-    window.addEventListener("resize", () => setPosition(currentIndex, false));
   });
 </script>

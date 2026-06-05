@@ -41,11 +41,11 @@ body {
 */
 .section-label {
     font-family: "Inter", sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #e05c2a;
+    color: #006aff;
     margin-bottom: 20px;
 }
 
@@ -62,14 +62,14 @@ body {
 .section-sub {
     font-size: 15px;
     font-weight: 300;
-    color: #777;
+    color: #888;
     line-height: 1.65;
 }
 
 /* ── Botón CTA global (usado en Hero y Proceso) ── */
 .hero-btn {
     display: inline-block;
-    background: #e84522;
+    background: #006aff;
     color: #fff;
     font-size: 13px;
     font-weight: 600;
@@ -81,16 +81,122 @@ body {
 }
 
 .hero-btn:hover {
-    background: #c74e22;
+    background: #0d489b;
 }
 
 .hero-btn:active {
     transform: scale(0.95);
 }
 
+/* ============================================================
+   HEADER — Navegación principal
+============================================================ */
+
+/* Barra de navegación */
+.nav-bar {
+    background: #0a0a0a99;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 999px;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Link de navegación */
+.nav-link {
+    color: #e8e8e8;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border-radius: 999px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #d7d7d6;
+}
+
+/* Botón CTA del header */
+.nav-cta {
+    background: #ffffff;
+    color: #0a0a0a;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 999px;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+    text-align: center;
+}
+
+.nav-cta:hover {
+    background: #d7d7d6;
+}
+
+.nav-cta:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 640px) {
+    .nav-cta {
+        font-size: 11px;
+    }
+}
+
+/* Botón burger */
+.burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Líneas del burger */
+.burger-line {
+    background: #e8e8e8;
+    border-radius: 2px;
+    transition: all 0.25s;
+}
+
+/* Panel del menú móvil */
+.mobile-menu-panel {
+    background: #0a0a0ad9;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Link del menú móvil */
+.mobile-link {
+    color: #e8e8e8;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: color 0.2s;
+}
+
+.mobile-link:hover,
+.mobile-link.active {
+    color: #d7d7d6;
+}
+
 /*=============================================================
     HERO 
 ==============================================================*/
+
+.hero-section {
+    background: #0a0a0a;
+}
+
 /* ── Contenido: borde inferior = 50% del hero ── */
 .hero-content {
     bottom: 50%;
@@ -99,7 +205,7 @@ body {
 
 /* Eyebrow */
 .hero-eyebrow {
-    color: #e05c2a;
+    color: #006aff;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -124,8 +230,10 @@ body {
 
 /* Descripción */
 .hero-desc {
-    color: #777;
-    font-size: 13px;
+    color: #888;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1.5;
     white-space: nowrap;
     margin-bottom: 22px;
@@ -134,11 +242,11 @@ body {
 /* CTA */
 .hero-btn {
     display: inline-block;
-    background: #e84522;
+    background: #006aff;
     color: #fff;
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.02em;
     padding: 9px 28px;
     border-radius: 999px;
     text-decoration: none;
@@ -146,7 +254,7 @@ body {
 }
 
 .hero-btn:hover {
-    background: #c74e22;
+    background: #0d489b;
 }
 
 .hero-btn:active {
@@ -216,10 +324,45 @@ body {
     animation: fadeUpSimple 0.6s ease both;
 }
 
+/* ── Responsive Portátiles (Laptops) ── */
+@media (max-width: 1366px) and (min-width: 769px) {
+    .hero-title {
+        font-size: clamp(28px, 4vw, 46px);
+    }
+
+    .hero-desc {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-height: 850px) and (min-width: 769px) {
+    .hero-content {
+        bottom: 46%;
+    }
+
+    .hero-title {
+        font-size: clamp(26px, 3.8vw, 42px);
+        margin-bottom: 8px;
+    }
+
+    .hero-desc {
+        margin-bottom: 14px;
+        font-size: 13.5px;
+    }
+
+    .hero-stack {
+        bottom: 0%;
+    }
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
     .hero-content {
         padding: 0 20px 16px;
+        bottom: auto;
+        top: 80px;
+        transform: translateX(-50%);
     }
 
     .hero-title {
@@ -230,11 +373,36 @@ body {
         font-size: 11px;
         white-space: normal;
     }
+
+    .hero-stack {
+        left: 50%;
+        top: auto;
+        bottom: 60px;
+        transform: translate(-50%, 0);
+        width: 130%;
+        max-width: none;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero-stack {
-        width: 200%;
+    .hero-content {
+        padding: 0 20px 16px;
+        bottom: auto;
+        top: 120px;
+        transform: translateX(-50%);
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 4vw, 46px);
+    }
+
+    .hero-desc {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .hero-stack-img {
+        transform: translate(-50%, 0);
     }
 }
 
@@ -242,369 +410,365 @@ body {
    SERVICIOS — Carousel de tarjetas de servicio
 ============================================================ */
 
-/* Contenedor principal de la sección */
-.services-section {
-    background: #0a0a0a;
-    padding: 90px 0 80px;
+:root {
+    --brand: #006aff;
+    --black: #0a0a0a;
+    --card-dark-bg: #131313;
+    --card-light-bg: #ffffff;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --white: #ffffff;
+    --muted: rgba(255, 255, 255, 0.48);
+    --muted-dark: rgba(0, 0, 0, 0.55);
+    --font: 'Inter', sans-serif;
+    --radius: 20px;
+    --gap: 10px;
+    --flex-base: 1;
+    --flex-active: 2.5;
+    --track-h: 520px;
+    --ease: cubic-bezier(0.34, 1.1, 0.64, 1);
+}
+
+/* ── Section ── */
+.servicios-section {
+    background: var(--black);
+    padding: 96px 0 112px;
     overflow: hidden;
 }
 
-/* Encabezado centrado con ancho máximo */
-.services-header {
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto 56px;
+.servicios-inner {
+    max-width: 1260px;
+    margin: 0 auto;
     padding: 0 24px;
 }
 
-/* ── Carousel ── */
-
-/* Wrapper con overflow oculto para el efecto de desplazamiento */
-.carousel-outer {
-    overflow: hidden;
-    padding-left: clamp(24px, 6vw, 80px);
+/* ── Header ── */
+.servicios-header {
+    text-align: center;
+    margin-bottom: 52px;
 }
 
-/* Pista arrastrable de tarjetas */
-.carousel-track {
-    display: flex;
-    gap: 20px;
-    will-change: transform;
-    cursor: grab;
-    user-select: none;
-}
-
-/* Estado activo al arrastrar */
-.carousel-track:active {
-    cursor: grabbing;
-}
-
-/* ── Card de servicio ── */
-.service-card {
-    flex: 0 0 580px;
-    background: #111111;
-    border: 1px solid #1e1e1e;
-    border-radius: 16px;
-    overflow: hidden;
-    transition:
-        border-color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.service-card:hover {
-    border-color: #2e2e2e;
-}
-
-/* Contenedor de la imagen (altura fija) */
-.card-image {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    background: #161616;
-    overflow: hidden;
-}
-
-/* Placeholder visible por defecto, debajo de la imagen real */
-.card-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+.eyebrow {
+    display: inline-block;
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #333;
-    border: 1px dashed #252525;
-    margin: 0;
-    border-radius: 10px;
-    z-index: 0;
+    color: var(--brand);
+    margin-bottom: 12px;
 }
 
-/* Imagen real: flota encima del placeholder.
-   Empieza invisible; cuando carga, .loaded la muestra */
+.servicios-header h2 {
+    font-family: var(--font);
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+.accent {
+    color: var(--brand);
+}
+
+/* ── Track ── */
+.cards-track {
+    display: flex;
+    gap: var(--gap);
+    height: var(--track-h);
+    align-items: stretch;
+}
+
+/* ── Card base (oscura por defecto) ── */
+.card {
+    flex: var(--flex-base);
+    min-width: 0;
+    background: var(--card-dark-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        flex 0.55s var(--ease),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Card variante clara (índices 1 y 3) */
+.card--light {
+    background: var(--card-light-bg);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Active card = expanded */
+.card.is-active {
+    flex: var(--flex-active);
+    border-color: rgba(0, 106, 255, 0.22);
+    box-shadow: 0 8px 48px rgba(0, 106, 255, 0.08);
+}
+
+.card--light.is-active {
+    border-color: rgba(0, 106, 255, 0.22);
+    box-shadow: 0 8px 48px rgba(0, 106, 255, 0.08);
+}
+
+/* ── Inner layout (display/dirección en Tailwind: flex flex-col h-full p-7) ── */
+.card-inner {
+    /* padding y gap gestionados por Tailwind */
+}
+
+/* ── Title (margin-bottom en Tailwind: mb-4) ── */
+.card-top {
+    flex-shrink: 0;
+}
+
+.card-title {
+    font-family: var(--font);
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+/* Título en card clara */
+.card--light .card-title {
+    color: var(--black);
+}
+
+/* ── Image ── */
+.card-img-wrap {
+    flex: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #1a1a1a;
+    position: relative;
+    min-height: 0;
+}
+
 .card-img {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0;
-    transition:
-        transform 0.5s ease,
-        opacity 0.4s ease;
-    z-index: 1;
 }
 
-/* Se revela cuando la imagen termina de cargar */
-.card-img.loaded {
-    opacity: 1;
-}
-
-/* Zoom sutil al hacer hover */
-.service-card:hover .card-img {
-    transform: scale(1.04);
-}
-
-/* Gradiente inferior para suavizar el corte imagen → fondo */
-.card-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: linear-gradient(to top, #111111, transparent);
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* ── Cuerpo de la card ── */
-.card-body {
-    padding: 28px 28px 26px;
-}
-
-/* Número decorativo grande y desaturado */
-.card-number {
-    font-family: "Inter", sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: #222222;
-    line-height: 1;
-    margin-bottom: 14px;
-}
-
-/* Título del servicio */
-.card-title {
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.25;
-    margin-bottom: 12px;
-}
-
-/* Descripción del servicio */
-.card-desc {
-    font-size: 14px;
-    font-weight: 300;
-    color: #888888;
-    line-height: 1.7;
-    margin-bottom: 22px;
-}
-
-/* Contenedor de tags / tecnologías */
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-/* Tag individual (ej: "Next.js", "Astro") */
-.tag {
-    font-size: 11px;
-    font-weight: 500;
-    color: #666;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    padding: 5px 12px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-}
-
-/* ── Controles del carousel (flechas prev / next) ── */
-.carousel-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    padding-left: clamp(24px, 6vw, 80px);
-}
-
-/* Botón circular de navegación */
-.nav-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid #222;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
+.card-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
-    flex-shrink: 0;
-}
-
-/* Hover: relleno naranja-rojo ARKA */
-.nav-btn:hover {
-    border-color: #ff4d1c;
-    background: #ff4d1c;
-}
-
-/* ── Responsive — Servicios ── */
-
-/* Tablet */
-@media (max-width: 1024px) {
-    .service-card {
-        flex: 0 0 460px;
-    }
-
-    .card-image {
-        height: 260px;
-    }
-}
-
-/* Mobile landscape */
-@media (max-width: 768px) {
-    .services-section {
-        padding: 64px 0 60px;
-    }
-
-    .service-card {
-        flex: 0 0 340px;
-    }
-
-    .card-image {
-        height: 210px;
-    }
-}
-
-/* Mobile portrait */
-@media (max-width: 480px) {
-    .service-card {
-        flex: 0 0 280px;
-    }
-
-    .card-image {
-        height: 180px;
-    }
-}
-
-
-/* ============================================================
-   PROCESO — Sección de pasos / flujo de trabajo
-============================================================ */
-
-/* Encabezado centrado con ancho máximo */
-.proceso-header {
-    max-width: 700px;
-}
-
-/* Título principal de la sección Proceso */
-.proceso-title {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(30px, 5vw, 54px);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-    color: #ffffff;
-    margin: 0 0 18px;
-    text-align: center;
-}
-
-/* Subtítulo descriptivo */
-.proceso-sub {
-    font-size: 14px;
-    font-weight: 300;
-    color: #777;
-    line-height: 1.65;
-    text-align: center;
-}
-
-/* Grid de 4 columnas para los pasos */
-.proceso-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    max-width: 1200px;
-    padding: 0 clamp(24px, 6vw, 80px);
-}
-
-/* ── Tarjeta de paso ── */
-.paso-card {
-    background: #111111;
-    border: 1px solid #1e1e1e;
+    background:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 12px,
+            rgba(255, 255, 255, 0.013) 12px,
+            rgba(255, 255, 255, 0.013) 13px),
+        #161616;
+    border: 1px dashed rgba(255, 255, 255, 0.09);
     border-radius: 14px;
-    padding: 28px 24px 32px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-.paso-card:hover {
-    border-color: #2e2e2e;
+/* Placeholder en card clara */
+.card--light .card-placeholder {
+    background:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 12px,
+            rgba(0, 0, 0, 0.02) 12px,
+            rgba(0, 0, 0, 0.02) 13px),
+        #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* Número del paso (01, 02, 03, 04) en naranja */
-.paso-num {
-    display: block;
-    font-family: "Inter", sans-serif;
+.card.is-active .card-placeholder {
+    border-color: rgba(0, 106, 255, 0.18);
+    background:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 12px,
+            rgba(0, 106, 255, 0.025) 12px,
+            rgba(0, 106, 255, 0.025) 13px),
+        #181818;
+}
+
+.card--light.is-active .card-placeholder {
+    border-color: rgba(0, 106, 255, 0.15);
+    background:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 12px,
+            rgba(0, 106, 255, 0.02) 12px,
+            rgba(0, 106, 255, 0.02) 13px),
+        #f0f4ff;
+}
+
+/* ── Bottom: desc + cta ── */
+/* Hidden on collapsed cards, revealed on active */
+.card-bottom {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    transition:
+        max-height 0.45s var(--ease),
+        opacity 0.35s ease,
+        margin-top 0.35s ease;
+}
+
+.card.is-active .card-bottom {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 18px;
+}
+
+.card-desc {
+    font-family: var(--font);
     font-size: 13px;
-    font-weight: 700;
-    color: #e05c2a;
-    letter-spacing: 0.05em;
-    margin-bottom: 18px;
-}
-
-/* Título del paso */
-.paso-title {
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.4;
-    margin: 0 0 14px;
-}
-
-/* Descripción del paso */
-.paso-desc {
-    font-size: 13px;
-    font-weight: 300;
-    color: #888;
-    line-height: 1.7;
+    line-height: 1.65;
+    color: var(--muted);
     margin: 0;
 }
 
-/* ── Responsive — Proceso ── */
+/* Descripción en card clara */
+.card--light .card-desc {
+    color: var(--muted-dark);
+}
 
-/* Tablet: 2 columnas */
-@media (max-width: 1024px) {
-    .proceso-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* ── CTA — card oscura: botón blanco ── */
+.cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 12px 14px 12px 20px;
+    text-decoration: none;
+    color: #0a0a0a;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.22s ease, border-color 0.22s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cta-btn:hover {
+    background: #f4f4f4;
+    border-color: #f4f4f4;
+}
+
+/* ── CTA — card clara: botón negro ── */
+.card--light .cta-btn {
+    background: #0a0a0a;
+    border-color: #0a0a0a;
+    color: #ffffff;
+}
+
+.card--light .cta-btn:hover {
+    background: #1f1f1f;
+    border-color: #1f1f1f;
+}
+
+.cta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.22s ease;
+}
+
+.cta-btn:hover .cta-icon {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.card--light .cta-icon {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.card--light .cta-btn:hover .cta-icon {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Responsive: Tablet ── */
+@media (max-width: 900px) {
+    :root {
+        --track-h: 460px;
+        --flex-active: 2.2;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
     }
 }
 
-/* Mobile landscape: 2 columnas con menos espacio */
-@media (max-width: 768px) {
-    .proceso-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+/* ── Responsive: Mobile — horizontal swipe carousel ── */
+@media (max-width: 640px) {
+    .servicios-section {
+        padding: 72px 0 80px;
+        overflow: clip;
+        /* ← en vez de hidden, no bloquea el scroll interno */
     }
 
-    /* Reduce el margen inferior del header */
-    .proceso-header {
-        margin-bottom: 40px;
-    }
-}
-
-/* Mobile portrait: 1 columna */
-@media (max-width: 480px) {
-    .proceso-section {
-        padding-bottom: 56px;
+    .servicios-inner {
+        padding: 0 20px;
+        overflow: visible;
     }
 
-    .proceso-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+    .cards-track {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        margin: 0 -20px;
+        padding: 10px 20px 20px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
-    /* Oculta el <br> decorativo del subtítulo en pantallas pequeñas */
-    .hide-mobile {
+    .cards-track::-webkit-scrollbar {
         display: none;
+    }
+
+    .card,
+    .card.is-active {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+        height: 440px;
+        transition: border-color 0.3s ease;
+    }
+
+    .card-inner {
+        padding: 24px 20px;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+    }
+
+    .card-bottom {
+        max-height: 300px !important;
+        opacity: 1 !important;
+        margin-top: 18px !important;
     }
 }
 
@@ -623,11 +787,11 @@ body {
 /* Título de la sección Stack */
 .stack-title {
     font-family: "Inter", sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #777;
+    color: #888;
     margin-bottom: 20px;
 }
 
@@ -712,7 +876,7 @@ body {
     border: 1px solid #1e1e1e;
     border-radius: 999px;
     padding: 8px 20px;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
     cursor: default;
     transition:
         color 0.25s ease,
@@ -754,4 +918,749 @@ body {
     .marquee-left {
         animation-duration: 16s;
     }
+}
+
+
+/* ============================================================
+   PROCESO — Sección de pasos / flujo de trabajo
+============================================================ */
+
+.proceso-section {
+    background: #0a0a0a;
+}
+
+/* Encabezado centrado con ancho máximo */
+.proceso-header {
+    max-width: 700px;
+}
+
+/* Título principal de la sección Proceso */
+.proceso-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0 0 18px;
+    text-align: center;
+}
+
+/* Subtítulo descriptivo */
+.proceso-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* Grid de 4 columnas para los pasos */
+.proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    padding: 0 clamp(24px, 6vw, 80px);
+}
+
+/* ── Tarjeta de paso ── */
+.paso-card {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 14px;
+    padding: 28px 24px 32px;
+    transition: border-color 0.3s ease;
+}
+
+.paso-card:hover {
+    border-color: #2e2e2e;
+}
+
+/* Número del paso (01, 02, 03, 04) en naranja */
+.paso-num {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #d7d7d6;
+    opacity: 0.4;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+}
+
+/* Título del paso */
+.paso-title {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.4;
+    margin: 0 0 14px;
+}
+
+/* Descripción del paso */
+.paso-desc {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #888;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Responsive — Proceso ── */
+
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+    .proceso-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile landscape: 2 columnas con menos espacio */
+@media (max-width: 768px) {
+    .proceso-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Reduce el margen inferior del header */
+    .proceso-header {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .proceso-section {
+        padding-bottom: 56px;
+    }
+
+    .proceso-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .paso-card {
+        padding: 20px 16px 24px;
+    }
+
+    .paso-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .paso-desc {
+        font-size: 12px;
+    }
+
+    /* Oculta el <br> decorativo del subtítulo en pantallas pequeñas */
+    .hide-mobile {
+        display: none;
+    }
+}
+
+
+
+/* ============================================================
+   PROYECTOS — Sección de proyectos destacados
+============================================================ */
+
+.proyectos-section {
+    background: #0a0a0a;
+}
+
+/* Título — mismo estilo que proceso-title */
+.proyectos-titulo {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 18px;
+}
+
+/* Descripción — mismo estilo que proceso-sub */
+.proyectos-sub {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── Card ── */
+.proyecto-card {
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    position: relative;
+    border: 1px solid #1e1e1e;
+    transition: border-color 0.2s ease;
+}
+
+/* Wrapper de imagen */
+.proyecto-card__imagen-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: #1e1e1e;
+}
+
+/* Imagen — sin transform */
+.proyecto-card__imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay sutil en hover */
+.proyecto-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.11);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.proyecto-card:hover .proyecto-card__overlay {
+    opacity: 1;
+}
+
+/* Texto CTA del overlay */
+.proyecto-card__cta {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d6;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+    .proyectos-titulo {
+        letter-spacing: -0.03em;
+    }
+}
+
+
+/* ============================================================
+   FAQ — Preguntas Frecuentes
+============================================================ */
+
+.faq-section {
+    background: #ffffff;
+}
+
+.faq-title {
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+}
+
+.faq-item {
+    background: #f9fafb;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #111827;
+    font-size: 18px;
+    list-style: none;
+    transition: color 0.2s;
+}
+
+.faq-summary:hover {
+    color: #2563eb;
+}
+
+.faq-toggle {
+    font-size: 24px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+details[open] .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    color: #374151;
+    line-height: 1.625;
+}
+
+
+/* ============================================================
+   PRECIOS — Paquetes (mismo estilo que Proceso)
+============================================================ */
+
+.precios-section {
+    background: #0a0a0a;
+}
+
+/* Header — mismo sistema que .proceso-header */
+.precios-header {
+    max-width: 700px;
+}
+
+/* Título — idéntico a .proceso-title */
+.precios-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0 0 18px;
+    text-align: center;
+}
+
+/* Subtítulo — idéntico a .proceso-sub */
+.precios-sub {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+    text-align: center;
+}
+
+/* Grid 2 columnas — mismo ancho que .proceso-grid */
+.precios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    padding: 0 clamp(24px, 6vw, 80px);
+}
+
+/* ── Tarjeta base — mismo estilo que .paso-card ── */
+.paquete-card {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 14px;
+    padding: 28px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+}
+
+.paquete-card:hover {
+    border-color: #2e2e2e;
+}
+
+
+/* Tag del plan — mismo estilo que .paso-num */
+.paquete-tag {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #d7d7d6;
+    opacity: 0.4;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+}
+
+.paquete-tag--accent {
+    opacity: 1;
+    color: #006aff;
+}
+
+/* Título del card — más grande que paso-title */
+.paquete-titulo {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 14px;
+}
+
+/* Descripción — mismo que .paso-desc */
+.paquete-desc {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: #888;
+    line-height: 1.7;
+    margin: 0 0 20px;
+}
+
+/* Precio */
+.paquete-precio {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #555;
+    margin: 0 0 24px;
+}
+
+.paquete-precio strong {
+    color: #9a9a9a;
+    font-weight: 600;
+}
+
+.paquete-precio span {
+    color: #444;
+}
+
+/* Botón outline (card default) */
+.paquete-btn {
+    display: block;
+    text-align: center;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.paquete-btn:hover {
+    opacity: 0.85;
+}
+
+.paquete-btn--outline {
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+}
+
+.paquete-btn--solid {
+    background: #006aff;
+    border: 1.5px solid #006aff;
+    color: #ffffff;
+}
+
+/* Lista de features */
+.paquete-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paquete-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #888;
+    line-height: 1.65;
+}
+
+.paquete-features li strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Check icon */
+.paquete-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    background: #006aff;
+    border-radius: 4px;
+    margin-top: 1px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.paquete-check::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+/* Nota al pie */
+.paquete-footer {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #555;
+    font-style: italic;
+    margin: auto 0 0;
+    padding-top: 8px;
+    border-top: 1px solid #1e1e1e;
+}
+
+/* ── Responsive — Precios ── */
+@media (max-width: 768px) {
+    .precios-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 16px;
+    }
+
+    .paquete-card {
+        padding: 20px 14px 24px;
+    }
+
+    .paquete-titulo {
+        font-size: clamp(15px, 3.2vw, 20px);
+        margin-bottom: 10px;
+    }
+
+    .paquete-desc {
+        font-size: 11px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    .paquete-precio {
+        font-size: 11px;
+        margin-bottom: 18px;
+    }
+
+    .paquete-btn {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    .paquete-features {
+        gap: 8px;
+    }
+
+    .paquete-features li {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .precios-header {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .precios-section {
+        padding-bottom: 56px;
+    }
+
+    .precios-grid {
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .paquete-card {
+        padding: 16px 10px 20px;
+    }
+
+    .paquete-features li {
+        font-size: 10px;
+    }
+}
+
+/* ============================================================
+   FAQ — Preguntas Frecuentes
+============================================================ */
+
+.faq-section {
+    background: #0a0a0a;
+}
+
+/* Columna Izquierda */
+.faq__titulo {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+}
+
+.faq__subtitulo {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+}
+
+.faq__cta {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border: 1.5px solid #006aff;
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq__cta:hover {
+    background: #006aff;
+}
+
+/* Acordeón */
+.faq__item {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    transition: border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.faq__item:has([aria-expanded="true"]) {
+    border-color: rgba(0, 106, 255, 0.45);
+    background: #161616;
+}
+
+.faq__pregunta {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    line-height: 1.5;
+    transition: color 0.25s ease;
+}
+
+.faq__pregunta:hover {
+    color: #006aff;
+}
+
+.faq__pregunta[aria-expanded="true"] {
+    color: #006aff;
+}
+
+/* Ícono Chevron */
+.faq__icono {
+    border: 1px solid #1e1e1e;
+    color: #888;
+    background: transparent;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease,
+        color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.faq__pregunta[aria-expanded="true"] .faq__icono {
+    transform: rotate(180deg);
+    border-color: #006aff;
+    color: #006aff;
+    background: rgba(0, 106, 255, 0.08);
+}
+
+/* Respuesta Contenedor y Animación */
+.faq__respuesta {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq__respuesta-texto {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+    border-top: 1px solid #1e1e1e;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.faq__item:has([aria-expanded="true"]) .faq__respuesta-texto {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.footer__descripcion {
+    font-family: "Inter", sans-serif;
+    color: #888;
+}
+
+.footer__col-titulo {
+    font-family: "Inter", sans-serif;
+    color: #888;
+}
+
+.footer__link {
+    font-family: "Inter", sans-serif;
+    color: #888;
+}
+
+.footer__link:hover {
+    color: #ffffff;
+}
+
+.footer__texto {
+    font-family: "Inter", sans-serif;
+    color: #888;
+}
+
+.footer__cta {
+    font-family: "Inter", sans-serif;
+    background: #006aff;
+    color: #ffffff;
+}
+
+.footer__cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.footer__bottom {
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+.footer__copy {
+    font-family: "Inter", sans-serif;
+    color: #888;
+}
+
+.footer__social-link {
+    border-color: rgba(255, 255, 255, 0.07);
+    color: #888;
+}
+
+.footer__social-link:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
 }

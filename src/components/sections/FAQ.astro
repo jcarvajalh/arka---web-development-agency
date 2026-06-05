@@ -1,83 +1,119 @@
 ---
+// FAQ.astro
+// Sección de preguntas frecuentes con acordeón
 ---
 
-<section id="faq" class="py-20 bg-white">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-gray-900 text-center mb-12">Preguntas Frecuentes</h2>
-    
-    <div class="space-y-6">
-      <!-- FAQ 1 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Cuál es el tiempo de entrega de un proyecto?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          El tiempo depende de la complejidad del proyecto. Un sitio web básico toma de 2-3 semanas, 
-          mientras que proyectos más complejos pueden tomar 4-8 semanas. Proporcionamos un cronograma 
-          detallado al inicio del proyecto.
-        </p>
-      </details>
+<section class="faq-section py-20" id="faq">
+  <div class="faq__inner max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] grid grid-cols-1 md:grid-cols-[1.1fr_1.6fr] gap-12 md:gap-16 lg:gap-20 items-start">
 
-      <!-- FAQ 2 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Qué tecnologías utilizan?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Utilizamos tecnologías modernas y probadas como Astro, React, Node.js, Tailwind CSS y otras 
-          soluciones de última generación. Elegimos las mejores herramientas para cada proyecto específico.
-        </p>
-      </details>
-
-      <!-- FAQ 3 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Incluyen revisiones?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Sí, todos nuestros planes incluyen revisiones ilimitadas durante el desarrollo. 
-          Queremos asegurarnos de que el resultado final sea exactamente lo que esperabas.
-        </p>
-      </details>
-
-      <!-- FAQ 4 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Ofrecen hosting?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Sí, ofrecemos recomendaciones de hosting confiables e incluso podemos gestionar la configuración 
-          por ti. También asesoramos en la selección del mejor hosting para tu proyecto.
-        </p>
-      </details>
-
-      <!-- FAQ 5 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Qué pasa después del lanzamiento?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Ofrecemos planes de mantenimiento y soporte continuado. Desde monitoreo, actualizaciones de seguridad 
-          hasta mejoras funcionales, nos aseguramos de que tu sitio siempre esté en óptimas condiciones.
-        </p>
-      </details>
-
-      <!-- FAQ 6 -->
-      <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
-        <summary class="flex items-center justify-between font-semibold text-gray-900 text-lg hover:text-blue-600 transition">
-          <span>¿Cuál es el costo de una revisión después del lanzamiento?</span>
-          <span class="text-2xl group-open:rotate-180 transition">▼</span>
-        </summary>
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Los cambios menores están incluidos en nuestros planes de mantenimiento. Para cambios mayores, 
-          ofrecemos presupuestos flexibles basados en la complejidad del trabajo requerido.
-        </p>
-      </details>
+    <!-- Columna izquierda -->
+    <div class="faq__left md:sticky md:top-24">
+      <span class="section-label inline-block mb-4">FAQ</span>
+      <h2 class="faq__titulo mb-4">
+        Resolvemos todas tus&nbsp;dudas aquí
+      </h2>
+      <p class="faq__subtitulo mb-8">
+        Si no encuentras lo que buscas, escríbenos directamente.
+      </p>
+      <a href="#contacto" class="faq__cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full">
+        Habla con nosotros <span aria-hidden="true">→</span>
+      </a>
     </div>
+
+    <!-- Columna derecha: acordeón -->
+    <div class="faq__lista flex flex-col gap-2 w-full" role="list">
+      {[
+        {
+          pregunta: "¿Para qué se usa ManyReach?",
+          respuesta:
+            "ManyReach es una plataforma de outreach multicanal que te permite automatizar campañas de email en frío, hacer seguimiento de prospectos y gestionar contactos desde un solo lugar. Ideal para equipos de ventas y agencias.",
+        },
+        {
+          pregunta: "¿Puedo subir todos los contactos que quiera?",
+          respuesta:
+            "Depende del plan que tengas. Los planes de pago permiten importar listas ilimitadas de contactos. Eso sí, ten en cuenta que agregar el mismo contacto en dos campañas distintas puede generar duplicados, lo que afecta la entregabilidad de tus correos.",
+        },
+        {
+          pregunta: "¿Qué es un crédito?",
+          respuesta:
+            "Un crédito equivale al envío de un correo a un contacto. Cada vez que tu campaña envía un email, se consume un crédito. Los créditos se renuevan mensualmente según el plan contratado y no son acumulables.",
+        },
+        {
+          pregunta: "¿Cómo funciona la verificación de emails?",
+          respuesta:
+            "Antes de enviar una campaña, puedes verificar tu lista para filtrar direcciones inválidas o de riesgo. Esto reduce los rebotes y protege la reputación de tu dominio. La verificación también consume créditos.",
+        },
+        {
+          pregunta: "¿Puedo cancelar mi plan en cualquier momento?",
+          respuesta:
+            "Sí. Puedes cancelar tu suscripción desde la configuración de tu cuenta sin penalización. Seguirás teniendo acceso hasta el final del período facturado.",
+        },
+        {
+          pregunta: "¿Ofrecen soporte en español?",
+          respuesta:
+            "Sí, contamos con soporte en español vía chat y correo electrónico. Nuestro equipo responde en un plazo máximo de 24 horas hábiles.",
+        },
+      ].map((item, i) => (
+        <div class="faq__item rounded-[14px] overflow-hidden" role="listitem">
+          <button
+            class="faq__pregunta w-full flex items-center justify-between gap-4 px-5 py-4"
+            aria-expanded="false"
+            aria-controls={`faq-respuesta-${i}`}
+            data-faq-btn
+          >
+            <span>{item.pregunta}</span>
+            <span class="faq__icono flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7L9 12L14 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="faq__respuesta overflow-hidden"
+            id={`faq-respuesta-${i}`}
+            role="region"
+            aria-hidden="true"
+            style="grid-template-rows: 0fr;"
+          >
+            <div class="min-h-0">
+              <p class="faq__respuesta-texto px-5 pb-5 pt-4">{item.respuesta}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
   </div>
 </section>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>("[data-faq-btn]");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const targetId = btn.getAttribute("aria-controls")!;
+      const target = document.getElementById(targetId);
+
+      // Cerrar todos los demás
+      btns.forEach((other) => {
+        if (other !== btn) {
+          other.setAttribute("aria-expanded", "false");
+          const otherTarget = document.getElementById(other.getAttribute("aria-controls")!);
+          if (otherTarget) {
+            otherTarget.style.gridTemplateRows = "0fr";
+            otherTarget.setAttribute("aria-hidden", "true");
+          }
+        }
+      });
+
+      // Toggle del actual
+      const nextState = !expanded;
+      btn.setAttribute("aria-expanded", String(nextState));
+      if (target) {
+        target.style.gridTemplateRows = nextState ? "1fr" : "0fr";
+        target.setAttribute("aria-hidden", String(!nextState));
+      }
+    });
+  });
+</script>

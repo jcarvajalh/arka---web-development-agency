@@ -1,60 +1,109 @@
 ---
+// Footer.astro
+// Paleta del proyecto: #0a0a0a / #006aff / blanco
+
+const navLinks = [
+  { label: "Servicios",  href: "#servicios" },
+  { label: "Proceso",    href: "#proceso" },
+  { label: "Precios",    href: "#precios" },
+  { label: "Proyectos",  href: "#proyectos" },
+  { label: "FAQ",        href: "#faq" },
+];
+
+const servicios = [
+  "Sitios web & Landing",
+  "E-commerce",
+  "Automatización con IA",
+  "SEO & Conversión",
+];
+
+const contacto = [
+  { label: "hola@arka.agency",  href: "mailto:hola@arka.agency" },
+  { label: "Agendar reunión",   href: "#contacto" },
+  { label: "WhatsApp",          href: "https://wa.me/573000000000" },
+];
+
+const año = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900 text-white py-12">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-      <!-- Información de la empresa -->
-      <div>
-        <h3 class="text-2xl font-bold text-blue-400 mb-4">ARKA</h3>
-        <p class="text-gray-400">
-          Agencia de desarrollo web especializada en soluciones digitales modernas y escalables.
-        </p>
-      </div>
+<footer class="footer pt-16 pb-0">
+  <div class="footer__top max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-12">
 
-      <!-- Enlaces rápidos -->
-      <div>
-        <h4 class="text-lg font-bold mb-4">Enlaces</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li>
-            <a href="#servicios" class="hover:text-blue-400 transition">Servicios</a>
-          </li>
-          <li>
-            <a href="/proyectos" target="_blank" class="hover:text-blue-400 transition">Proyectos</a>
-          </li>
-          <li>
-            <a href="#precios" class="hover:text-blue-400 transition">Precios</a>
-          </li>
-          <li>
-            <a href="#faq" class="hover:text-blue-400 transition">FAQ</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Contacto -->
-      <div>
-        <h4 class="text-lg font-bold mb-4">Contacto</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li>
-            <a href="mailto:info@arka.com" class="hover:text-blue-400 transition">info@arka.com</a>
-          </li>
-          <li>
-            <a href="tel:+34123456789" class="hover:text-blue-400 transition">+34 123 456 789</a>
-          </li>
-          <li class="pt-2">
-            <div class="flex gap-4">
-              <a href="#" class="text-gray-400 hover:text-blue-400 transition">LinkedIn</a>
-              <a href="#" class="text-gray-400 hover:text-blue-400 transition">GitHub</a>
-              <a href="#" class="text-gray-400 hover:text-blue-400 transition">Twitter</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <!-- Descripción -->
+    <div class="footer__brand flex flex-col gap-4 col-span-2 md:col-span-1">
+      <!-- Logo Placeholder -->
+      <a href="/" class="footer__logo-link block">
+        <!-- Reemplaza "/placeholder-logo.svg" con la ruta de tu logo real (ej: /images/logo.svg) -->
+        <img src="/logo-arka-transparente.png" alt="ARKA Logo" class="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+      </a>
+      <p class="footer__descripcion text-sm leading-relaxed max-w-[26ch] m-0">
+        Agencia de desarrollo web.
+      </p>
     </div>
 
-    <!-- Línea divisoria -->
-    <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-      <p>&copy; 2024 ARKA. Todos los derechos reservados.</p>
+    <!-- Navegación -->
+    <div class="footer__col flex flex-col gap-4 col-span-1">
+      <span class="footer__col-titulo text-[10px] font-bold tracking-[0.18em] uppercase mb-1">Navegación</span>
+      <ul class="footer__lista flex flex-col gap-2.5 m-0 p-0 list-none">
+        {navLinks.map(({ label, href }) => (
+          <li><a href={href} class="footer__link text-sm text-decoration-none">{label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Servicios -->
+    <div class="footer__col flex flex-col gap-4 col-span-1">
+      <span class="footer__col-titulo text-[10px] font-bold tracking-[0.18em] uppercase mb-1">Servicios</span>
+      <ul class="footer__lista flex flex-col gap-2.5 m-0 p-0 list-none">
+        {servicios.map((s) => (
+          <li><span class="footer__texto text-sm">{s}</span></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer__col flex flex-col gap-4 col-span-2 md:col-span-1">
+      <span class="footer__col-titulo text-[10px] font-bold tracking-[0.18em] uppercase mb-1">Contacto</span>
+      <ul class="footer__lista flex flex-col gap-2.5 m-0 p-0 list-none">
+        {contacto.map(({ label, href }) => (
+          <li><a href={href} class="footer__link text-sm text-decoration-none">{label}</a></li>
+        ))}
+      </ul>
+      <a href="#contacto" class="footer__cta inline-flex items-center justify-center mt-2 px-5 py-2 rounded-full text-xs font-bold w-fit text-decoration-none">Cotiza tu proyecto</a>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bottom border-t py-6">
+    <div class="max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="footer__copy text-xs m-0">
+        © {año} ARKA — Web Development Agency. Todos los derechos reservados.
+      </p>
+      <div class="footer__social flex gap-2">
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__social-link flex items-center justify-center w-8.5 h-8.5 rounded-full border text-decoration-none" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer__social-link flex items-center justify-center w-8.5 h-8.5 rounded-full border text-decoration-none" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="footer__social-link flex items-center justify-center w-8.5 h-8.5 rounded-full border text-decoration-none" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </footer>

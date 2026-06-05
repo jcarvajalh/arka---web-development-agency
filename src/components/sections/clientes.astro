@@ -1,0 +1,84 @@
+---
+// clientes.astro — Proyectos Destacados
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+  alt: string;
+}
+
+interface Props {
+  projects?: Project[];
+}
+
+// Proyectos de ejemplo — reemplaza con los tuyos
+const clientes: Project[] = [
+  {
+    title: "La Casa de los Libros",
+    description: "Descripción breve del proyecto",
+    image: "/la-casa-de-los-libros.webp",
+    href: "https://lacasadeloslibros.org/",
+    alt: "Vista previa Proyecto Uno",
+  }
+  /*
+  {
+    title: "Proyecto Dos",
+    description: "Descripción breve del proyecto",
+    image: "/images/proyecto-2.jpg",
+    href: "#",
+    alt: "Vista previa Proyecto Dos",
+  },
+  {
+    title: "Proyecto Tres",
+    description: "Descripción breve del proyecto",
+    image: "/images/proyecto-3.jpg",
+    href: "#",
+    alt: "Vista previa Proyecto Tres",
+  },*/
+];
+
+const { projects = clientes } = Astro.props;
+---
+
+<section id="proyectos" class="proyectos-section py-20">
+  <div class="max-w-[1260px] mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-14 text-center">
+      <p class="section-label">Proyectos Destacados</p>
+      <h2 class="proyectos-titulo mb-[18px]">Resultados que hablan por sí solos</h2>
+      <p class="proyectos-sub  mx-auto">
+        Algunos de los sitios web que hemos transformado en
+        herramientas de ventas efectivas.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class={projects.length === 1 ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}>
+      {projects.map((proyecto) => (
+        <a
+          href={proyecto.href}
+          class="proyecto-card w-full max-w-[320px]"
+          aria-label={`Ver proyecto: ${proyecto.title}`}
+        >
+          <div class="proyecto-card__imagen-wrapper">
+            <img
+              src={proyecto.image}
+              alt={proyecto.alt}
+              class="proyecto-card__imagen"
+              loading="lazy"
+              decoding="async"
+              width="480"
+              height="320"
+            />
+            <div class="proyecto-card__overlay">
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

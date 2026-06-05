@@ -1,123 +1,79 @@
 ---
+// Precios.astro — Sección de paquetes
 ---
 
-<section id="precios" class="py-20 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-gray-900 text-center mb-12">Nuestros Planes</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Plan Básico -->
-      <div class="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Básico</h3>
-        <p class="text-gray-600 mb-6">Perfecto para startups</p>
-        
-        <div class="mb-6">
-          <span class="text-5xl font-bold text-gray-900">$299</span>
-          <span class="text-gray-600">/mes</span>
-        </div>
+<section id="precios" class="precios-section pb-20">
 
-        <ul class="space-y-4 mb-8 text-gray-700">
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Sitio web responsivo
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Hasta 5 páginas
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Certificado SSL
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Soporte por email
-          </li>
-        </ul>
-
-        <button class="w-full bg-gray-200 text-gray-900 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
-          Seleccionar Plan
-        </button>
-      </div>
-
-      <!-- Plan Profesional -->
-      <div class="bg-white p-8 rounded-lg border-2 border-blue-600 hover:shadow-lg transition relative">
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Popular</span>
-        </div>
-
-        <h3 class="text-2xl font-bold text-gray-900 mb-2 mt-6">Plan Profesional</h3>
-        <p class="text-gray-600 mb-6">Para empresas en crecimiento</p>
-        
-        <div class="mb-6">
-          <span class="text-5xl font-bold text-gray-900">$799</span>
-          <span class="text-gray-600">/mes</span>
-        </div>
-
-        <ul class="space-y-4 mb-8 text-gray-700">
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Sitio web avanzado
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Hasta 20 páginas
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            SEO optimizado
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Soporte prioritario
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Actualizaciones mensuales
-          </li>
-        </ul>
-
-        <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-          Seleccionar Plan
-        </button>
-      </div>
-
-      <!-- Plan Enterprise -->
-      <div class="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Enterprise</h3>
-        <p class="text-gray-600 mb-6">Solución personalizada</p>
-        
-        <div class="mb-6">
-          <span class="text-5xl font-bold text-gray-900">Personalizado</span>
-        </div>
-
-        <ul class="space-y-4 mb-8 text-gray-700">
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Solución a medida
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            E-commerce integrado
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Integraciones personalizadas
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Soporte 24/7
-          </li>
-          <li class="flex items-center">
-            <span class="text-green-500 mr-3">✓</span>
-            Mantenimiento incluido
-          </li>
-        </ul>
-
-        <button class="w-full border-2 border-blue-600 text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
-          Solicitar Propuesta
-        </button>
-      </div>
+    <!-- Header — mismo patrón que Proceso -->
+    <div class="precios-header text-center mx-auto mb-14 px-6">
+        <p class="section-label">Precios</p>
+        <h2 class="precios-title">
+            Elige el punto de partida
+        </h2>
+        <p class="precios-sub">
+            Cada paquete se adapta a tu marca. Te decimos exactamente qué incluye;
+            el alcance final lo definimos juntos en una reunión.
+        </p>
     </div>
-  </div>
+
+    <!-- Grid de tarjetas — mismo ancho que proceso-grid -->
+    <div class="precios-grid mx-auto">
+
+        <!-- Tarjeta 1: Landing -->
+        <article class="paquete-card">
+            <span class="paquete-tag">SITIOS WEB – LANDING</span>
+            <h3 class="paquete-titulo">
+                Sitio web<br />&amp; Landing page
+            </h3>
+            <p class="paquete-desc">
+                One-page, landing pages y sitios corporativos a medida,
+                diseñados para presentar tu marca y captar clientes.
+            </p>
+            <p class="paquete-precio">
+                Desde <strong>desde COP 2.500.000</strong> <span>~USD 625</span>
+            </p>
+            <a href="#contacto" class="paquete-btn paquete-btn--outline py-3.5 mb-7 relative flex items-center justify-center">
+                <span>Cotiza tu proyecto</span>
+            </a>
+            <ul class="paquete-features mb-5">
+                <li><span class="paquete-check"></span><span>Diseño <strong>100% a medida</strong> para tu marca, desktop y móvil.</span></li>
+                <li><span class="paquete-check"></span><span><strong>SEO integrado</strong> y arquitectura orientada a conversión.</span></li>
+                <li><span class="paquete-check"></span><span>Desarrollo con <strong>Astro / Next.js</strong>, rápido y escalable.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Analítica completa:</strong> GA4, Tag Manager y Clarity.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Copywriting</strong> persuasivo y micro-animaciones elegantes.</span></li>
+            </ul>
+            <p class="paquete-footer">
+                Ideal para presentar tu negocio y empezar a captar clientes.
+            </p>
+        </article>
+
+        <!-- Tarjeta 2: E-commerce (destacada) -->
+        <article class="paquete-card paquete-card--featured">
+            <span class="paquete-tag paquete-tag--accent">ECOMMERCE</span>
+            <h3 class="paquete-titulo">
+                Tienda<br />E-commerce
+            </h3>
+            <p class="paquete-desc">
+                Tiendas online a medida, listas para vender, con experiencia de
+                compra optimizada y automatizaciones con IA.
+            </p>
+            <p class="paquete-precio">
+                Desde <strong>desde COP 4.000.000</strong> <span>~USD 1.000</span>
+            </p>
+            <a href="#contacto" class="paquete-btn paquete-btn--solid py-3.5 mb-7 relative flex items-center justify-center">
+                <span>Cotiza tu proyecto</span>
+            </a>
+            <ul class="paquete-features mb-5">
+                <li><span class="paquete-check"></span><span><strong>Todo lo del plan anterior,</strong> más una tienda completa.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Catálogo, carrito y checkout</strong> diseñados para convertir.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Pasarelas de pago</strong> e integraciones a tu medida.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Automatizaciones con IA:</strong> recuperación de carritos y soporte.</span></li>
+                <li><span class="paquete-check"></span><span><strong>Embudo optimizado</strong> con meta de conversión mínima del 5%.</span></li>
+            </ul>
+            <p class="paquete-footer">
+                Ideal si quieres vender online con una tienda profesional.
+            </p>
+        </article>
+
+    </div>
 </section>
