@@ -822,7 +822,7 @@ body {
     gap: 12px;
     width: max-content;
     padding: 6px 0;
-    will-change: transform;
+    /*will-change: transform;*/
 }
 
 /* ── Animaciones de desplazamiento ── */
