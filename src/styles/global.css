@@ -743,6 +743,8 @@ body {
         padding: 10px 20px 20px;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        touch-action: pan-x;
+        /* ← esto es todo lo que necesitas */
     }
 
     .cards-track::-webkit-scrollbar {
