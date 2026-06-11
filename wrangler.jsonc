@@ -1,1 +1,10 @@
-27d0603b155d4d65a15d688c5bb02e76
+{
+    "name": "arka",
+    "compatibility_date": "2026-06-11",
+    "kv_namespaces": [
+        {
+            "binding": "SESSION",
+            "id": "27d0603b155d4d65a15d688c5bb02e76"
+        }
+    ]
+}
