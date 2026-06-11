@@ -4,14 +4,20 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://arka-agency.vercel.app/',
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   integrations: [
     sitemap(),
     robotsTxt(),
   ],
+
+  adapter: cloudflare(),
 });
