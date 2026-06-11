@@ -428,349 +428,372 @@ body {
     --ease: cubic-bezier(0.34, 1.1, 0.64, 1);
 }
 
+/* ============================================================
+   SERVICIOS — Split Slider moderno
+============================================================ */
+
 /* ── Section ── */
-.servicios-section {
-    background: var(--black);
+.srv-section {
+    background: #0a0a0a;
     padding: 96px 0 112px;
     overflow: hidden;
 }
 
-.servicios-inner {
-    max-width: 1260px;
+.srv-inner {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 clamp(24px, 6vw, 80px);
 }
 
 /* ── Header ── */
-.servicios-header {
+.srv-header {
     text-align: center;
-    margin-bottom: 52px;
+    margin-bottom: 56px;
 }
 
-.eyebrow {
-    display: inline-block;
-    font-family: var(--font);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--brand);
-    margin-bottom: 12px;
-}
-
-.servicios-header h2 {
-    font-family: var(--font);
-    font-size: clamp(28px, 5vw, 56px);
+.srv-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(30px, 5vw, 54px);
     font-weight: 700;
-    color: var(--white);
+    color: #ffffff;
     line-height: 1.08;
     letter-spacing: -0.04em;
     margin: 0;
 }
 
-.accent {
-    color: var(--brand);
-}
-
-/* ── Track ── */
-.cards-track {
-    display: flex;
-    gap: var(--gap);
-    height: var(--track-h);
-    align-items: stretch;
-}
-
-/* ── Card base (oscura por defecto) ── */
-.card {
-    flex: var(--flex-base);
-    min-width: 0;
-    background: var(--card-dark-bg);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
+/* ── Slider container ── */
+.srv-slider {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 0;
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 18px;
     overflow: hidden;
-    cursor: pointer;
-    transition:
-        flex 0.55s var(--ease),
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+    min-height: 480px;
 }
 
-/* Card variante clara (índices 1 y 3) */
-.card--light {
-    background: var(--card-light-bg);
-    border-color: rgba(0, 0, 0, 0.08);
-}
-
-/* Active card = expanded */
-.card.is-active {
-    flex: var(--flex-active);
-    border-color: rgba(0, 106, 255, 0.22);
-    box-shadow: 0 8px 48px rgba(0, 106, 255, 0.08);
-}
-
-.card--light.is-active {
-    border-color: rgba(0, 106, 255, 0.22);
-    box-shadow: 0 8px 48px rgba(0, 106, 255, 0.08);
-}
-
-/* ── Inner layout (display/dirección en Tailwind: flex flex-col h-full p-7) ── */
-.card-inner {
-    /* padding y gap gestionados por Tailwind */
-}
-
-/* ── Title (margin-bottom en Tailwind: mb-4) ── */
-.card-top {
-    flex-shrink: 0;
-}
-
-.card-title {
-    font-family: var(--font);
-    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.15;
-    margin: 0;
-    letter-spacing: -0.01em;
-}
-
-/* Título en card clara */
-.card--light .card-title {
-    color: var(--black);
-}
-
-/* ── Image ── */
-.card-img-wrap {
-    flex: 1;
-    border-radius: 14px;
-    overflow: hidden;
-    background: #1a1a1a;
+/* ── Visual / Image side ── */
+.srv-slider__visual {
     position: relative;
-    min-height: 0;
+    overflow: hidden;
+    background: #0e0e0e;
 }
 
-.card-img {
+.srv-slide-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.04);
+}
+
+.srv-slide-img.is-visible {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1);
+}
+
+.srv-slide-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
-.card-placeholder {
-    width: 100%;
-    height: 100%;
+/* Counter badge */
+.srv-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background:
-        repeating-linear-gradient(45deg,
-            transparent,
-            transparent 12px,
-            rgba(255, 255, 255, 0.013) 12px,
-            rgba(255, 255, 255, 0.013) 13px),
-        #161616;
-    border: 1px dashed rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
-    transition: border-color 0.3s ease, background 0.3s ease;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
-/* Placeholder en card clara */
-.card--light .card-placeholder {
-    background:
-        repeating-linear-gradient(45deg,
-            transparent,
-            transparent 12px,
-            rgba(0, 0, 0, 0.02) 12px,
-            rgba(0, 0, 0, 0.02) 13px),
-        #f5f5f5;
-    border-color: rgba(0, 0, 0, 0.08);
+.srv-counter__current {
+    color: #ffffff;
+    min-width: 18px;
+    text-align: center;
+    transition: opacity 0.3s ease;
 }
 
-.card.is-active .card-placeholder {
-    border-color: rgba(0, 106, 255, 0.18);
-    background:
-        repeating-linear-gradient(45deg,
-            transparent,
-            transparent 12px,
-            rgba(0, 106, 255, 0.025) 12px,
-            rgba(0, 106, 255, 0.025) 13px),
-        #181818;
+.srv-counter__sep {
+    color: rgba(255, 255, 255, 0.25);
 }
 
-.card--light.is-active .card-placeholder {
-    border-color: rgba(0, 106, 255, 0.15);
-    background:
-        repeating-linear-gradient(45deg,
-            transparent,
-            transparent 12px,
-            rgba(0, 106, 255, 0.02) 12px,
-            rgba(0, 106, 255, 0.02) 13px),
-        #f0f4ff;
+.srv-counter__total {
+    color: rgba(255, 255, 255, 0.4);
 }
 
-/* ── Bottom: desc + cta ── */
-/* Hidden on collapsed cards, revealed on active */
-.card-bottom {
-    flex-shrink: 0;
+/* ── Content side ── */
+.srv-slider__content {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    overflow: hidden;
-    max-height: 0;
+    justify-content: center;
+    padding: 48px 44px;
+}
+
+.srv-slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 44px;
     opacity: 0;
-    margin-top: 0;
-    transition:
-        max-height 0.45s var(--ease),
-        opacity 0.35s ease,
-        margin-top 0.35s ease;
+    z-index: 0;
+    transform: translateY(16px);
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0s linear 0.25s;
+    pointer-events: none;
+    visibility: hidden;
 }
 
-.card.is-active .card-bottom {
-    max-height: 200px;
+.srv-slide-content.is-visible {
     opacity: 1;
-    margin-top: 18px;
+    z-index: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+                visibility 0s linear 0s;
 }
 
-.card-desc {
-    font-family: var(--font);
+/* Slide number */
+.srv-slide__num {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #006aff;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Slide title */
+.srv-slide__title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 18px;
+}
+
+/* Slide description */
+.srv-slide__desc {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+    margin: 0 0 28px;
+    max-width: 420px;
+}
+
+/* CTA button */
+.srv-slide__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    border-radius: 999px;
+    padding: 12px 24px;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
     font-size: 13px;
-    line-height: 1.65;
-    color: var(--muted);
-    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.2s ease;
+    cursor: pointer;
+    width: fit-content;
 }
 
-/* Descripción en card clara */
-.card--light .card-desc {
-    color: var(--muted-dark);
+.srv-slide__cta:hover {
+    background: #006aff;
+    border-color: #006aff;
+    transform: translateY(-1px);
 }
 
-/* ── CTA — card oscura: botón blanco ── */
-.cta-btn {
+.srv-slide__cta svg {
+    transition: transform 0.25s ease;
+}
+
+.srv-slide__cta:hover svg {
+    transform: translateX(3px);
+}
+
+/* ── Navigation ── */
+.srv-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 50px;
-    padding: 12px 14px 12px 20px;
-    text-decoration: none;
-    color: #0a0a0a;
-    font-family: var(--font);
-    font-size: 13px;
-    font-weight: 500;
-    transition: background 0.22s ease, border-color 0.22s ease;
-    cursor: pointer;
-    white-space: nowrap;
+    gap: 16px;
+    padding: 0 44px 36px;
 }
 
-.cta-btn:hover {
-    background: #f4f4f4;
-    border-color: #f4f4f4;
-}
-
-/* ── CTA — card clara: botón negro ── */
-.card--light .cta-btn {
-    background: #0a0a0a;
-    border-color: #0a0a0a;
-    color: #ffffff;
-}
-
-.card--light .cta-btn:hover {
-    background: #1f1f1f;
-    border-color: #1f1f1f;
-}
-
-.cta-icon {
+.srv-nav__btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.08);
-    font-size: 18px;
-    line-height: 1;
+    border: 1px solid #2a2a2a;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: border-color 0.25s ease,
+                color 0.25s ease,
+                background 0.25s ease;
     flex-shrink: 0;
-    transition: background 0.22s ease;
 }
 
-.cta-btn:hover .cta-icon {
-    background: rgba(0, 0, 0, 0.15);
+.srv-nav__btn:hover {
+    border-color: #006aff;
+    color: #ffffff;
+    background: rgba(0, 106, 255, 0.08);
 }
 
-.card--light .cta-icon {
-    background: rgba(255, 255, 255, 0.15);
+/* Dots with progress fill */
+.srv-nav__dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
 }
 
-.card--light .cta-btn:hover .cta-icon {
-    background: rgba(255, 255, 255, 0.25);
+.srv-nav__dot {
+    flex: 1;
+    height: 3px;
+    border-radius: 999px;
+    background: #1e1e1e;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.srv-nav__dot:hover {
+    background: #2a2a2a;
+}
+
+.srv-nav__dot-fill {
+    position: absolute;
+    inset: 0;
+    background: #006aff;
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.srv-nav__dot.is-active .srv-nav__dot-fill {
+    transform: scaleX(1);
 }
 
 /* ── Responsive: Tablet ── */
 @media (max-width: 900px) {
-    :root {
-        --track-h: 460px;
-        --flex-active: 2.2;
+    .srv-slider {
+        grid-template-columns: 1fr 1fr;
+        min-height: 420px;
     }
 
-    .card-title {
-        font-size: 1.1rem;
+    .srv-slide-content {
+        padding: 32px 28px;
+    }
+
+    .srv-nav {
+        padding: 0 28px 28px;
+    }
+
+    .srv-slider__content {
+        padding: 32px 28px;
     }
 }
 
-/* ── Responsive: Mobile — horizontal swipe carousel ── */
+/* ── Responsive: Mobile ── */
 @media (max-width: 640px) {
-    .servicios-section {
+    .srv-section {
         padding: 72px 0 80px;
-        overflow: clip;
-        /* ← en vez de hidden, no bloquea el scroll interno */
     }
 
-    .servicios-inner {
-        padding: 0 20px;
-        overflow: visible;
+    .srv-slider {
+        grid-template-columns: 1fr;
+        min-height: auto;
     }
 
-    .cards-track {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        gap: 16px;
-        margin: 0 -20px;
-        padding: 10px 20px 20px;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        touch-action: pan-x;
-        /* ← esto es todo lo que necesitas */
+    .srv-slider__visual {
+        aspect-ratio: 16 / 10;
     }
 
-    .cards-track::-webkit-scrollbar {
-        display: none;
+    .srv-slider__content {
+        position: relative;
+        padding: 32px 24px 24px;
+        min-height: 320px;
     }
 
-    .card,
-    .card.is-active {
-        flex: 0 0 85%;
-        scroll-snap-align: start;
-        height: 440px;
-        transition: border-color 0.3s ease;
+    .srv-slide-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 56px;
+        padding: 32px 24px;
     }
 
-    .card-inner {
-        padding: 24px 20px;
+    .srv-nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 24px 24px;
     }
 
-    .card-title {
-        font-size: 1.15rem;
+    .srv-slide__title {
+        font-size: clamp(22px, 5vw, 28px);
     }
 
-    .card-bottom {
-        max-height: 300px !important;
-        opacity: 1 !important;
-        margin-top: 18px !important;
+    .srv-slide__desc {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    .srv-counter {
+        bottom: 14px;
+        left: 14px;
+        padding: 6px 12px;
+        font-size: 12px;
     }
 }
 
@@ -1244,11 +1267,75 @@ details[open] .faq-toggle {
     text-align: center;
 }
 
-/* Grid 2 columnas — mismo ancho que .proceso-grid */
+/* ── Currency Toggle ── */
+.currency-toggle {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 999px;
+    padding: 4px;
+    margin-top: 24px;
+    gap: 0;
+}
+
+.currency-toggle__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    border-radius: 999px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.currency-toggle__btn.is-active {
+    color: #ffffff;
+}
+
+.currency-toggle__btn:hover:not(.is-active) {
+    color: #aaa;
+}
+
+.currency-toggle__flag {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.currency-toggle__slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #006aff;
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.1, 0.64, 1);
+    z-index: 0;
+}
+
+/* Utility */
+[data-price-cop].hidden,
+[data-price-usd].hidden {
+    display: none !important;
+}
+
+/* Grid 3 columnas — mismo ancho que .proceso-grid */
 .precios-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
     max-width: 1200px;
     padding: 0 clamp(24px, 6vw, 80px);
 }
@@ -1258,7 +1345,7 @@ details[open] .faq-toggle {
     background: #111111;
     border: 1px solid #1e1e1e;
     border-radius: 14px;
-    padding: 28px 24px 32px;
+    padding: 24px 20px 28px;
     display: flex;
     flex-direction: column;
     transition: border-color 0.3s ease;
@@ -1289,12 +1376,12 @@ details[open] .faq-toggle {
 /* Título del card — más grande que paso-title */
 .paquete-titulo {
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.15;
     color: #ffffff;
-    margin: 0 0 14px;
+    margin: 0 0 12px;
 }
 
 /* Descripción — mismo que .paso-desc */
@@ -1421,6 +1508,15 @@ details[open] .faq-toggle {
 }
 
 /* ── Responsive — Precios ── */
+
+/* Tablet: 3 → 2 columnas */
+@media (max-width: 1024px) {
+    .precios-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
 @media (max-width: 768px) {
     .precios-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1473,16 +1569,17 @@ details[open] .faq-toggle {
     }
 
     .precios-grid {
-        gap: 8px;
-        padding: 0 8px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 16px;
     }
 
     .paquete-card {
-        padding: 16px 10px 20px;
+        padding: 20px 16px 24px;
     }
 
     .paquete-features li {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 

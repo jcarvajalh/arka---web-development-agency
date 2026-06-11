@@ -1,24 +1,33 @@
 ---
-// Precios.astro — Sección de paquetes
+// Precios.astro — Sección de paquetes con toggle COP/USD
 ---
 
 <section id="precios" class="precios-section pb-20">
-
     <!-- Header — mismo patrón que Proceso -->
     <div class="precios-header text-center mx-auto mb-14 px-6">
         <p class="section-label">Precios</p>
-        <h2 class="precios-title">
-            Elige el punto de partida
-        </h2>
+        <h2 class="precios-title">Elige el punto de partida</h2>
         <p class="precios-sub">
-            Cada paquete se adapta a tu marca. Te decimos exactamente qué incluye;
-            el alcance final lo definimos juntos en una reunión.
+            Cada paquete se adapta a tu marca. Te decimos exactamente qué
+            incluye; el alcance final lo definimos juntos en una reunión.
         </p>
+
+        <!-- Currency Toggle -->
+        <div class="currency-toggle" id="currencyToggle">
+            <button class="currency-toggle__btn is-active" data-currency="cop">
+                <span class="currency-toggle__flag">🇨🇴</span>
+                <span>COP</span>
+            </button>
+            <button class="currency-toggle__btn" data-currency="usd">
+                <span class="currency-toggle__flag">🇺🇸</span>
+                <span>USD</span>
+            </button>
+            <span class="currency-toggle__slider"></span>
+        </div>
     </div>
 
     <!-- Grid de tarjetas — mismo ancho que proceso-grid -->
     <div class="precios-grid mx-auto">
-
         <!-- Tarjeta 1: Landing -->
         <article class="paquete-card">
             <span class="paquete-tag">SITIOS WEB – LANDING</span>
@@ -30,26 +39,56 @@
                 diseñados para presentar tu marca y captar clientes.
             </p>
             <p class="paquete-precio">
-                Desde <strong>desde COP 2.500.000</strong> <span>~USD 625</span>
+                <span data-price-cop>
+                    Desde <strong>COP 2.500.000</strong>
+                </span>
+                <span data-price-usd class="hidden">
+                    Desde <strong>USD 625</strong>
+                </span>
             </p>
-            <a href="https://cal.com/arkaagency/reunion-acercamiento" target="_blank" rel="noopener noreferrer" class="paquete-btn paquete-btn--outline py-3.5 mb-7 relative flex items-center justify-center">
+            <a
+                href="https://cal.com/arkaagency/reunion-acercamiento"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="paquete-btn paquete-btn--outline py-3.5 mb-7 relative flex items-center justify-center"
+            >
                 <span>Cotiza tu proyecto</span>
             </a>
             <ul class="paquete-features mb-5">
-                <li><span class="paquete-check"></span><span>Diseño <strong>100% a medida</strong> para tu marca, desktop y móvil.</span></li>
-                <li><span class="paquete-check"></span><span><strong>SEO integrado</strong> y arquitectura orientada a conversión.</span></li>
-                <li><span class="paquete-check"></span><span>Desarrollo con <strong>Astro / Next.js</strong>, rápido y escalable.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Analítica completa:</strong> GA4, Tag Manager y Clarity.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Copywriting</strong> persuasivo y micro-animaciones elegantes.</span></li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        >Diseño <strong>100% a medida</strong> para tu marca, desktop
+                        y móvil.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>SEO integrado</strong> y arquitectura orientada a
+                        conversión.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        >Desarrollo con <strong>Astro / Next.js</strong>, rápido
+                        y escalable.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Analítica completa:</strong> GA4, Tag Manager y Clarity.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Copywriting</strong> persuasivo y micro-animaciones
+                        elegantes.</span>
+                </li>
             </ul>
             <p class="paquete-footer">
-                Ideal para presentar tu negocio y empezar a captar clientes.
+                Ideal para compañías Tech y Clínicas que buscan captar
+                pacientes.
             </p>
         </article>
 
-        <!-- Tarjeta 2: E-commerce (destacada) -->
-        <article class="paquete-card paquete-card--featured">
-            <span class="paquete-tag paquete-tag--accent">ECOMMERCE</span>
+        <!-- Tarjeta 2: E-commerce -->
+        <article class="paquete-card">
+            <span class="paquete-tag">ECOMMERCE</span>
             <h3 class="paquete-titulo">
                 Tienda<br />E-commerce
             </h3>
@@ -58,22 +97,166 @@
                 compra optimizada y automatizaciones con IA.
             </p>
             <p class="paquete-precio">
-                Desde <strong>desde COP 4.000.000</strong> <span>~USD 1.000</span>
+                <span data-price-cop>
+                    Desde <strong>COP 4.000.000</strong>
+                </span>
+                <span data-price-usd class="hidden">
+                    Desde <strong>USD 1.000</strong>
+                </span>
             </p>
-            <a href="https://cal.com/arkaagency/reunion-acercamiento" target="_blank" rel="noopener noreferrer" class="paquete-btn paquete-btn--solid py-3.5 mb-7 relative flex items-center justify-center">
+            <a
+                href="https://cal.com/arkaagency/reunion-acercamiento"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="paquete-btn paquete-btn--outline py-3.5 mb-7 relative flex items-center justify-center"
+            >
                 <span>Cotiza tu proyecto</span>
             </a>
             <ul class="paquete-features mb-5">
-                <li><span class="paquete-check"></span><span><strong>Todo lo del plan anterior,</strong> más una tienda completa.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Catálogo, carrito y checkout</strong> diseñados para convertir.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Pasarelas de pago</strong> e integraciones a tu medida.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Automatizaciones con IA:</strong> recuperación de carritos y soporte.</span></li>
-                <li><span class="paquete-check"></span><span><strong>Embudo optimizado</strong> con meta de conversión mínima del 5%.</span></li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Todo lo del plan anterior,</strong> más una tienda
+                        completa.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Catálogo, carrito y checkout</strong> diseñados para
+                        convertir.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Pasarelas de pago</strong> e integraciones a tu medida.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Automatizaciones con IA:</strong> recuperación de
+                        carritos y soporte.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Embudo optimizado</strong> con meta de conversión
+                        mínima del 5%.</span>
+                </li>
             </ul>
             <p class="paquete-footer">
                 Ideal si quieres vender online con una tienda profesional.
             </p>
         </article>
 
+        <!-- Tarjeta 3: Solución a Medida (Médica / Corporativa) -->
+        <article class="paquete-card paquete-card--featured">
+            <span class="paquete-tag paquete-tag--accent">A MEDIDA – CLÍNICAS & CORPORATIVO</span>
+            <h3 class="paquete-titulo">
+                Solución<br />a medida
+            </h3>
+            <p class="paquete-desc">
+                ¿Buscas una solución médica o corporativa a medida? Definimos el
+                alcance técnico según los requerimientos de tu clínica o software.
+            </p>
+            <p class="paquete-precio">
+                <span data-price-cop>
+                    <strong>Precio según alcance</strong>
+                </span>
+                <span data-price-usd class="hidden">
+                    <strong>Custom pricing</strong>
+                </span>
+                <span>Cotización personalizada</span>
+            </p>
+            <a
+                href="https://cal.com/arkaagency/reunion-acercamiento"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="paquete-btn paquete-btn--solid py-3.5 mb-7 relative flex items-center justify-center"
+            >
+                <span>Agenda una reunión</span>
+            </a>
+            <ul class="paquete-features mb-5">
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Levantamiento de requerimientos</strong> técnicos y
+                        funcionales.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Arquitectura escalable</strong> para sistemas complejos
+                        y multiusuario.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Integraciones:</strong> APIs de salud, ERP, CRM y
+                        plataformas externas.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Dashboards y paneles</strong> administrativos a la
+                        medida.</span>
+                </li>
+                <li>
+                    <span class="paquete-check"></span><span
+                        ><strong>Soporte post-lanzamiento</strong> y mantenimiento
+                        continuo.</span>
+                </li>
+            </ul>
+            <p class="paquete-footer">
+                Ideal para clínicas, instituciones de salud y empresas con procesos
+                complejos.
+            </p>
+        </article>
     </div>
 </section>
+
+<script>
+  // ── Currency Toggle + Geolocation ──
+  const toggle = document.getElementById("currencyToggle");
+  const copBtns = toggle?.querySelectorAll<HTMLElement>("[data-currency]");
+  const copPrices = document.querySelectorAll<HTMLElement>("[data-price-cop]");
+  const usdPrices = document.querySelectorAll<HTMLElement>("[data-price-usd]");
+  const slider = toggle?.querySelector<HTMLElement>(".currency-toggle__slider");
+
+  function setCurrency(currency: "cop" | "usd") {
+    const isCop = currency === "cop";
+
+    copPrices.forEach((el) => el.classList.toggle("hidden", !isCop));
+    usdPrices.forEach((el) => el.classList.toggle("hidden", isCop));
+
+    copBtns?.forEach((btn) => {
+      const btnCurrency = btn.getAttribute("data-currency");
+      btn.classList.toggle("is-active", btnCurrency === currency);
+    });
+
+    // Move slider indicator
+    if (slider) {
+      slider.style.transform = isCop ? "translateX(0)" : "translateX(100%)";
+    }
+
+    // Save preference
+    localStorage.setItem("arka-currency", currency);
+  }
+
+  // Button clicks
+  copBtns?.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const currency = btn.getAttribute("data-currency") as "cop" | "usd";
+      setCurrency(currency);
+    });
+  });
+
+  // Initialize: check saved preference first, then geolocation
+  const saved = localStorage.getItem("arka-currency") as "cop" | "usd" | null;
+
+  if (saved) {
+    setCurrency(saved);
+  } else {
+    // Auto-detect with free geolocation API (no key needed)
+    fetch("https://ipapi.co/json/", { signal: AbortSignal.timeout(3000) })
+      .then((res) => res.json())
+      .then((data) => {
+        const country = data?.country_code?.toUpperCase();
+        setCurrency(country === "CO" ? "cop" : "usd");
+      })
+      .catch(() => {
+        // Fallback: default to COP
+        setCurrency("cop");
+      });
+  }
+</script>
