@@ -1,6 +1,9 @@
 {
     "name": "arka",
     "compatibility_date": "2026-06-11",
+    "assets": {
+        "directory": "./dist"
+    },
     "kv_namespaces": [
         {
             "binding": "SESSION",
