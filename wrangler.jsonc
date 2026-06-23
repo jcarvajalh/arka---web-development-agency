@@ -1,4 +1,5 @@
 {
+	"$schema": "node_modules/wrangler/config-schema.json",
 	"compatibility_date": "2026-06-11",
 	"compatibility_flags": [
 		"global_fetch_strictly_public"
@@ -6,7 +7,7 @@
 	"name": "arka",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
-		"directory": "./dist",
+		"directory": "./dist/client",
 		"binding": "ASSETS"
 	},
 	"observability": {
