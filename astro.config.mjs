@@ -8,7 +8,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://arka-agency.vercel.app/',
+  site: 'arka-agency.pages.dev',
 
   vite: {
     plugins: [tailwindcss()],
