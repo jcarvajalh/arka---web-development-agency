@@ -359,10 +359,11 @@ body {
 /* ── Responsive ── */
 @media (max-width: 768px) {
     .hero-content {
-        padding: 0 20px 16px;
-        bottom: auto;
-        top: 80px;
-        transform: translateX(-50%);
+        top: 50% !important;
+        bottom: auto !important;
+        transform: translateX(-50%) translateY(-50%) !important;
+        padding: 0 20px;
+        animation: none !important;
     }
 
     .hero-title {
@@ -375,12 +376,7 @@ body {
     }
 
     .hero-stack {
-        left: 50%;
-        top: auto;
-        bottom: 60px;
-        transform: translate(-50%, 0);
-        width: 130%;
-        max-width: none;
+        display: none;
     }
 }
 
@@ -1332,13 +1328,16 @@ details[open] .faq-toggle {
     display: none !important;
 }
 
-/* Grid 3 columnas — mismo ancho que .proceso-grid */
+/* Grid 2 columnas — mismo ancho que .proceso-grid */
 .precios-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 500px));
     gap: 14px;
     max-width: 1200px;
+    /* igual que proceso-grid */
     padding: 0 clamp(24px, 6vw, 80px);
+    justify-content: center;
+    /* centra las 2 columnas dentro del contenedor */
 }
 
 /* ── Tarjeta base — mismo estilo que .paso-card ── */
@@ -1509,14 +1508,6 @@ details[open] .faq-toggle {
 }
 
 /* ── Responsive — Precios ── */
-
-/* Tablet: 3 → 2 columnas */
-@media (max-width: 1024px) {
-    .precios-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-}
 
 @media (max-width: 768px) {
     .precios-grid {
