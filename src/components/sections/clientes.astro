@@ -35,14 +35,15 @@ const clientes: Project[] = [
     image: "/DENTAL-CARE.png",
     alt: "Clinica odontologica Dental Care",
   },
-  /*
   {
-    title: "Proyecto Tres",
-    description: "Descripción breve del proyecto",
-    image: "/images/proyecto-3.jpg",
-    href: "#",
-    alt: "Vista previa Proyecto Tres",
-  },*/
+    title: "Proyecto Hivix",
+    description:
+      "Sitio web para compañia dedicada a la venta de servicios tecnologicos.",
+    result: ["Sitio lanzado en 4 semanas", "Velocidad 98/100 en PageSpeed"],
+    tags: ["Astro", "SEO"],
+    image: "/HIVIX.png",
+    alt: "Hivix",
+  },
 ];
 
 const { projects = clientes } = Astro.props;
@@ -63,35 +64,37 @@ const { projects = clientes } = Astro.props;
     </div>
 
     <!-- Grid -->
-    <div
-      class={projects.length === 1
-        ? "flex justify-center"
-        : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}
-    >
-      {
-        projects.map((proyecto) => (
-          <a
-            href={proyecto.href}
-            class="proyecto-card w-full max-w-[320px]"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Ver proyecto: ${proyecto.title}`}
-          >
-            <div class="proyecto-card__imagen-wrapper">
-              <img
-                src={proyecto.image}
-                alt={proyecto.alt}
-                class="proyecto-card__imagen"
-                loading="lazy"
-                decoding="async"
-                width="480"
-                height="320"
-              />
-              <div class="proyecto-card__overlay" />
-            </div>
-          </a>
-        ))
-      }
+    <div class="flex justify-center">
+      <div
+        class={projects.length === 1
+          ? "flex justify-center"
+          : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[6px] max-w-[780px] w-full"}
+      >
+        {
+          projects.map((proyecto) => (
+            <a
+              href={proyecto.href}
+              class="proyecto-card w-full"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver proyecto: ${proyecto.title}`}
+            >
+              <div class="proyecto-card__imagen-wrapper">
+                <img
+                  src={proyecto.image}
+                  alt={proyecto.alt}
+                  class="proyecto-card__imagen"
+                  loading="lazy"
+                  decoding="async"
+                  width="480"
+                  height="320"
+                />
+                <div class="proyecto-card__overlay" />
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
