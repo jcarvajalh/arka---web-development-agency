@@ -4,85 +4,107 @@
 ---
 
 <section class="faq-section py-20" id="faq">
-  <div class="faq__inner max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] grid grid-cols-1 md:grid-cols-[1.1fr_1.6fr] gap-12 md:gap-16 lg:gap-20 items-start">
-
+  <div
+    class="faq__inner max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] grid grid-cols-1 md:grid-cols-[1.1fr_1.6fr] gap-12 md:gap-16 lg:gap-20 items-start"
+  >
     <!-- Columna izquierda -->
     <div class="faq__left md:sticky md:top-24">
       <span class="section-label inline-block mb-4">FAQ</span>
-      <h2 class="faq__titulo mb-4">
-        Resolvemos todas tus&nbsp;dudas aquí
-      </h2>
+      <h2 class="faq__titulo mb-4">Resolvemos todas tus&nbsp;dudas aquí</h2>
       <p class="faq__subtitulo mb-8">
         Si no encuentras lo que buscas, escríbenos directamente.
       </p>
-      <a href="https://cal.com/arkaagency/reunion-acercamiento" target="_blank" rel="noopener noreferrer" class="faq__cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full">
+      <a
+        href="https://cal.com/arkaagency/reunion-acercamiento"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="faq__cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+      >
         Habla con nosotros <span aria-hidden="true">→</span>
       </a>
     </div>
 
     <!-- Columna derecha: acordeón -->
     <div class="faq__lista flex flex-col gap-2 w-full" role="list">
-      {[
-        {
-          pregunta: "¿Qué tipo de proyectos desarrollan?",
-          respuesta:
-            "Creamos sitios web para clinicas, ecommerce y para empresas que necesitan presencia digital profesional: landing pages, sitios corporativos, portafolios y tiendas en línea. Cada proyecto se construye a medida, sin plantillas genéricas.",
-        },
-        {
-          pregunta: "¿Cuánto tarda en estar listo mi sitio web?",
-          respuesta:
-            "Depende del alcance, pero un sitio estándar tarda entre 1 y 3 semanas. Proyectos más complejos como e-commerce o plataformas personalizadas pueden tomar de 3 a 6 semanas. Te damos un tiempo estimado desde la primera reunión.",
-        },
-        {
-          pregunta: "¿Trabajan con clientes fuera de Colombia?",
-          respuesta:
-            "Sí, trabajamos con clientes en toda Latinoamérica y España. Nos coordinamos de forma remota sin problema, con reuniones por videollamada y entregas por etapas.",
-        },
-        {
-          pregunta: "¿Qué incluye el precio del proyecto?",
-          respuesta:
-            "El presupuesto incluye diseño, desarrollo, optimización SEO básica, versión móvil responsiva y una ronda de ajustes. Servicios adicionales como mantenimiento mensual o se cotizan por separado.",
-        },
-        {
-          pregunta: "¿Me entregan el código o solo el acceso al sitio?",
-          respuesta:
-            "Te entregamos todo: el código fuente, acceso al hosting y al dominio a tu nombre. Tu sitio es tuyo al 100%, no dependes de nosotros para seguir operando.",
-        },
-        {
-          pregunta: "¿Ofrecen mantenimiento después de entregar el proyecto?",
-          respuesta:
-            "Sí, tenemos planes de mantenimiento mensual que incluyen actualizaciones, respaldos, corrección de errores y soporte técnico. Es opcional, pero lo recomendamos para mantener el sitio seguro y funcionando.",
-        },
-      ].map((item, i) => (
-        <div class="faq__item rounded-[14px] overflow-hidden" role="listitem">
-          <button
-            class="faq__pregunta w-full flex items-center justify-between gap-4 px-5 py-4"
-            aria-expanded="false"
-            aria-controls={`faq-respuesta-${i}`}
-            data-faq-btn
-          >
-            <span>{item.pregunta}</span>
-            <span class="faq__icono flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 7L9 12L14 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div
-            class="faq__respuesta overflow-hidden"
-            id={`faq-respuesta-${i}`}
-            role="region"
-            aria-hidden="true"
-            style="grid-template-rows: 0fr;"
-          >
-            <div class="min-h-0">
-              <p class="faq__respuesta-texto px-5 pb-5 pt-4">{item.respuesta}</p>
+      {
+        [
+          {
+            pregunta: "¿Qué tipo de proyectos desarrollan?",
+            respuesta:
+              "Creamos sitios web para clinicas, ecommerce y para empresas que necesitan presencia digital profesional: landing pages, sitios corporativos, portafolios y tiendas en línea. Cada proyecto se construye a medida, sin plantillas genéricas.",
+          },
+          {
+            pregunta: "¿Cuánto tarda en estar listo mi sitio web?",
+            respuesta:
+              "Depende del alcance, pero un sitio estándar tarda entre 1 y 3 semanas. Proyectos más complejos como e-commerce o plataformas personalizadas pueden tomar de 3 a 6 semanas. Te damos un tiempo estimado desde la primera reunión.",
+          },
+          {
+            pregunta: "¿Trabajan con clientes fuera de Colombia?",
+            respuesta:
+              "Sí, trabajamos con clientes en toda Latinoamérica y Europa. Nos coordinamos de forma remota sin problema, con reuniones por videollamada y entregas por etapas.",
+          },
+          {
+            pregunta: "¿Qué incluye el precio del proyecto?",
+            respuesta:
+              "El presupuesto incluye diseño, desarrollo, optimización SEO, AEO, GEO, CRO, versión móvil responsiva y una ronda de ajustes. Servicios adicionales como mantenimiento mensual o se cotizan por separado.",
+          },
+          {
+            pregunta: "¿Me entregan el código o solo el acceso al sitio?",
+            respuesta:
+              "Te entregamos todo: el código fuente, acceso al hosting y al dominio a tu nombre. Tu sitio es tuyo al 100%, no dependes de nosotros para seguir operando.",
+          },
+          {
+            pregunta: "¿Ofrecen mantenimiento después de entregar el proyecto?",
+            respuesta:
+              "Sí, tenemos planes de mantenimiento mensual que incluyen actualizaciones, respaldos, corrección de errores y soporte técnico. Es opcional, pero lo recomendamos para mantener el sitio seguro y funcionando.",
+          },
+        ].map((item, i) => (
+          <div class="faq__item rounded-[14px] overflow-hidden" role="listitem">
+            <button
+              class="faq__pregunta w-full flex items-center justify-between gap-4 px-5 py-4"
+              aria-expanded="false"
+              aria-controls={`faq-respuesta-${i}`}
+              data-faq-btn
+            >
+              <span>{item.pregunta}</span>
+              <span
+                class="faq__icono flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full"
+                aria-hidden="true"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 7L9 12L14 7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div
+              class="faq__respuesta overflow-hidden"
+              id={`faq-respuesta-${i}`}
+              role="region"
+              aria-hidden="true"
+              style="grid-template-rows: 0fr;"
+            >
+              <div class="min-h-0">
+                <p class="faq__respuesta-texto px-5 pb-5 pt-4">
+                  {item.respuesta}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
-
   </div>
 </section>
 
@@ -99,7 +121,9 @@
       btns.forEach((other) => {
         if (other !== btn) {
           other.setAttribute("aria-expanded", "false");
-          const otherTarget = document.getElementById(other.getAttribute("aria-controls")!);
+          const otherTarget = document.getElementById(
+            other.getAttribute("aria-controls")!,
+          );
           if (otherTarget) {
             otherTarget.style.gridTemplateRows = "0fr";
             otherTarget.setAttribute("aria-hidden", "true");
