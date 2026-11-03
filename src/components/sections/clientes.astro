@@ -1,54 +1,12 @@
 ---
 // clientes.astro — Proyectos Destacados
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  href?: string;
-  alt: string;
-  result?: string[];
-  tags?: string[];
-}
+import { proyectos, type Proyecto } from "../../data/proyectos";
 
 interface Props {
-  projects?: Project[];
+  projects?: Proyecto[];
 }
 
-// Proyectos de ejemplo — reemplaza con los tuyos
-const clientes: Project[] = [
-  {
-    title: "La Casa de los Libros",
-    description:
-      "Librería cultural en Colombia. Diseñamos y desarrollamos su sitio web con sistema de venta de entradas para eventos, integración de pagos y SEO técnico desde cero.",
-    result: ["Sitio lanzado en 4 semanas", "Velocidad 98/100 en PageSpeed"],
-    tags: ["Astro", "SEO", "Pagos online"],
-    image: "/la-casa-de-los-libros.webp",
-    href: "https://lacasadeloslibros.org/",
-    alt: "La Casa De Los Libros",
-  },
-
-  {
-    title: "Clinica odontologica Dental Care",
-    description:
-      "Clinica odontologica, sitio optimizado para la captación de clientes.",
-    result: ["Sitio lanzado en 4 semanas", "Velocidad 98/100 en PageSpeed"],
-    tags: ["Astro", "SEO"],
-    image: "/DENTAL-CARE.png",
-    alt: "Clinica odontologica Dental Care",
-  },
-  {
-    title: "Proyecto Hivix",
-    description:
-      "Sitio web para compañia dedicada a la venta de servicios tecnologicos.",
-    result: ["Sitio lanzado en 4 semanas", "Velocidad 98/100 en PageSpeed"],
-    tags: ["Astro", "SEO"],
-    image: "/HIVIX.png",
-    alt: "Hivix",
-  },
-];
-
-const { projects = clientes } = Astro.props;
+const { projects = proyectos } = Astro.props;
 ---
 
 <section id="proyectos" class="proyectos-section py-20">
@@ -75,11 +33,9 @@ const { projects = clientes } = Astro.props;
         {
           projects.map((proyecto) => (
             <a
-              href={proyecto.href}
+              href={`/proyectos/${proyecto.slug}`}
               class="proyecto-card w-full"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Ver proyecto: ${proyecto.title}`}
+              aria-label={`Ver caso de estudio: ${proyecto.title}`}
             >
               <div class="proyecto-card__imagen-wrapper">
                 <img

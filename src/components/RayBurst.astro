@@ -1,0 +1,44 @@
+---
+// src/components/RayBurst.astro
+// Requiere: npm i three   y   src/lib/ray-burst.js
+interface Props {
+  color?: string;
+  height?: string;
+  class?: string;
+}
+const { color = '#ffffff', height = '519px', class: className = '' } = Astro.props;
+---
+
+<div class:list={['ray-burst', className]} data-color={color} style={`height:${height}`}></div>
+
+<style>
+  .ray-burst {
+    width: 100%;
+    max-width: 1234px;
+    margin-inline: auto;
+    pointer-events: none; /* no bloquea clics sobre el contenido */
+  }
+</style>
+
+<script>
+  import { RayBurst } from '../lib/ray-burst.js';
+
+  const instances = new Map<HTMLElement, RayBurst>();
+
+  function mount() {
+    document.querySelectorAll<HTMLElement>('.ray-burst').forEach((el) => {
+      if (instances.has(el)) return;
+      instances.set(el, new RayBurst(el, { color: el.dataset.color || '#ffffff' }));
+    });
+  }
+
+  function unmount() {
+    instances.forEach((b) => b.dispose());
+    instances.clear();
+  }
+
+  // Funciona con y sin View Transitions (<ClientRouter />)
+  document.addEventListener('astro:page-load', mount);
+  document.addEventListener('astro:before-swap', unmount);
+  mount();
+</script>

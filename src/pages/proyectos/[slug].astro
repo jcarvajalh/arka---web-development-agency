@@ -1,0 +1,242 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { proyectos } from "../../data/proyectos";
+
+export function getStaticPaths() {
+  return proyectos.map((p) => ({
+    params: { slug: p.slug },
+    props: { proyecto: p },
+  }));
+}
+
+const { proyecto } = Astro.props;
+const otros = proyectos.filter((p) => p.slug !== proyecto.slug);
+const CAL_URL = "https://cal.com/arkaagency/reunion-acercamiento";
+---
+
+<BaseLayout
+  title={`${proyecto.title} — Caso de estudio | ARKA`}
+  description={proyecto.summary}
+>
+  <article class="bg-[#0a0a0a] text-white">
+    <!-- ── Encabezado ── -->
+    <header class="max-w-[1100px] mx-auto px-6 pt-32 md:pt-40 pb-12">
+      <a
+        href="/#proyectos"
+        class="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors mb-10"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver a proyectos
+      </a>
+
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center mt-8">
+        <!-- Izquierda: título + descripción -->
+        <div>
+          <p class="section-label">{proyecto.category}</p>
+          <h1
+            class="font-bold leading-[1.04] tracking-[-0.03em] text-[clamp(32px,4.8vw,52px)] mb-6"
+          >
+            {proyecto.title}
+          </h1>
+          <p class="text-[#9b9b9b] text-[17px] leading-[1.7] mb-8">
+            {proyecto.summary}
+          </p>
+
+          <p class="text-[15px] leading-[1.6] mb-9">
+            <span class="text-[#666]">Tecnologías usadas: </span>
+            <span class="text-white">{proyecto.tecnologias.join(", ")}</span>
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            {
+              proyecto.externalUrl && (
+                <a
+                  href={proyecto.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hero-btn"
+                >
+                  Visitar sitio
+                </a>
+              )
+            }
+            <a
+              href={CAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block rounded-full border border-white/80 px-7 py-[9px] text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-[#0a0a0a]"
+            >
+              Cotiza tu proyecto
+            </a>
+          </div>
+        </div>
+
+        <!-- Derecha: imagen -->
+        <div
+          class="rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#0e0e0e] aspect-[16/10]"
+        >
+          <img
+            src={proyecto.image}
+            alt={proyecto.alt}
+            class="w-full h-full object-cover"
+            width="640"
+            height="400"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Meta -->
+      <dl
+        class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-12 border-t border-[#1e1e1e] pt-8"
+      >
+        <div>
+          <dt class="text-[12px] uppercase tracking-[0.08em] text-[#666] mb-1">
+            Cliente
+          </dt>
+          <dd class="text-[15px] text-white">{proyecto.title}</dd>
+        </div>
+        <div>
+          <dt class="text-[12px] uppercase tracking-[0.08em] text-[#666] mb-1">
+            Categoría
+          </dt>
+          <dd class="text-[15px] text-white">{proyecto.category}</dd>
+        </div>
+        <div>
+          <dt class="text-[12px] uppercase tracking-[0.08em] text-[#666] mb-1">
+            Año
+          </dt>
+          <dd class="text-[15px] text-white">{proyecto.year}</dd>
+        </div>
+      </dl>
+    </header>
+
+    <!-- ── Narrativa: Resumen / Reto / Solución ── -->
+    <div class="max-w-[820px] mx-auto px-6 py-20 space-y-14">
+      <section>
+        <p class="section-label">Resumen</p>
+        <p class="text-[#b4b4b4] text-[17px] leading-[1.75]">
+          {proyecto.overview}
+        </p>
+      </section>
+      <section>
+        <p class="section-label">El reto</p>
+        <p class="text-[#b4b4b4] text-[17px] leading-[1.75]">
+          {proyecto.challenge}
+        </p>
+      </section>
+      <section>
+        <p class="section-label">La solución</p>
+        <p class="text-[#b4b4b4] text-[17px] leading-[1.75]">
+          {proyecto.solution}
+        </p>
+      </section>
+    </div>
+
+    <!-- ── Diseño aplicado ── -->
+    <div class="max-w-[1100px] mx-auto px-6 pb-20">
+      <div class="text-center mb-10">
+        <p class="section-label">Diseño aplicado</p>
+        <h2
+          class="font-bold tracking-[-0.03em] text-[clamp(26px,4vw,40px)] text-white"
+        >
+          Decisiones clave de diseño
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          proyecto.design.map((d) => (
+            <div class="rounded-2xl border border-[#1e1e1e] bg-[#111] p-7">
+              <h3 class="text-white font-semibold text-[18px] mb-2">
+                {d.title}
+              </h3>
+              <p class="text-[#888] text-[15px] leading-[1.6]">
+                {d.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ── Resultados ── -->
+    <div class="max-w-[1100px] mx-auto px-6 pb-24">
+      <div class="text-center mb-10">
+        <p class="section-label">Resultados</p>
+        <h2
+          class="font-bold tracking-[-0.03em] text-[clamp(26px,4vw,40px)] text-white"
+        >
+          Lo que se logró
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {
+          proyecto.results.map((r) => (
+            <div class="rounded-2xl border border-[#1e1e1e] bg-[#111] p-8 text-center">
+              <div class="text-[#006aff] font-bold tracking-[-0.03em] text-[clamp(32px,4vw,44px)]">
+                {r.value}
+              </div>
+              <div class="text-[#888] text-[14px] mt-1">{r.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="max-w-[900px] mx-auto px-6 pb-24 text-center">
+      <h2
+        class="font-bold tracking-[-0.03em] text-[clamp(26px,4vw,44px)] mb-5"
+      >
+        ¿Tu proyecto podría ser el próximo?
+      </h2>
+      <p class="text-[#888] text-[16px] leading-[1.6] max-w-[520px] mx-auto mb-8">
+        Construyamos juntos una web que convierta visitantes en clientes.
+      </p>
+      <a href={CAL_URL} target="_blank" rel="noopener noreferrer" class="hero-btn">
+        Cotiza tu proyecto
+      </a>
+    </div>
+
+    <!-- ── Otros proyectos ── -->
+    {
+      otros.length > 0 && (
+        <div class="max-w-[1100px] mx-auto px-6 pb-28 border-t border-[#1e1e1e] pt-16">
+          <p class="section-label text-center">Otros proyectos</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 max-w-[760px] mx-auto">
+            {otros.map((o) => (
+              <a
+                href={`/proyectos/${o.slug}`}
+                class="group rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#111] transition-colors hover:border-[#006aff]/50"
+              >
+                <div class="aspect-[16/9] overflow-hidden">
+                  <img
+                    src={o.image}
+                    alt={o.alt}
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-5">
+                  <p class="text-[12px] text-[#666] mb-1">{o.category}</p>
+                  <h3 class="text-white font-semibold text-[16px]">{o.title}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </article>
+</BaseLayout>

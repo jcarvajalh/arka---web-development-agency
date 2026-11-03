@@ -1,22 +1,16 @@
 ---
 // Hero.astro
+import RayBurst from "../RayBurst.astro";
 ---
 
 <!-- ── Sección hero ── -->
 <section class="hero-section relative h-screen w-full overflow-hidden">
-  <!-- Stack image — centrada absolutamente en el hero -->
+  <!-- RayBurst — centrado en la mitad inferior del hero -->
   <div
-    class="hero-stack absolute z-[1] animate-fade-up"
+    class="hero-stack absolute left-0 right-0 bottom-0 top-1/2 z-[1] flex items-center justify-center animate-fade-up"
     style="animation-delay:480ms"
   >
-    <img
-      src="/ARKA-stack-blanco.webp"
-      alt="ARKA Stack de tecnologías"
-      class="hero-stack-img block w-full h-auto"
-      width="6282"
-      height="3255"
-      loading="lazy"
-    />
+    <RayBurst color="#ffffff" height="519px" />
   </div>
 
   <!-- Contenido — borde inferior en el 50% del hero -->
@@ -42,7 +36,7 @@
       salud.
     </p>
 
-    <!-- CTA — este botón queda exactamente en el 50% del hero -->
+    <!-- CTA -->
     <div class="animate-fade-up" style="animation-delay:360ms">
       <a
         href="https://cal.com/arkaagency/reunion-acercamiento"
@@ -53,20 +47,20 @@
         Cotiza tu proyecto</a
       >
     </div>
+
+    <!-- Shopify Partner — debajo del botón -->
+    <div
+      class="mt-10 flex items-center justify-center animate-fade-up"
+      style="animation-delay:600ms"
+    >
+      <img
+        src="/shopify-partner-en-cali-colombia.webp"
+        alt="ARKA - Shopify Partner en Cali, Colombia"
+        class="hero-shopify-img h-8 w-auto"
+        width="724"
+        height="125"
+        loading="lazy"
+      />
+    </div>
   </div>
 </section>
-
-<!-- Shopify Partner — fondo del hero, centrado -->
-<div
-  class="absolute bottom-7 left-0 z-10 flex w-full items-center justify-center animate-fade-up"
-  style="animation-delay:600ms"
->
-  <img
-    src="/shopify-partner-en-cali-colombia.webp"
-    alt="ARKA - Shopify Partner en Cali, Colombia"
-    class="hero-shopify-img h-8 w-auto"
-    width="724"
-    height="125"
-    loading="lazy"
-  />
-</div>
