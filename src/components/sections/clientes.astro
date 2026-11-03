@@ -5,8 +5,10 @@ interface Project {
   title: string;
   description: string;
   image: string;
-  href: string;
+  href?: string;
   alt: string;
+  result?: string[];
+  tags?: string[];
 }
 
 interface Props {

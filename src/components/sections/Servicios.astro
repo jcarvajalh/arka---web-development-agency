@@ -13,7 +13,7 @@ const servicios = [
     titulo: "Sitios Clínicos",
     descripcion:
       "Diseñamos interfaces de primera clase que transmiten confianza médica, diseñadas para captar clientes mediante SEO Local y sistemas de agendamiento.",
-    imagenSrc: "/web-clinica.png",
+    imagenSrc: "/web-clinica.webp",
     imagenAlt: "Sitios Clínicos (Odontología y Estética)",
   },
   {
@@ -21,7 +21,7 @@ const servicios = [
     titulo: "E-commerce de alto impacto",
     descripcion:
       "Tiendas online rápidas, con pasarelas integradas y automatizaciones de IA para recuperar carritos y disparar tus ventas.",
-    imagenSrc: "/ecommerce.png",
+    imagenSrc: "/ecommerce.webp",
     imagenAlt: "E-commerce de alto impacto",
   },
   {
@@ -29,7 +29,7 @@ const servicios = [
     titulo: "SEO Y CRO",
     descripcion:
       "Estrategias de SEO, AEO, GEO y CRO para que tu web no solo atraiga tráfico, sino que convierta visitantes en clientes de alto valor.",
-    imagenSrc: "/SEO-CRO.png",
+    imagenSrc: "/SEO-CRO.webp",
     imagenAlt: "SEO Y CRO",
   },
   {
@@ -64,6 +64,8 @@ const servicios = [
               <img
                 src={s.imagenSrc}
                 alt={s.imagenAlt}
+                width="1665"
+                height="1434"
                 loading={i === 0 ? "eager" : "lazy"}
               />
             </div>
@@ -104,10 +106,8 @@ const servicios = [
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <>
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </>
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
                 </svg>
               </a>
             </div>

@@ -4,7 +4,6 @@
 ============================================================ */
 
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Inter:wght@400..800&display=swap');
 
 /* ── Tema Tailwind: tokens globales ── */
 @theme {
@@ -43,9 +42,9 @@ body {
     font-family: "Inter", sans-serif;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #006aff;
+    color: #888;
     margin-bottom: 20px;
 }
 
@@ -205,10 +204,10 @@ body {
 
 /* Eyebrow */
 .hero-eyebrow {
-    color: #006aff;
+    color: #888;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin: 0 0 18px;
 }
@@ -817,7 +816,7 @@ body {
     font-family: "Inter", sans-serif;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #888;
     margin-bottom: 20px;
@@ -1760,4 +1759,28 @@ details[open] .faq-toggle {
     border-color: rgba(255, 255, 255, 0.25);
     color: #ffffff;
     background: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================================
+   TIPOGRAFÍA DE PÁRRAFOS — unificada al estilo del Hero (.hero-desc)
+   Solo normaliza la tipografía; cada clase conserva sus
+   márgenes, anchos, alineación y estados propios.
+============================================================ */
+.section-sub,
+.srv-slide__desc,
+.proceso-sub,
+.paso-desc,
+.proyectos-sub,
+.faq-answer,
+.precios-sub,
+.paquete-desc,
+.faq__subtitulo,
+.faq__respuesta-texto,
+.footer__descripcion,
+.footer__texto {
+    color: #888;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
 }

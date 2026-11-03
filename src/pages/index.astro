@@ -7,12 +7,57 @@ import Stack from "../components/sections/Stack.astro";
 import Clientes from "../components/sections/clientes.astro";
 import Paquetes from "../components/sections/Precios.astro";
 import FAQ from "../components/sections/FAQ.astro";
+
+const siteUrl = "https://arka.arka-agency.pages.dev";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl}/#organization`,
+  name: "ARKA",
+  alternateName: "ARKA Agency",
+  description:
+    "Agencia de desarrollo web en Cali, Colombia. Diseño y desarrollo web estratégico para empresas Tech, SaaS y clínicas de salud.",
+  url: siteUrl,
+  logo: `${siteUrl}/logo-arka-header.webp`,
+  image: `${siteUrl}/logo-arka-header.webp`,
+  email: "contacto@arkaagency.com",
+  priceRange: "$$",
+  knowsLanguage: ["es"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Cali",
+    addressRegion: "Valle del Cauca",
+    addressCountry: "CO",
+  },
+  areaServed: [
+    { "@type": "City", name: "Cali" },
+    { "@type": "Country", name: "Colombia" },
+  ],
+  sameAs: ["https://www.instagram.com/arka.agencyweb/"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de desarrollo web",
+    itemListElement: [
+      "Webs para Startups & Tech",
+      "Sitios Clínicos (Odontología y Estética)",
+      "E-commerce de alto impacto",
+      "SEO Y CRO",
+      "IA & Automatizaciones",
+    ].map((servicio) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: servicio },
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="ARKA - Agencia de Desarrollo Web en Cali, Colombia"
   description="En Arka se desarrollan sitios web profesionales para transformar tu negocio y aumentar tus ventas"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+
   <Hero />
   <ServicesCarousel />
   <Stack />

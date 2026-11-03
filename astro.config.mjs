@@ -16,7 +16,15 @@ export default defineConfig({
 
   integrations: [
     sitemap(),
-    robotsTxt(),
+    robotsTxt({
+      sitemap: true,
+      policy: [
+        {
+          userAgent: '*',
+          allow: '/',
+        },
+      ],
+    }),
   ],
 
   adapter: cloudflare(),
