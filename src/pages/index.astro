@@ -8,7 +8,7 @@ import Clientes from "../components/sections/clientes.astro";
 import Paquetes from "../components/sections/Precios.astro";
 import FAQ from "../components/sections/FAQ.astro";
 
-const siteUrl = "https://arka.arka-agency.pages.dev";
+const siteUrl = "https://arka-agency.com";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -21,7 +21,7 @@ const jsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logo-arka-header.webp`,
   image: `${siteUrl}/logo-arka-header.webp`,
-  email: "contacto@arkaagency.com",
+  email: "contacto@arka-agency.com",
   priceRange: "$$",
   knowsLanguage: ["es"],
   address: {
@@ -53,8 +53,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="ARKA - Agencia de Desarrollo Web en Cali, Colombia"
-  description="En Arka se desarrollan sitios web profesionales para transformar tu negocio y aumentar tus ventas"
+  title="ARKA | Diseño y Desarrollo Web Estratégico a Medida"
+  description="En ARKA diseñamos y desarrollamos sitios web y tiendas online a medida, optimizados para SEO, rendimiento y conversión, para impulsar tu negocio."
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 

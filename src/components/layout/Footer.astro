@@ -19,7 +19,7 @@ const servicios = [
 
 const contacto = [
   {
-    label: "contacto@arkaagency.com",
+    label: "contacto@arka-agency.com",
     href: "mailto:arka.agency@outllok.com",
   },
   {
@@ -129,8 +129,12 @@ const año = new Date().getFullYear();
     <div
       class="max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] flex flex-col sm:flex-row items-center justify-between gap-4"
     >
-      <p class="footer__copy text-xs m-0">
-        © {año} ARKA — Web Development Agency. Todos los derechos reservados.
+      <p class="footer__copy text-xs m-0 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span>© {año} ARKA — Web Development Agency. Todos los derechos reservados.</span>
+        <span class="hidden sm:inline">·</span>
+        <a href="/politica-de-privacidad" class="footer__link">
+          Política de Privacidad
+        </a>
       </p>
       <div class="footer__social flex gap-2">
         <!-- Instagram -->

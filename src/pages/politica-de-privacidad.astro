@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const actualizado = "4 de noviembre de 2025";
+const EMAIL = "contacto@arka-agency.com";
+---
+
+<BaseLayout
+  title="Política de Privacidad | ARKA"
+  description="Política de privacidad y tratamiento de datos personales de ARKA. Conoce cómo recopilamos, usamos y protegemos tu información."
+>
+  <article class="legal bg-[#0a0a0a] text-white">
+    <div class="max-w-[820px] mx-auto px-6 pt-32 md:pt-40 pb-24">
+      <p class="section-label">Legal</p>
+      <h1
+        class="font-bold leading-[1.04] tracking-[-0.03em] text-[clamp(32px,4.8vw,52px)] mb-5"
+      >
+        Política de Privacidad
+      </h1>
+      <p class="text-[#888] text-[15px] mb-14">
+        Última actualización: {actualizado}
+      </p>
+
+      <div class="legal__body flex flex-col gap-10">
+        <section>
+          <h2>1. Responsable del tratamiento</h2>
+          <p>
+            ARKA — Agencia de Desarrollo Web ("ARKA", "nosotros") es responsable
+            del tratamiento de los datos personales que recopilamos a través de
+            este sitio web. Si tienes dudas sobre esta política o sobre el manejo
+            de tus datos, puedes escribirnos a
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Datos que recopilamos</h2>
+          <p>Podemos recopilar la siguiente información:</p>
+          <ul>
+            <li>
+              <strong>Datos de contacto:</strong> nombre, correo electrónico,
+              teléfono y mensaje cuando nos contactas por formularios, correo,
+              WhatsApp o al agendar una reunión.
+            </li>
+            <li>
+              <strong>Datos de navegación:</strong> dirección IP, tipo de
+              dispositivo y navegador, páginas visitadas y tiempo de permanencia,
+              recopilados mediante cookies y herramientas de analítica.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Finalidad del tratamiento</h2>
+          <p>Utilizamos tus datos personales para:</p>
+          <ul>
+            <li>Responder a tus solicitudes y consultas.</li>
+            <li>Elaborar propuestas, cotizaciones y prestar nuestros servicios.</li>
+            <li>
+              Analizar y mejorar el rendimiento, la experiencia de uso y el
+              contenido del sitio web.
+            </li>
+            <li>
+              Enviar comunicaciones relacionadas con tu proyecto o con nuestros
+              servicios, siempre que lo hayas autorizado.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Cookies y herramientas de terceros</h2>
+          <p>
+            Este sitio utiliza cookies y tecnologías similares para su correcto
+            funcionamiento y para fines analíticos. En particular empleamos:
+          </p>
+          <ul>
+            <li>
+              <strong>Google Tag Manager / Google Analytics:</strong> para medir
+              y analizar el tráfico y el comportamiento de los visitantes.
+            </li>
+            <li>
+              <strong>Microsoft Clarity:</strong> para entender cómo interactúan
+              los usuarios con el sitio mediante mapas de calor y grabaciones de
+              sesión anónimas.
+            </li>
+          </ul>
+          <p>
+            Puedes configurar tu navegador para rechazar o eliminar las cookies.
+            Ten en cuenta que, si las desactivas, algunas funciones del sitio
+            podrían no comportarse correctamente.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Conservación de los datos</h2>
+          <p>
+            Conservamos tus datos personales únicamente durante el tiempo
+            necesario para cumplir con las finalidades descritas en esta política
+            y con las obligaciones legales aplicables.
+          </p>
+        </section>
+
+        <section>
+          <h2>6. Tus derechos</h2>
+          <p>
+            De acuerdo con la Ley 1581 de 2012 y sus normas reglamentarias
+            (Colombia), tienes derecho a conocer, actualizar, rectificar y
+            suprimir tus datos personales, así como a revocar la autorización
+            otorgada para su tratamiento. Para ejercer estos derechos, escríbenos
+            a <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Seguridad de la información</h2>
+          <p>
+            Adoptamos medidas técnicas y organizativas razonables para proteger
+            tus datos personales frente a accesos no autorizados, pérdida o
+            alteración. Sin embargo, ningún sistema es completamente infalible,
+            por lo que no podemos garantizar una seguridad absoluta.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Cambios en esta política</h2>
+          <p>
+            Podemos actualizar esta Política de Privacidad en cualquier momento.
+            La versión vigente será siempre la publicada en esta página, con su
+            correspondiente fecha de actualización.
+          </p>
+        </section>
+
+        <section>
+          <h2>9. Contacto</h2>
+          <p>
+            Si tienes preguntas sobre esta Política de Privacidad o sobre el
+            tratamiento de tus datos, contáctanos en
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <style>
+    .legal__body h2 {
+      font-family: "Inter", sans-serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin: 0 0 12px;
+    }
+
+    .legal__body p {
+      color: #b4b4b4;
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 0 12px;
+    }
+
+    .legal__body ul {
+      list-style: disc;
+      padding-left: 22px;
+      margin: 0 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .legal__body li {
+      color: #b4b4b4;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .legal__body strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .legal__body a {
+      color: #006aff;
+      text-decoration: none;
+    }
+
+    .legal__body a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>
