@@ -55,7 +55,7 @@ export const proyectos: Proyecto[] = [
     slug: "la-casa-de-los-libros",
     title: "La Casa de los Libros",
     category: "E-commerce & Eventos culturales",
-    year: "2025",
+    year: "2026",
     image: "/la-casa-de-los-libros.webp",
     alt: "La Casa De Los Libros",
     summary:
@@ -118,7 +118,7 @@ export const proyectos: Proyecto[] = [
     slug: "clinica-dental-dentinos",
     title: "Clínica Dental Dentinos",
     category: "Salud & Odontología",
-    year: "2025",
+    year: "2026",
     image: "/clinica-dental-dentinos.jpg",
     alt: "Clínica Dental Dentinos",
     summary:
@@ -175,7 +175,7 @@ export const proyectos: Proyecto[] = [
     slug: "solution-systems",
     title: "Solution systems",
     category: "Tecnología & Servicios",
-    year: "2025",
+    year: "2026",
     image: "/solution-systems.png",
     alt: "Solution systems",
     summary:
