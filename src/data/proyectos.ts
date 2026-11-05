@@ -11,6 +11,24 @@ export interface DecisionDiseno {
   description: string;
 }
 
+/** Una captura del desarrollo terminado del proyecto. */
+export interface CapturaGaleria {
+  src: string;
+  alt: string;
+  /** Texto corto que acompaña a la captura (opcional). */
+  caption?: string;
+}
+
+/**
+ * Layout de la galería de capturas. Cada variante comparte el mismo sistema
+ * visual (fondo oscuro, bordes #1e1e1e, radios y acento azul) pero cambia la
+ * composición para que cada caso se sienta distinto sin romper la armonía.
+ *  - "mosaico": una captura grande + capturas pequeñas en cuadrícula.
+ *  - "apilado": capturas grandes a todo el ancho, una sobre otra.
+ *  - "duo":     imagen + texto alternados lado a lado.
+ */
+export type GaleriaLayout = "mosaico" | "apilado" | "duo";
+
 export interface Proyecto {
   slug: string;
   title: string;
@@ -26,6 +44,10 @@ export interface Proyecto {
   solution: string;
   design: DecisionDiseno[];
   results: ResultadoMetrica[];
+  /** Layout de la galería de capturas. Si se omite, no se muestra galería. */
+  galleryLayout?: GaleriaLayout;
+  /** Capturas del desarrollo terminado. */
+  gallery?: CapturaGaleria[];
 }
 
 export const proyectos: Proyecto[] = [
@@ -73,6 +95,24 @@ export const proyectos: Proyecto[] = [
       { value: "98/100", label: "PageSpeed en móvil" },
       { value: "100%", label: "Venta de entradas en línea" },
     ],
+    galleryLayout: "mosaico",
+    gallery: [
+      {
+        src: "/la-casa-de-los-libros-home.png",
+        alt: "Home del sitio de La Casa de los Libros",
+        caption: "Home con una vista cultural en primer plano.",
+      },
+      {
+        src: "/la-casa-de-los-libros-proceso-compra.png",
+        alt: "Proceso de compra de entradas de La Casa de los Libros",
+        caption: "Flujo de compra de entradas.",
+      },
+      {
+        src: "/la-casa-de-los-libros-espacios-limpios.png",
+        alt: "Diseño de espacios limpios de La Casa de los Libros",
+        caption: "Tipografía editorial y espacios amplios.",
+      },
+    ],
   },
   {
     slug: "clinica-dental-dentinos",
@@ -113,23 +153,37 @@ export const proyectos: Proyecto[] = [
       },
     ],
     results: [
-      { value: "4 sem", label: "Del concepto al lanzamiento" },
-      { value: "98/100", label: "PageSpeed en móvil" },
+      { value: "5 sem", label: "Del concepto al lanzamiento" },
+      { value: "99/100", label: "PageSpeed en móvil y desktop" },
       { value: "SEO Local", label: "Visibilidad en la zona" },
+    ],
+    galleryLayout: "apilado",
+    gallery: [
+      {
+        src: "/encabezado-clinica-dentinos.png",
+        alt: "Encabezado del sitio web de la Clínica Dental Dentinos",
+        caption: "Encabezado que transmite confianza médica.",
+      },
+      {
+        src: "/ruta-conversion-clinica-dentinos.png",
+        alt: "Ruta de conversión hacia el agendamiento de citas de la Clínica Dental Dentinos",
+        caption: "Rutas de conversión claras hacia la reserva de cita.",
+      },
     ],
   },
   {
-    slug: "hivix",
-    title: "Hivix",
+    slug: "solution-systems",
+    title: "Solution systems",
     category: "Tecnología & Servicios",
     year: "2025",
-    image: "/HIVIX.png",
-    alt: "Hivix",
+    image: "/solution-systems.png",
+    alt: "Solution systems",
     summary:
       "Sitio web para una compañía dedicada a la venta de servicios tecnológicos, construido para proyectar autoridad y generar oportunidades comerciales.",
     tecnologias: ["Astro", "SEO", "CRO"],
+    externalUrl: "https://solution-systems.pages.dev/",
     overview:
-      "Hivix ofrece soluciones y servicios tecnológicos a empresas. Necesitaban un sitio que posicionara su marca como un socio confiable y que convirtiera el tráfico en contactos comerciales.",
+      "Solution systems ofrece soluciones y servicios tecnológicos a empresas. Necesitaban un sitio que posicionara su marca como un socio confiable y que convirtiera el tráfico en contactos comerciales.",
     challenge:
       "El mercado tecnológico es competido y técnico. El reto fue comunicar un portafolio de servicios de forma clara y persuasiva, evitando el exceso de jerga, y guiar al visitante hacia el contacto.",
     solution:
@@ -157,9 +211,30 @@ export const proyectos: Proyecto[] = [
       },
     ],
     results: [
-      { value: "4 sem", label: "Del concepto al lanzamiento" },
+      { value: "6 sem", label: "Del concepto al lanzamiento" },
       { value: "98/100", label: "PageSpeed en móvil" },
-      { value: "+Leads", label: "Enfoque en conversión" },
+      { value: "Alcance", label: "Captación de más publico corporativo" },
+    ],
+    galleryLayout: "duo",
+    gallery: [
+      {
+        src: "/app-solution-systems.png",
+        alt: "Aplicación web de Solution Systems para servicios tecnológicos",
+        caption:
+          "Narrativa orientada a beneficios: el valor para el cliente por delante de los tecnicismos.",
+      },
+      {
+        src: "/ruta-solution-systems.png",
+        alt: "Ruta de navegación por los servicios tecnológicos de Solution Systems",
+        caption:
+          "Estructura que guía al visitante por los servicios hasta la conversión.",
+      },
+      {
+        src: "/3-imagen-solution-systems.png",
+        alt: "Sección de contacto de Solution Systems para facilitar la comunicación con clientes",
+        caption:
+          "Facilidad de contacto con clientes: canales directos que convierten el interés en oportunidades comerciales.",
+      },
     ],
   },
 ];

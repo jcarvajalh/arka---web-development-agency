@@ -12,6 +12,10 @@ export function getStaticPaths() {
 const { proyecto } = Astro.props;
 const otros = proyectos.filter((p) => p.slug !== proyecto.slug);
 const CAL_URL = "https://cal.com/arkaagency/reunion-acercamiento";
+
+const galeria = proyecto.gallery ?? [];
+const tieneGaleria = galeria.length > 0;
+const layout = proyecto.galleryLayout ?? "apilado";
 ---
 
 <BaseLayout
@@ -169,6 +173,93 @@ const CAL_URL = "https://cal.com/arkaagency/reunion-acercamiento";
         }
       </div>
     </div>
+
+    <!-- ── Galería: capturas del desarrollo terminado ── -->
+    {
+      tieneGaleria && (
+        <div class="max-w-[1100px] mx-auto px-6 pb-20">
+          {/* ── Variante: mosaico (1 grande + pequeñas) ── */}
+          {layout === "mosaico" && (
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[220px]">
+              {galeria.map((c, i) => (
+                <figure
+                  class:list={[
+                    "group relative rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#0e0e0e]",
+                    i === 0 ? "md:col-span-2 md:row-span-2" : "",
+                  ]}
+                >
+                  <img
+                    src={c.src}
+                    alt={c.alt}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                  {c.caption && (
+                    <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-[13px] text-[#d7d7d6] opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                      {c.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          )}
+
+          {/* ── Variante: apilado (grandes a todo el ancho) ── */}
+          {layout === "apilado" && (
+            <div class="space-y-6">
+              {galeria.map((c) => (
+                <figure class="rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#0e0e0e]">
+                  <img
+                    src={c.src}
+                    alt={c.alt}
+                    class="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                  {c.caption && (
+                    <figcaption class="border-t border-[#1e1e1e] px-6 py-4 text-[14px] text-[#888]">
+                      {c.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          )}
+
+          {/* ── Variante: dúo alternado (imagen + texto) ── */}
+          {layout === "duo" && (
+            <div class="space-y-6 md:space-y-10">
+              {galeria.map((c, i) => (
+                <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+                  <figure
+                    class:list={[
+                      "rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#0e0e0e] aspect-[16/10]",
+                      i % 2 === 1 ? "md:order-2" : "",
+                    ]}
+                  >
+                    <img
+                      src={c.src}
+                      alt={c.alt}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div class={i % 2 === 1 ? "md:order-1" : ""}>
+                    <span class="text-[#006aff] font-bold text-[13px] tracking-[0.08em]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {c.caption && (
+                      <p class="text-[#b4b4b4] text-[17px] leading-[1.7] mt-3">
+                        {c.caption}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )
+    }
 
     <!-- ── Resultados ── -->
     <div class="max-w-[1100px] mx-auto px-6 pb-24">
