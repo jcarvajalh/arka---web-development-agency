@@ -124,6 +124,7 @@ export const proyectos: Proyecto[] = [
     summary:
       "Clínica odontológica con un sitio optimizado para transmitir confianza médica y captar nuevos pacientes mediante SEO local y agendamiento.",
     tecnologias: ["Astro"],
+    externalUrl: "https://clinicadentaldentinos.arka-agency.workers.dev/",
     overview:
       "Dentinos es una clínica dental enfocada en la experiencia del paciente. Buscaban un sitio que proyectara profesionalismo y confianza, y que convirtiera las visitas en citas agendadas.",
     challenge:
