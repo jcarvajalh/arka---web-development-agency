@@ -375,7 +375,8 @@ body {
     }
 
     .hero-stack {
-        display: none;
+        top: 55%;
+        bottom: 0;
     }
 }
 
