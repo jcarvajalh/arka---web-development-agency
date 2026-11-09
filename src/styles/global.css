@@ -1129,7 +1129,11 @@ body {
     text-decoration: none;
     position: relative;
     border: 1px solid #1e1e1e;
-    transition: border-color 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        filter 0.4s ease,
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
 /* Wrapper de imagen */
@@ -1163,6 +1167,17 @@ body {
 
 .proyecto-card:hover .proyecto-card__overlay {
     opacity: 1;
+}
+
+/* Efecto focus + desenfoque: al pasar sobre una card, las demás se
+   desenfocan y se atenúan; la señalada queda nítida. Solo en dispositivos
+   con puntero (evita estados pegados en táctil). */
+@media (hover: hover) {
+    .proyectos-grid:hover .proyecto-card:not(:hover) {
+        filter: blur(3px);
+        opacity: 0.5;
+        transform: scale(0.97);
+    }
 }
 
 /* Texto CTA del overlay */

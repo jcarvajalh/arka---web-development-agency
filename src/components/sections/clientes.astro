@@ -28,7 +28,7 @@ const { projects = proyectos } = Astro.props;
       <div
         class={projects.length === 1
           ? "flex justify-center"
-          : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[6px] max-w-[780px] w-full"}
+          : "proyectos-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[6px] max-w-[780px] w-full"}
       >
         {
           projects.map((proyecto) => (
