@@ -7,17 +7,21 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  image?: string;
 }
 
 const {
   title = 'ARKA | Diseño y Desarrollo Web a Medida',
   description = 'En ARKA diseñamos y desarrollamos sitios web y tiendas online a medida, optimizados para SEO, rendimiento y conversión, para impulsar tu negocio.',
   canonical,
+  image = '/arka-agencia-web-cali.png',
 } = Astro.props;
 
 // Dominio de producción (dominio canónico del sitio)
 const SITE_URL = 'https://arka-agency.com';
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, SITE_URL).href;
+// Imagen para compartir en redes (Open Graph / Twitter), siempre en URL absoluta
+const imageURL = new URL(image, SITE_URL).href;
 ---
 
 <!doctype html>
@@ -56,6 +60,21 @@ const canonicalURL = canonical ?? new URL(Astro.url.pathname, SITE_URL).href;
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ARKA" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/logo-fondo-negro.ico" sizes="any" />
