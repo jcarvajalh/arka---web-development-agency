@@ -1,8 +1,8 @@
 ---
 const links = [
-  { label: "Servicios", href: "#servicios" },
+  { label: "Servicios", href: "/#servicios" },
   { label: "Proyectos", href: "/proyectos" },
-  { label: "Precios", href: "#precios" },
+  { label: "Precios", href: "/#precios" },
 ];
 ---
 
@@ -135,7 +135,9 @@ const links = [
         if (!entry.isIntersecting) return;
         allLinks.forEach((link) => {
           const href = link.getAttribute("href");
-          const isActive = href === `#${entry.target.id}`;
+          const isActive =
+            href === `#${entry.target.id}` ||
+            href === `/#${entry.target.id}`;
           link.classList.toggle("active", isActive);
         });
       });
