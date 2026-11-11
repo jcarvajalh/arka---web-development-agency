@@ -1,0 +1,18 @@
+---
+interface Props {
+  nombre: string;
+}
+const { nombre } = Astro.props;
+---
+
+<nav aria-label="Ruta de navegación" class="text-[12px] text-[#666] mb-10">
+  <ol class="flex flex-wrap items-center gap-2 list-none m-0 p-0">
+    <li><a href="/" class="hover:text-white transition-colors">Inicio</a></li>
+    <li aria-hidden="true">/</li>
+    <li>
+      <a href="/#servicios" class="hover:text-white transition-colors">Servicios</a>
+    </li>
+    <li aria-hidden="true">/</li>
+    <li class="text-[#bbb]" aria-current="page">{nombre}</li>
+  </ol>
+</nav>

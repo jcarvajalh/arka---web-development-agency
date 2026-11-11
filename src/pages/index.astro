@@ -7,6 +7,7 @@ import Stack from "../components/sections/Stack.astro";
 import Clientes from "../components/sections/clientes.astro";
 import Paquetes from "../components/sections/Precios.astro";
 import FAQ from "../components/sections/FAQ.astro";
+import { servicios } from "../data/servicios";
 
 const siteUrl = "https://arka-agency.com";
 
@@ -38,15 +39,13 @@ const jsonLd = {
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Servicios de desarrollo web",
-    itemListElement: [
-      "Webs para Startups & Tech",
-      "Sitios Clínicos (Odontología y Estética)",
-      "E-commerce de alto impacto",
-      "SEO Y CRO",
-      "IA & Automatizaciones",
-    ].map((servicio) => ({
+    itemListElement: servicios.map((servicio) => ({
       "@type": "Offer",
-      itemOffered: { "@type": "Service", name: servicio },
+      itemOffered: {
+        "@type": "Service",
+        name: servicio.nombre,
+        url: `${siteUrl}/servicios/${servicio.slug}`,
+      },
     })),
   },
 };

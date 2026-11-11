@@ -1,0 +1,176 @@
+---
+// ServiceFAQ.astro — acordeón nativo (<details>) + schema FAQPage
+import type { Pregunta } from "../../data/servicios";
+
+interface Props {
+  faqs: Pregunta[];
+  titulo?: string;
+  /** "split": título a la izquierda (sticky) · "stack": título centrado arriba */
+  layout?: "split" | "stack";
+}
+
+const { faqs, titulo = "Preguntas frecuentes", layout = "split" } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<section
+  class:list={["sfaq", layout === "stack" && "sfaq--stack"]}
+  aria-labelledby="faq-titulo"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  <div class="sfaq__intro">
+    <p class="section-label">FAQ</p>
+    <h2 id="faq-titulo" class="sfaq__title">{titulo}</h2>
+    <p class="sfaq__sub">
+      ¿Tienes otra duda? <a
+        href="https://cal.com/arkaagency/reunion-acercamiento"
+        target="_blank"
+        rel="noopener noreferrer">Agenda una llamada de 20 min</a
+      >.
+    </p>
+  </div>
+
+  <div class="sfaq__list">
+    {
+      faqs.map((f, i) => (
+        <details class="sfaq__item" name="faq" open={i === 0}>
+          <summary>
+            <span class="sfaq__n">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="sfaq__q">{f.q}</h3>
+            <span class="sfaq__icon" aria-hidden="true" />
+          </summary>
+          <p class="sfaq__a">{f.a}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .sfaq {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: start;
+  }
+  .sfaq__intro {
+    position: sticky;
+    top: 110px;
+  }
+  .sfaq--stack {
+    grid-template-columns: 1fr;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+  .sfaq--stack .sfaq__intro {
+    position: static;
+    text-align: center;
+  }
+  .sfaq__title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: #fff;
+    margin: 0 0 14px;
+  }
+  .sfaq__sub {
+    color: #8a8a8a;
+    font-size: 15px;
+    margin: 0;
+  }
+  .sfaq__sub a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #006aff;
+    text-underline-offset: 4px;
+  }
+  .sfaq__list {
+    border-top: 1px solid #222;
+  }
+  .sfaq__item {
+    border-bottom: 1px solid #222;
+  }
+  .sfaq__item summary {
+    display: grid;
+    grid-template-columns: 36px 1fr 22px;
+    gap: 14px;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .sfaq__item summary::-webkit-details-marker {
+    display: none;
+  }
+  .sfaq__n {
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+    font-variant-numeric: tabular-nums;
+  }
+  .sfaq__q {
+    margin: 0;
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: #e9e9e9;
+    transition: color 0.2s ease;
+  }
+  .sfaq__item summary:hover .sfaq__q,
+  .sfaq__item[open] .sfaq__q {
+    color: #fff;
+  }
+  .sfaq__item[open] .sfaq__n {
+    color: #006aff;
+  }
+  .sfaq__icon {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    justify-self: end;
+  }
+  .sfaq__icon::before,
+  .sfaq__icon::after {
+    content: "";
+    position: absolute;
+    inset: 6px 0 auto;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.3s ease;
+  }
+  .sfaq__icon::after {
+    transform: rotate(90deg);
+  }
+  .sfaq__item[open] .sfaq__icon::after {
+    transform: rotate(0);
+  }
+  .sfaq__a {
+    margin: 0;
+    padding: 0 36px 28px 50px;
+    color: #9d9d9d;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  @media (max-width: 860px) {
+    .sfaq {
+      grid-template-columns: 1fr;
+    }
+    .sfaq__intro {
+      position: static;
+    }
+    .sfaq__a {
+      padding: 0 0 24px 50px;
+    }
+  }
+</style>

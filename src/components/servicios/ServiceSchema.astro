@@ -1,0 +1,46 @@
+---
+// ServiceSchema.astro — JSON-LD Service + BreadcrumbList
+import type { Servicio } from "../../data/servicios";
+
+interface Props {
+  servicio: Servicio;
+}
+const { servicio } = Astro.props;
+const SITE = "https://arka-agency.com";
+const url = `${SITE}/servicios/${servicio.slug}`;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: servicio.nombre,
+    serviceType: servicio.keywords[0],
+    description: servicio.metaDescription,
+    url,
+    provider: { "@id": `${SITE}/#organization` },
+    areaServed: [
+      { "@type": "City", name: "Cali" },
+      { "@type": "Country", name: "Colombia" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `Qué incluye ${servicio.nombre}`,
+      itemListElement: servicio.incluye.map((i) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: i.title },
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: "Servicios", item: `${SITE}/#servicios` },
+      { "@type": "ListItem", position: 3, name: servicio.nombre, item: url },
+    ],
+  },
+];
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

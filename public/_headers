@@ -1,0 +1,6 @@
+# Archivos de texto plano: forzar UTF-8 para que ñ y tildes se muestren bien
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8

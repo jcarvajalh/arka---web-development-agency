@@ -1,0 +1,111 @@
+---
+// ServiceCTA.astro — botones de acción reutilizables + bloque de cierre
+import { CAL_URL, WHATSAPP_URL } from "../../data/servicios";
+
+interface Props {
+  /** "buttons": solo los botones · "band": bloque de cierre completo */
+  variant?: "buttons" | "band";
+  titulo?: string;
+  texto?: string;
+  align?: "left" | "center";
+}
+
+const {
+  variant = "buttons",
+  titulo = "¿Hablamos de tu proyecto?",
+  texto = "Cuéntanos qué necesitas y te proponemos un plan claro, con tiempos y alcance definidos.",
+  align = "left",
+} = Astro.props;
+---
+
+{
+  variant === "buttons" ? (
+    <div class:list={["scta", align === "center" && "scta--center"]}>
+      <a href={CAL_URL} target="_blank" rel="noopener noreferrer" class="hero-btn">
+        Cotiza tu proyecto
+      </a>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="scta__ghost"
+      >
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  ) : (
+    <section class="sband">
+      <h2 class="sband__title">{titulo}</h2>
+      <p class="sband__text">{texto}</p>
+      <div class="scta scta--center">
+        <a href={CAL_URL} target="_blank" rel="noopener noreferrer" class="hero-btn">
+          Cotiza tu proyecto
+        </a>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="scta__ghost"
+        >
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .scta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .scta--center {
+    justify-content: center;
+  }
+  .scta__ghost {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    padding: 8px 26px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .scta__ghost:hover {
+    background: #fff;
+    color: #0a0a0a;
+  }
+  .sband {
+    position: relative;
+    text-align: center;
+    padding: clamp(56px, 8vw, 96px) 24px;
+    border: 1px solid #1e1e1e;
+    border-radius: 28px;
+    background:
+      radial-gradient(60% 80% at 50% 0%, rgba(0, 106, 255, 0.22), transparent 70%),
+      #0e0e0e;
+    overflow: hidden;
+  }
+  .sband__title {
+    font-size: clamp(28px, 4.4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #fff;
+    margin: 0 auto 16px;
+    max-width: 16ch;
+  }
+  .sband__text {
+    color: #9a9a9a;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
+</style>

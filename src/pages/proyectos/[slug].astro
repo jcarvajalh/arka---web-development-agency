@@ -261,30 +261,6 @@ const layout = proyecto.galleryLayout ?? "apilado";
       )
     }
 
-    <!-- ── Resultados ── -->
-    <div class="max-w-[1100px] mx-auto px-6 pb-24">
-      <div class="text-center mb-10">
-        <p class="section-label">Resultados</p>
-        <h2
-          class="font-bold tracking-[-0.03em] text-[clamp(26px,4vw,40px)] text-white"
-        >
-          Lo que se logró
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {
-          proyecto.results.map((r) => (
-            <div class="rounded-2xl border border-[#1e1e1e] bg-[#111] p-8 text-center">
-              <div class="text-[#006aff] font-bold tracking-[-0.03em] text-[clamp(32px,4vw,44px)]">
-                {r.value}
-              </div>
-              <div class="text-[#888] text-[14px] mt-1">{r.label}</div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
     <!-- ── CTA ── -->
     <div class="max-w-[900px] mx-auto px-6 pb-24 text-center">
       <h2

@@ -1,0 +1,705 @@
+---
+// Servicio .01 — Diseño y Desarrollo Web
+// Composición: hero split con marco de navegador · Antes/Después ·
+// grid numerado · timeline horizontal · FAQ split
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/servicios/Breadcrumb.astro";
+import ServiceCTA from "../../components/servicios/ServiceCTA.astro";
+import ServiceFAQ from "../../components/servicios/ServiceFAQ.astro";
+import ServiceSchema from "../../components/servicios/ServiceSchema.astro";
+import OtrosServicios from "../../components/servicios/OtrosServicios.astro";
+import { getServicio, CAL_URL } from "../../data/servicios";
+
+const s = getServicio("diseno-desarrollo-web");
+
+const enfoque = [
+  {
+    title: "Startups y empresas tech",
+    description:
+      "Sitios de alto impacto que comunican tu producto, generan confianza y captan leads o demos.",
+    tags: ["SaaS", "Producto digital", "Servicios tech"],
+    image: "/servicio-tech.png",
+    alt: "Diseño web para startups y empresas de tecnología",
+  },
+  {
+    title: "Clínicas y salud",
+    description:
+      "Interfaces que transmiten confianza médica, con SEO local y sistemas de agendamiento.",
+    tags: ["Odontología", "Estética", "Consultorios"],
+    image: "/web-clinica.webp",
+    alt: "Diseño web para clínicas y centros de salud",
+  },
+];
+
+// Íconos (trazos SVG) para cada ítem de "Qué incluye", en el mismo orden
+const iconos = [
+  // Arquitectura de información
+  `<rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>`,
+  // Diseño UX/UI
+  `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>`,
+  // Desarrollo
+  `<path d="m8 8-5 4 5 4M16 8l5 4-5 4M13.5 5l-3 14"/>`,
+  // Responsive
+  `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>`,
+  // SEO técnico
+  `<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`,
+  // Medición
+  `<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>`,
+];
+---
+
+<BaseLayout title={s.metaTitle} description={s.metaDescription} image={s.image}>
+  <ServiceSchema servicio={s} />
+
+  <article class="web bg-[#0a0a0a] text-white">
+    <!-- ── Hero ── -->
+    <header class="max-w-[1200px] mx-auto px-6 pt-32 md:pt-40 pb-20">
+      <Breadcrumb nombre={s.nombre} />
+      <div class="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="web__eyebrow"><span>.01 /</span> {s.eyebrow}</p>
+          <h1 class="web__h1">{s.h1}</h1>
+          <p class="text-[#9b9b9b] text-[17px] leading-[1.7] mb-9 max-w-[52ch]">
+            {s.intro}
+          </p>
+          <ServiceCTA />
+        </div>
+
+        <div class="web__browser">
+          <div class="web__browser-bar" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span>tuempresa.com</span>
+          </div>
+          <img
+            src={s.image}
+            alt={s.imageAlt}
+            width="720"
+            height="480"
+            loading="eager"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Problema / Solución: Antes vs Después ── -->
+    <section class="max-w-[1200px] mx-auto px-6 pb-24" aria-labelledby="web-problema">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="web__card web__card--before">
+          <p class="web__tag">El problema</p>
+          <h2 id="web-problema" class="web__h2">{s.problemaTitulo}</h2>
+          <p class="text-[#9a9a9a] leading-[1.75] mb-8">{s.problema}</p>
+          <ul class="web__sintomas" role="list">
+            {s.sintomas.map((x) => <li>{x}</li>)}
+          </ul>
+        </div>
+        <div class="web__card web__card--after">
+          <p class="web__tag web__tag--blue">La solución</p>
+          <h2 class="web__h2">{s.solucionTitulo}</h2>
+          <p class="text-[#b9b9b9] leading-[1.75]">{s.solucion}</p>
+          <div class="web__metrics" aria-hidden="true">
+            <div><b>&lt;2s</b><span>tiempo de carga</span></div>
+            <div><b>100%</b><span>responsive</span></div>
+            <div><b>SEO</b><span>desde la base</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Nuestro enfoque ── -->
+    <section class="max-w-[1200px] mx-auto px-6 pb-28" aria-labelledby="web-enfoque">
+      <div class="web__sec-head">
+        <div>
+          <p class="section-label">Nuestro enfoque</p>
+          <h2 id="web-enfoque" class="web__h2 !mb-0">
+            Sectores donde más experiencia acumulamos
+          </h2>
+        </div>
+        <p>
+          Buena parte de nuestros proyectos nacen en estos sectores, y eso nos
+          permite llegar con aprendizajes probados desde el primer día.
+        </p>
+      </div>
+
+      <ul class="web__focus" role="list">
+        {
+          enfoque.map((e) => (
+            <li class="web__focus-card">
+              <img src={e.image} alt={e.alt} loading="lazy" width="600" height="440" />
+              <div class="web__focus-body">
+                <span class="web__focus-chip">Especialidad</span>
+                <h3>{e.title}</h3>
+                <p>{e.description}</p>
+                <ul class="web__focus-tags" role="list">
+                  {e.tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="web__focus-more">
+        <p>
+          <b>¿Tu negocio es de otro sector?</b> También trabajamos con servicios
+          profesionales, empresas B2B, marcas personales y cualquier negocio que
+          necesite una web que venda.
+        </p>
+        <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
+          Hablemos
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── Qué incluye ── -->
+    <section class="max-w-[1200px] mx-auto px-6 pb-28" aria-labelledby="web-incluye">
+      <div class="web__sec-head">
+        <div>
+          <p class="section-label">Qué incluye</p>
+          <h2 id="web-incluye" class="web__h2 !mb-0">
+            Todo lo que necesita una web profesional
+          </h2>
+        </div>
+        <p>Un solo equipo para estrategia, diseño, desarrollo y medición.</p>
+      </div>
+
+      <ul class="web__includes" role="list">
+        {
+          s.incluye.map((item, i) => (
+            <li>
+              <span class="web__ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={iconos[i]} />
+              </span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- ── Fases: timeline horizontal ── -->
+    <section class="web__phases" aria-labelledby="web-fases">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <p class="section-label">Cómo lo hacemos</p>
+        <h2 id="web-fases" class="web__h2 max-w-[20ch]">
+          4 fases, de la idea al lanzamiento
+        </h2>
+        <ol class="web__timeline" role="list">
+          {
+            s.fases.map((f, i) => (
+              <li>
+                <span class="web__dot" aria-hidden="true" />
+                <span class="web__phase-n">Fase {i + 1}</span>
+                <h3>{f.title}</h3>
+                <p>{f.description}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="mt-14">
+          <ServiceCTA />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <div class="max-w-[1200px] mx-auto px-6 py-28">
+      <ServiceFAQ faqs={s.faqs} titulo="Preguntas frecuentes sobre diseño web" />
+    </div>
+
+    <!-- ── Cierre ── -->
+    <div class="max-w-[1200px] mx-auto px-6 pb-24">
+      <ServiceCTA
+        variant="band"
+        titulo="Tu próxima web empieza con una conversación"
+        texto="Agenda una reunión y te mostramos cómo un sitio a medida puede convertirse en tu mejor vendedor."
+      />
+    </div>
+    <div class="max-w-[1200px] mx-auto px-6 pb-28">
+      <OtrosServicios actual={s.slug} />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .web__eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    margin: 0 0 22px;
+  }
+  .web__eyebrow span {
+    color: #006aff;
+    font-style: italic;
+    letter-spacing: 0;
+    margin-right: 8px;
+  }
+  .web__h1 {
+    font-size: var(--fs-display);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    margin: 0 0 24px;
+  }
+  .web__h2 {
+    font-size: clamp(26px, 3.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0 0 18px;
+  }
+
+  /* Marco de navegador */
+  .web__browser {
+    border: 1px solid #222;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 3 / 2;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 40px 80px -30px rgba(0, 106, 255, 0.35);
+    transform: perspective(1400px) rotateY(-6deg) rotateX(2deg);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .web__browser:hover {
+    transform: none;
+  }
+  .web__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #1e1e1e;
+    flex-shrink: 0;
+  }
+  .web__browser-bar i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #2c2c2c;
+  }
+  .web__browser-bar span {
+    margin-left: 12px;
+    font-size: 11px;
+    color: #666;
+    background: #1a1a1a;
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+  .web__browser img {
+    min-height: 0;
+    flex: 1;
+  }
+
+  /* Antes / Después */
+  .web__card {
+    border-radius: 24px;
+    padding: clamp(28px, 4vw, 48px);
+    border: 1px solid #1e1e1e;
+  }
+  .web__card--before {
+    background: #0f0f0f;
+  }
+  .web__card--after {
+    background:
+      radial-gradient(70% 60% at 100% 0%, rgba(0, 106, 255, 0.18), transparent 70%),
+      #0f1218;
+    border-color: rgba(0, 106, 255, 0.25);
+  }
+  .web__tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888;
+    border: 1px solid #2a2a2a;
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin: 0 0 22px;
+  }
+  .web__tag--blue {
+    color: #6aa8ff;
+    border-color: rgba(0, 106, 255, 0.4);
+  }
+  .web__sintomas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .web__sintomas li {
+    position: relative;
+    padding-left: 28px;
+    color: #cfcfcf;
+    font-size: 15px;
+  }
+  .web__sintomas li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ff5a4f;
+    font-size: 13px;
+  }
+  .web__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .web__metrics div {
+    border-top: 1px solid rgba(0, 106, 255, 0.3);
+    padding-top: 14px;
+  }
+  .web__metrics b {
+    display: block;
+    font-size: clamp(22px, 2.4vw, 30px);
+    letter-spacing: -0.03em;
+  }
+  .web__metrics span {
+    font-size: 12px;
+    color: #8a8a8a;
+  }
+
+  /* Cabecera de sección: título a la izquierda, texto a la derecha */
+  .web__sec-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px 48px;
+    margin-bottom: 40px;
+  }
+  .web__sec-head h2 {
+    max-width: 18ch;
+  }
+  .web__sec-head > p {
+    margin: 0;
+    max-width: 40ch;
+    color: #8a8a8a;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Nuestro enfoque: dos tarjetas con imagen */
+  .web__focus {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .web__focus-card {
+    position: relative;
+    min-height: 440px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #1e1e1e;
+    display: flex;
+    align-items: flex-end;
+    isolation: isolate;
+  }
+  .web__focus-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .web__focus-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.1) 0%,
+      rgba(10, 10, 10, 0.78) 52%,
+      #0a0a0a 100%
+    );
+  }
+  .web__focus-card:hover img {
+    transform: scale(1.04);
+  }
+  .web__focus-body {
+    padding: clamp(24px, 3vw, 36px);
+  }
+  .web__focus-chip {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6aa8ff;
+    border: 1px solid rgba(0, 106, 255, 0.45);
+    background: rgba(0, 106, 255, 0.12);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin-bottom: 18px;
+  }
+  .web__focus-body h3 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+  .web__focus-body > p {
+    margin: 0 0 20px;
+    color: #b4b4b4;
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 42ch;
+  }
+  .web__focus-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .web__focus-tags li {
+    font-size: 12px;
+    color: #d0d0d0;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .web__focus-more {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 32px;
+    padding: 22px 28px;
+    border: 1px dashed #2c2c2c;
+    border-radius: 18px;
+  }
+  .web__focus-more p {
+    margin: 0;
+    color: #8f8f8f;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .web__focus-more b {
+    color: #fff;
+    font-weight: 600;
+  }
+  .web__focus-more a {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .web__focus-more a:hover {
+    background: #fff;
+    color: #0a0a0a;
+  }
+
+  /* Qué incluye: 2 columnas × 3 filas (1-3 izquierda, 4-6 derecha) */
+  .web__includes {
+    list-style: none;
+    margin: 0;
+    padding: 8px clamp(24px, 3.5vw, 44px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: clamp(40px, 6vw, 88px);
+    border: 1px solid #1e1e1e;
+    border-radius: 24px;
+    background: #0e0e0e;
+    position: relative;
+  }
+  .web__includes::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    bottom: 32px;
+    left: 50%;
+    width: 1px;
+    background: #1e1e1e;
+  }
+  .web__includes li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 18px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid #1c1c1c;
+  }
+  .web__includes li:nth-child(3),
+  .web__includes li:nth-child(6) {
+    border-bottom: 0;
+  }
+  .web__ico {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: #6aa8ff;
+    background: rgba(0, 106, 255, 0.1);
+    border: 1px solid rgba(0, 106, 255, 0.25);
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
+  }
+  .web__includes li:hover .web__ico {
+    background: #006aff;
+    color: #fff;
+  }
+  .web__includes h3 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 2px 0 6px;
+  }
+  .web__includes p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #888;
+    margin: 0;
+  }
+
+  /* Timeline */
+  .web__phases {
+    background: #0e0e0e;
+    border-block: 1px solid #1a1a1a;
+    padding: 100px 0;
+  }
+  .web__timeline {
+    list-style: none;
+    margin: 56px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    position: relative;
+  }
+  .web__timeline::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #006aff, #2a2a2a 80%);
+  }
+  .web__dot {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #0e0e0e;
+    border: 2px solid #006aff;
+    margin-bottom: 28px;
+  }
+  .web__timeline li:first-child .web__dot {
+    background: #006aff;
+  }
+  .web__phase-n {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .web__timeline h3 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 8px 0 10px;
+  }
+  .web__timeline p {
+    color: #8f8f8f;
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .web__browser {
+      transform: none;
+    }
+  }
+  @media (max-width: 860px) {
+    .web__focus {
+      grid-template-columns: 1fr;
+    }
+    .web__focus-card {
+      min-height: 380px;
+    }
+    .web__focus-more {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .web__includes {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      grid-auto-flow: row;
+    }
+    .web__includes::before {
+      display: none;
+    }
+    .web__includes li:nth-child(3) {
+      border-bottom: 1px solid #1c1c1c;
+    }
+    .web__timeline {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-left: 34px;
+    }
+    .web__timeline::before {
+      top: 0;
+      bottom: 0;
+      left: 7px;
+      right: auto;
+      width: 1px;
+      height: auto;
+      background: linear-gradient(180deg, #006aff, #2a2a2a 80%);
+    }
+    .web__dot {
+      position: absolute;
+      left: 0;
+      margin: 0;
+    }
+    .web__timeline li {
+      position: relative;
+    }
+    .web__timeline li .web__dot {
+      left: -34px;
+    }
+  }
+  @media (max-width: 560px) {
+    .web__metrics {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

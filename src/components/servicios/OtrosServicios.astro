@@ -1,0 +1,87 @@
+---
+// OtrosServicios.astro — enlaces a los demás servicios (estilo lista editorial)
+import { servicios } from "../../data/servicios";
+
+interface Props {
+  actual: string;
+}
+const { actual } = Astro.props;
+const otros = servicios
+  .map((s, i) => ({ ...s, n: i + 1 }))
+  .filter((s) => s.slug !== actual);
+---
+
+<nav class="otros" aria-label="Otros servicios">
+  <p class="section-label">Otros servicios</p>
+  <ul role="list">
+    {
+      otros.map((s) => (
+        <li>
+          <a href={`/servicios/${s.slug}`}>
+            <span class="otros__n">.{String(s.n).padStart(2, "0")} /</span>
+            <span class="otros__name">{s.nombre}</span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.6"
+              stroke-linecap="square"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #222;
+  }
+  a {
+    display: grid;
+    grid-template-columns: 64px 1fr 24px;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 0;
+    border-bottom: 1px solid #222;
+    color: #fff;
+    text-decoration: none;
+  }
+  .otros__n {
+    font-size: 13px;
+    font-weight: 700;
+    font-style: italic;
+    color: #777;
+  }
+  .otros__name {
+    font-size: clamp(24px, 3.6vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  svg {
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s;
+  }
+  a:hover .otros__name {
+    transform: translateX(10px);
+    font-style: italic;
+  }
+  a:hover svg,
+  a:hover .otros__n {
+    color: #006aff;
+  }
+  a:hover svg {
+    transform: rotate(45deg);
+  }
+</style>

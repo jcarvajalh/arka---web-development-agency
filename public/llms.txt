@@ -4,7 +4,7 @@
 
 ## Sobre ARKA
 
-- Servicios: diseño y desarrollo web a medida, e-commerce, SEO, AEO, GEO, CRO, IA y automatizaciones.
+- Servicios: diseño y desarrollo web a medida, posicionamiento SEO y desarrollo de e-commerce.
 - Enfoque: webs de alto rendimiento (Astro, Next.js, Shopify) orientadas a conversión.
 - Ubicación: Cali, Valle del Cauca, Colombia. Atiende clientes en toda Latinoamérica y Europa.
 - Shopify Partner.
@@ -12,23 +12,21 @@
 
 ## Servicios
 
-- Webs para Startups & Tech: sitios rápidos, modernos y de alto impacto para startups y empresas de tecnología.
-- Sitios Clínicos (Odontología y Estética): interfaces que transmiten confianza médica, con SEO local y agendamiento.
-- E-commerce de alto impacto: tiendas online rápidas, con pasarelas de pago y automatizaciones de IA.
-- SEO y CRO: estrategias de SEO, AEO, GEO y CRO para atraer tráfico y convertir visitantes en clientes.
-- IA & Automatizaciones: integración de inteligencia artificial para optimizar procesos internos.
+- [Diseño y Desarrollo Web](https://arka-agency.com/servicios/diseno-desarrollo-web/): diseño de páginas web y desarrollo web a medida (Astro, Next.js) para startups, empresas tech y clínicas; rápidos, responsive y orientados a conversión.
+- [Posicionamiento SEO](https://arka-agency.com/servicios/posicionamiento-seo/): agencia SEO; SEO técnico, contenido, SEO local y medición para posicionar páginas web en Google.
+- [Desarrollo de E-commerce](https://arka-agency.com/servicios/desarrollo-ecommerce/): desarrollo de tiendas online personalizadas (Shopify o a medida) con pasarelas de pago colombianas (Wompi, PayU, Mercado Pago) e integraciones de inventario, facturación y envíos.
 
 ## Páginas
 
 - [Inicio](https://arka-agency.com/): presentación de ARKA, servicios, proceso, proyectos, precios y preguntas frecuentes.
 - [Proyectos](https://arka-agency.com/proyectos/): portafolio de casos de éxito reales.
-- [Política de Privacidad](https://arka-agency.com/politica-de-privacidad): tratamiento de datos personales (Ley 1581 de 2012, Colombia).
+- [Política de Privacidad](https://arka-agency.com/politica-de-privacidad/): tratamiento de datos personales (Ley 1581 de 2012, Colombia).
 
 ## Casos de estudio
 
-- [La Casa de los Libros](https://arka-agency.com/proyectos/la-casa-de-los-libros): e-commerce y venta de entradas para una librería cultural (Shopify, Tixator).
-- [Clínica Dental Dentinos](https://arka-agency.com/proyectos/clinica-dental-dentinos): sitio de clínica odontológica optimizado para confianza médica, SEO local y agendamiento (Astro).
-- [Solution Systems](https://arka-agency.com/proyectos/solution-systems): sitio corporativo para una compañía de servicios tecnológicos, orientado a autoridad y conversión (Astro, SEO, CRO).
+- [La Casa de los Libros](https://arka-agency.com/proyectos/la-casa-de-los-libros/): e-commerce y venta de entradas para una librería cultural (Shopify, Tixator).
+- [Clínica Dental Dentinos](https://arka-agency.com/proyectos/clinica-dental-dentinos/): sitio de clínica odontológica optimizado para confianza médica, SEO local y agendamiento (Astro).
+- [Solution Systems](https://arka-agency.com/proyectos/solution-systems/): sitio corporativo para una compañía de servicios tecnológicos, orientado a autoridad y conversión (Astro, SEO, CRO).
 
 ## Contacto
 

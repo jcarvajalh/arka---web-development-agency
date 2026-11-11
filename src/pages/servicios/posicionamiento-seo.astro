@@ -1,0 +1,424 @@
+---
+// Servicio .02 — Posicionamiento SEO
+// Composición: hero centrado con simulación de SERP · declaración del problema ·
+// lista editorial de lo que incluye · fases verticales con números gigantes · FAQ apilado
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/servicios/Breadcrumb.astro";
+import ServiceCTA from "../../components/servicios/ServiceCTA.astro";
+import ServiceFAQ from "../../components/servicios/ServiceFAQ.astro";
+import ServiceSchema from "../../components/servicios/ServiceSchema.astro";
+import OtrosServicios from "../../components/servicios/OtrosServicios.astro";
+import { getServicio } from "../../data/servicios";
+
+const s = getServicio("posicionamiento-seo");
+---
+
+<BaseLayout title={s.metaTitle} description={s.metaDescription} image={s.image}>
+  <ServiceSchema servicio={s} />
+
+  <article class="seo bg-[#0a0a0a] text-white">
+    <!-- ── Hero centrado ── -->
+    <header class="seo__hero">
+      <div class="max-w-[1100px] mx-auto px-6 pt-32 md:pt-40 pb-20 text-center">
+        <div class="flex justify-center"><Breadcrumb nombre={s.nombre} /></div>
+        <p class="seo__eyebrow">.02 / {s.eyebrow}</p>
+        <h1 class="seo__h1">{s.h1}</h1>
+        <p class="text-[#9b9b9b] text-[17px] leading-[1.7] mb-9 max-w-[60ch] mx-auto">
+          {s.intro}
+        </p>
+        <ServiceCTA align="center" />
+
+        <!-- Simulación de resultados de búsqueda -->
+        <div class="seo__serp" aria-hidden="true">
+          <div class="seo__search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <span class="seo__typed" data-typed>agencia de diseño web en cali</span>
+          </div>
+          <div class="seo__result seo__result--top">
+            <span class="seo__pos">#1</span>
+            <div>
+              <small>arka-agency.com</small>
+              <b>Tu negocio, primero en Google</b>
+              <p>Aparece justo cuando tu cliente está buscando lo que vendes.</p>
+            </div>
+          </div>
+          <div class="seo__result"><span class="seo__pos">#2</span><div><small>competencia.com</small><i></i><i></i></div></div>
+          <div class="seo__result"><span class="seo__pos">#3</span><div><small>otro-sitio.co</small><i></i><i></i></div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Problema: declaración ── -->
+    <section class="max-w-[1100px] mx-auto px-6 py-28" aria-labelledby="seo-problema">
+      <p class="section-label">El problema</p>
+      <h2 id="seo-problema" class="seo__statement">{s.problemaTitulo}</h2>
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 mt-12">
+        <p class="text-[#9a9a9a] text-[17px] leading-[1.8] m-0">{s.problema}</p>
+        <ul class="seo__checks" role="list">
+          {s.sintomas.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Solución: franja azul ── -->
+    <section class="seo__solution" aria-labelledby="seo-solucion">
+      <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-[1fr_1.2fr] gap-10 items-center">
+        <div>
+          <p class="seo__label-light">La solución</p>
+          <h2 id="seo-solucion" class="seo__h2 !text-white">{s.solucionTitulo}</h2>
+        </div>
+        <p class="text-white/85 text-[17px] leading-[1.8] m-0">{s.solucion}</p>
+      </div>
+    </section>
+
+    <!-- ── Qué incluye: lista editorial ── -->
+    <section class="max-w-[1100px] mx-auto px-6 py-28" aria-labelledby="seo-incluye">
+      <div class="grid md:grid-cols-[1fr_2fr] gap-10">
+        <div>
+          <p class="section-label">Qué incluye</p>
+          <h2 id="seo-incluye" class="seo__h2">Una estrategia SEO completa</h2>
+          <p class="text-[#8a8a8a] text-[15px] leading-[1.6]">
+            SEO técnico, contenido y SEO local trabajando juntos.
+          </p>
+        </div>
+        <ul class="seo__list" role="list">
+          {
+            s.incluye.map((item, i) => (
+              <li>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Fases: verticales con números gigantes ── -->
+    <section class="seo__phases" aria-labelledby="seo-fases">
+      <div class="max-w-[1100px] mx-auto px-6 grid md:grid-cols-[1fr_1.6fr] gap-12">
+        <div class="md:sticky md:top-28 self-start">
+          <p class="section-label">Cómo lo hacemos</p>
+          <h2 id="seo-fases" class="seo__h2">El camino hacia la primera página</h2>
+          <p class="text-[#8a8a8a] text-[15px] leading-[1.6] mb-8">
+            El SEO es un proceso continuo. Así lo organizamos.
+          </p>
+          <ServiceCTA />
+        </div>
+        <ol class="seo__steps" role="list">
+          {
+            s.fases.map((f, i) => (
+              <li>
+                <span class="seo__big">0{i + 1}</span>
+                <div>
+                  <h3>{f.title}</h3>
+                  <p>{f.description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <div class="max-w-[1100px] mx-auto px-6 py-28">
+      <ServiceFAQ faqs={s.faqs} layout="stack" titulo="Preguntas frecuentes sobre SEO" />
+    </div>
+
+    <div class="max-w-[1100px] mx-auto px-6 pb-24">
+      <ServiceCTA
+        variant="band"
+        titulo="Empieza con una auditoría SEO"
+        texto="Revisamos tu sitio y te mostramos qué está frenando tu posicionamiento en Google y por dónde empezar."
+      />
+    </div>
+    <div class="max-w-[1100px] mx-auto px-6 pb-28">
+      <OtrosServicios actual={s.slug} />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .seo__hero {
+    background:
+      radial-gradient(50% 45% at 50% 100%, rgba(0, 106, 255, 0.16), transparent 70%);
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .seo__eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #006aff;
+    margin: 0 0 22px;
+  }
+  .seo__h1 {
+    font-size: var(--fs-display);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    margin: 0 auto 24px;
+    max-width: 18ch;
+  }
+  .seo__h2 {
+    font-size: clamp(26px, 3.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0 0 16px;
+  }
+
+  /* SERP */
+  .seo__serp {
+    max-width: 620px;
+    margin: 64px auto 0;
+    text-align: left;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+  }
+  .seo__search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 999px;
+    padding: 11px 18px;
+    color: #9a9a9a;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .seo__typed {
+    color: #eaeaea;
+    border-right: 2px solid #006aff;
+    padding-right: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .seo__result {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    padding: 14px 10px;
+    border-radius: 12px;
+    opacity: 0.4;
+  }
+  .seo__result--top {
+    opacity: 1;
+    background: rgba(0, 106, 255, 0.09);
+    border: 1px solid rgba(0, 106, 255, 0.35);
+  }
+  .seo__pos {
+    font-weight: 700;
+    font-size: 14px;
+    color: #777;
+  }
+  .seo__result--top .seo__pos {
+    color: #006aff;
+  }
+  .seo__result small {
+    display: block;
+    font-size: 12px;
+    color: #7a7a7a;
+    margin-bottom: 3px;
+  }
+  .seo__result b {
+    display: block;
+    color: #8ab4ff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .seo__result p {
+    margin: 0;
+    color: #a0a0a0;
+    font-size: 13px;
+  }
+  .seo__result i {
+    display: block;
+    height: 8px;
+    border-radius: 4px;
+    background: #2a2a2a;
+    margin-top: 8px;
+    width: 70%;
+  }
+  .seo__result i + i {
+    width: 45%;
+  }
+
+  /* Problema */
+  .seo__statement {
+    font-size: clamp(26px, 3.8vw, 46px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    margin: 0;
+    max-width: 18ch;
+  }
+  .seo__checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #222;
+  }
+  .seo__checks li {
+    padding: 16px 0 16px 34px;
+    border-bottom: 1px solid #222;
+    position: relative;
+    color: #d6d6d6;
+    font-size: 15px;
+  }
+  .seo__checks li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 14px;
+    height: 2px;
+    background: #ff5a4f;
+  }
+
+  /* Solución */
+  .seo__solution {
+    background: #006aff;
+    padding: clamp(56px, 8vw, 96px) 0;
+  }
+  .seo__label-light {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 16px;
+  }
+
+  /* Lista editorial */
+  .seo__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #222;
+  }
+  .seo__list li {
+    display: grid;
+    grid-template-columns: 48px 1fr 1.2fr;
+    gap: 20px;
+    align-items: baseline;
+    padding: 26px 0;
+    border-bottom: 1px solid #222;
+  }
+  .seo__list span {
+    font-size: 12px;
+    font-weight: 700;
+    font-style: italic;
+    color: #006aff;
+  }
+  .seo__list h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .seo__list p {
+    margin: 0;
+    color: #8a8a8a;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Fases */
+  .seo__phases {
+    padding: 100px 0;
+    background: #0e0e0e;
+    border-block: 1px solid #1a1a1a;
+  }
+  .seo__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .seo__steps li {
+    display: grid;
+    grid-template-columns: clamp(90px, 12vw, 150px) 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .seo__steps li:first-child {
+    padding-top: 0;
+  }
+  .seo__big {
+    font-size: clamp(64px, 9vw, 120px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1px #3a3a3a;
+    transition:
+      color 0.4s ease,
+      -webkit-text-stroke-color 0.4s ease;
+  }
+  .seo__steps li:hover .seo__big {
+    color: #006aff;
+    -webkit-text-stroke-color: #006aff;
+  }
+  .seo__steps h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .seo__steps p {
+    margin: 0;
+    color: #8f8f8f;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 700px) {
+    .seo__list li {
+      grid-template-columns: 36px 1fr;
+    }
+    .seo__list p {
+      grid-column: 2;
+    }
+  }
+</style>
+
+<script>
+  // Efecto de escritura en la barra de búsqueda
+  const el = document.querySelector<HTMLElement>("[data-typed]");
+  if (el && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const frases = [
+      "agencia de diseño web en cali",
+      "posicionamiento seo cali",
+      "tienda online colombia",
+    ];
+    let f = 0,
+      i = 0,
+      borrando = false;
+    const tick = () => {
+      const txt = frases[f];
+      i += borrando ? -1 : 1;
+      el.textContent = txt.slice(0, i);
+      let delay = borrando ? 35 : 75;
+      if (!borrando && i === txt.length) {
+        borrando = true;
+        delay = 1800;
+      } else if (borrando && i === 0) {
+        borrando = false;
+        f = (f + 1) % frases.length;
+        delay = 300;
+      }
+      setTimeout(tick, delay);
+    };
+    setTimeout(tick, 1000);
+    el.textContent = "";
+  }
+</script>

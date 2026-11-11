@@ -10,12 +10,7 @@ const navLinks = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-const servicios = [
-  "Diseño personalizado",
-  "SEO y Conversión",
-  "Sitios web & Landing",
-  "E-commerce",
-];
+import { servicios } from "../../data/servicios";
 
 const contacto = [
   {
@@ -82,7 +77,9 @@ const año = new Date().getFullYear();
         {
           servicios.map((s) => (
             <li>
-              <span class="footer__texto text-sm">{s}</span>
+              <a href={`/servicios/${s.slug}`} class="footer__link text-sm text-decoration-none">
+                {s.nombre}
+              </a>
             </li>
           ))
         }
