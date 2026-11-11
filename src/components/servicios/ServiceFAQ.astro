@@ -1,5 +1,5 @@
 ---
-// ServiceFAQ.astro — acordeón nativo (<details>) + schema FAQPage
+// ServiceFAQ.astro — acordeón con transiciones premium + schema FAQPage
 import type { Pregunta } from "../../data/servicios";
 
 interface Props {
@@ -7,9 +7,20 @@ interface Props {
   titulo?: string;
   /** "split": título a la izquierda (sticky) · "stack": título centrado arriba */
   layout?: "split" | "stack";
+  /** id de la sección (ancla), p. ej. "faq" en la home */
+  id?: string;
+  /** Muestra un texto + botón "Habla con nosotros" en lugar del enlace corto */
+  cta?: boolean;
 }
 
-const { faqs, titulo = "Preguntas frecuentes", layout = "split" } = Astro.props;
+const {
+  faqs,
+  titulo = "Preguntas frecuentes",
+  layout = "split",
+  id,
+  cta = false,
+} = Astro.props;
+const CAL_URL = "https://cal.com/arkaagency/reunion-acercamiento";
 
 const schema = {
   "@context": "https://schema.org",
@@ -23,33 +34,64 @@ const schema = {
 ---
 
 <section
-  class:list={["sfaq", layout === "stack" && "sfaq--stack"]}
+  id={id}
+  class:list={["sfaq", layout === "stack" && "sfaq--stack", cta && "sfaq--home"]}
   aria-labelledby="faq-titulo"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
   <div class="sfaq__intro">
     <p class="section-label">FAQ</p>
-    <h2 id="faq-titulo" class="sfaq__title">{titulo}</h2>
-    <p class="sfaq__sub">
-      ¿Tienes otra duda? <a
-        href="https://cal.com/arkaagency/reunion-acercamiento"
-        target="_blank"
-        rel="noopener noreferrer">Agenda una llamada de 20 min</a
-      >.
-    </p>
+    <h2 id="faq-titulo" class="sfaq__title" set:html={titulo} />
+    {
+      cta ? (
+        <>
+          <p class="sfaq__sub mb-8">
+            Si no encuentras lo que buscas, escríbenos directamente.
+          </p>
+          <a href={CAL_URL} target="_blank" rel="noopener noreferrer" class="sfaq__cta">
+            Habla con nosotros <span aria-hidden="true">→</span>
+          </a>
+        </>
+      ) : (
+        <p class="sfaq__sub">
+          ¿Tienes otra duda?{" "}
+          <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
+            Agenda una llamada de 20 min
+          </a>
+          .
+        </p>
+      )
+    }
   </div>
 
-  <div class="sfaq__list">
+  <div class="sfaq__list" data-sfaq>
     {
       faqs.map((f, i) => (
-        <details class="sfaq__item" name="faq" open={i === 0}>
-          <summary>
-            <span class="sfaq__n">{String(i + 1).padStart(2, "0")}</span>
-            <h3 class="sfaq__q">{f.q}</h3>
-            <span class="sfaq__icon" aria-hidden="true" />
-          </summary>
-          <p class="sfaq__a">{f.a}</p>
-        </details>
+        <div class="sfaq__item">
+          <h3 class="sfaq__h">
+            <button
+              type="button"
+              class="sfaq__btn"
+              aria-expanded="false"
+              aria-controls={`sfaq-a-${i}`}
+              id={`sfaq-q-${i}`}
+            >
+              <span class="sfaq__n">{String(i + 1).padStart(2, "0")}</span>
+              <span class="sfaq__q">{f.q}</span>
+              <span class="sfaq__icon" aria-hidden="true" />
+            </button>
+          </h3>
+          <div
+            class="sfaq__panel"
+            id={`sfaq-a-${i}`}
+            role="region"
+            aria-labelledby={`sfaq-q-${i}`}
+          >
+            <div class="sfaq__inner">
+              <p class="sfaq__a">{f.a}</p>
+            </div>
+          </div>
+        </div>
       ))
     }
   </div>
@@ -57,6 +99,7 @@ const schema = {
 
 <style>
   .sfaq {
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
     gap: clamp(32px, 6vw, 96px);
@@ -83,10 +126,30 @@ const schema = {
     color: #fff;
     margin: 0 0 14px;
   }
+  /* Variante home: título con peso 600 */
+  .sfaq--home .sfaq__title {
+    font-weight: 600;
+  }
   .sfaq__sub {
     color: #8a8a8a;
     font-size: 15px;
     margin: 0;
+  }
+  .sfaq__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1.5px solid #006aff;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+  }
+  .sfaq__cta:hover {
+    background: #006aff;
   }
   .sfaq__sub a {
     color: #fff;
@@ -94,66 +157,128 @@ const schema = {
     text-decoration-color: #006aff;
     text-underline-offset: 4px;
   }
+
   .sfaq__list {
     border-top: 1px solid #222;
   }
   .sfaq__item {
+    position: relative;
     border-bottom: 1px solid #222;
   }
-  .sfaq__item summary {
+  /* Línea azul que recorre el borde inferior de la pregunta activa */
+  .sfaq__item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, #006aff, rgba(0, 106, 255, 0));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s var(--ease);
+  }
+  .sfaq__item.is-open::after {
+    transform: scaleX(1);
+  }
+
+  .sfaq__h {
+    margin: 0;
+  }
+  .sfaq__btn {
+    width: 100%;
     display: grid;
     grid-template-columns: 36px 1fr 22px;
     gap: 14px;
     align-items: center;
     padding: 24px 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    text-align: left;
     cursor: pointer;
-    list-style: none;
+    font: inherit;
   }
-  .sfaq__item summary::-webkit-details-marker {
-    display: none;
+  .sfaq__btn:focus-visible {
+    outline: 2px solid #006aff;
+    outline-offset: 4px;
+    border-radius: 6px;
   }
   .sfaq__n {
     font-size: 12px;
     font-weight: 700;
     color: #555;
     font-variant-numeric: tabular-nums;
+    transition: color 0.4s ease;
   }
   .sfaq__q {
-    margin: 0;
     font-size: clamp(16px, 1.6vw, 19px);
     font-weight: 600;
     line-height: 1.35;
     letter-spacing: -0.01em;
+    color: #9a9a9a;
+    transition:
+      color 0.4s ease,
+      transform 0.6s var(--ease);
+  }
+  .sfaq__btn:hover .sfaq__q {
     color: #e9e9e9;
-    transition: color 0.2s ease;
   }
-  .sfaq__item summary:hover .sfaq__q,
-  .sfaq__item[open] .sfaq__q {
+  .sfaq__item.is-open .sfaq__q {
     color: #fff;
+    transform: translateX(6px);
   }
-  .sfaq__item[open] .sfaq__n {
+  .sfaq__item.is-open .sfaq__n {
     color: #006aff;
   }
+
+  /* Ícono + / − con rotación */
   .sfaq__icon {
     position: relative;
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
     justify-self: end;
+    border-radius: 50%;
+    transition:
+      transform 0.6s var(--ease),
+      background-color 0.4s ease;
   }
   .sfaq__icon::before,
   .sfaq__icon::after {
     content: "";
     position: absolute;
-    inset: 6px 0 auto;
+    left: 5px;
+    right: 5px;
+    top: 10px;
     height: 2px;
+    border-radius: 2px;
     background: #fff;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s var(--ease);
   }
   .sfaq__icon::after {
     transform: rotate(90deg);
   }
-  .sfaq__item[open] .sfaq__icon::after {
-    transform: rotate(0);
+  .sfaq__item.is-open .sfaq__icon {
+    transform: rotate(180deg);
+    background: #006aff;
+  }
+  .sfaq__item.is-open .sfaq__icon::after {
+    transform: rotate(0deg);
+  }
+
+  /* Panel: altura animada con grid 0fr → 1fr */
+  .sfaq__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease);
+  }
+  .sfaq__item.is-open .sfaq__panel {
+    grid-template-rows: 1fr;
+    transition-duration: 0.7s;
+  }
+  .sfaq__inner {
+    min-height: 0;
+    overflow: hidden;
   }
   .sfaq__a {
     margin: 0;
@@ -161,7 +286,25 @@ const schema = {
     color: #9d9d9d;
     font-size: 15px;
     line-height: 1.75;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-10px);
+    /* al cerrar: se desvanece rápido, antes de colapsar la altura */
+    transition:
+      opacity 0.2s ease,
+      filter 0.2s ease,
+      transform 0.3s var(--ease);
   }
+  .sfaq__item.is-open .sfaq__a {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    transition:
+      opacity 0.5s ease 0.15s,
+      filter 0.5s ease 0.15s,
+      transform 0.7s var(--ease) 0.15s;
+  }
+
   @media (max-width: 860px) {
     .sfaq {
       grid-template-columns: 1fr;
@@ -173,4 +316,38 @@ const schema = {
       padding: 0 0 24px 50px;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sfaq *,
+    .sfaq *::before,
+    .sfaq *::after,
+    .sfaq__item::after {
+      transition: none !important;
+    }
+    .sfaq__a {
+      filter: none;
+    }
+  }
 </style>
+
+<script>
+  // Una sola pregunta abierta por lista. La animación vive en CSS (.is-open).
+  document.querySelectorAll<HTMLElement>("[data-sfaq]").forEach((list) => {
+    const items = Array.from(list.querySelectorAll<HTMLElement>(".sfaq__item"));
+
+    const setOpen = (item: HTMLElement, open: boolean) => {
+      item.classList.toggle("is-open", open);
+      item
+        .querySelector(".sfaq__btn")
+        ?.setAttribute("aria-expanded", String(open));
+    };
+
+    items.forEach((item) => {
+      item.querySelector(".sfaq__btn")?.addEventListener("click", () => {
+        const open = !item.classList.contains("is-open");
+        items.forEach((other) => other !== item && setOpen(other, false));
+        setOpen(item, open);
+      });
+    });
+  });
+</script>

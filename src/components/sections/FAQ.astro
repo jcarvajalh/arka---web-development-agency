@@ -1,143 +1,51 @@
 ---
-// FAQ.astro
-// Sección de preguntas frecuentes con acordeón
+// FAQ.astro — preguntas frecuentes de la home.
+// Usa el mismo componente que las páginas de servicio (ServiceFAQ),
+// así ambas FAQ comparten diseño, animaciones y schema FAQPage.
+import ServiceFAQ from "../servicios/ServiceFAQ.astro";
+import type { Pregunta } from "../../data/servicios";
+
+const faqs: Pregunta[] = [
+  {
+    q: "¿Qué tipo de proyectos desarrolla ARKA?",
+    a:
+      "En ARKA diseñamos y desarrollamos sitios web corporativos, páginas para startups y empresas tecnológicas, sitios web para clínicas y tiendas online personalizadas. Trabajamos en proyectos que requieren una presencia digital profesional, experiencias de usuario cuidadas y soluciones técnicas adaptadas a los objetivos de cada negocio.",
+  },
+  {
+    q: "¿Cuánto tiempo tarda el desarrollo de una página web?",
+    a:
+      "El tiempo de desarrollo depende de la complejidad del proyecto, la cantidad de páginas, las funcionalidades y la disponibilidad de contenidos. Un sitio web corporativo puede requerir algunas semanas, mientras que proyectos con integraciones o funcionalidades personalizadas pueden necesitar más tiempo. En ARKA definimos un cronograma de trabajo de acuerdo con el alcance de cada proyecto.",
+  },
+  {
+    q: "¿ARKA trabaja con clientes fuera de Colombia?",
+    a:
+      "Sí. En ARKA trabajamos con empresas y clientes de Colombia y otros países. Nuestro proceso de trabajo permite gestionar proyectos de manera remota, desde las reuniones iniciales y la definición del diseño hasta el desarrollo, las revisiones y la publicación del sitio web.",
+  },
+  {
+    q: "¿Qué incluye el precio de un proyecto de desarrollo web?",
+    a:
+      "El precio depende del alcance y los requerimientos de cada proyecto. Generalmente contempla la planificación, diseño de interfaz, desarrollo, adaptación a dispositivos móviles, optimización técnica y publicación del sitio web. También podemos incluir configuración de herramientas de analítica y optimización SEO inicial. Los servicios adicionales, como alojamiento, dominios o mantenimiento, se especifican en la propuesta comercial.",
+  },
+  {
+    q: "¿Recibo el código fuente y la propiedad de mi página web?",
+    a:
+      "Sí. Una vez cumplidas las condiciones del proyecto, el cliente recibe los entregables acordados y los accesos correspondientes a su sitio web. Cuando el proyecto contempla código fuente personalizado, también se entrega el repositorio y el código desarrollado, de acuerdo con las condiciones de propiedad intelectual establecidas en el contrato. Buscamos que cada cliente tenga control sobre sus activos digitales.",
+  },
+  {
+    q: "¿Ofrecen mantenimiento y soporte después de entregar el proyecto?",
+    a:
+      "Sí. En ARKA podemos ofrecer servicios de mantenimiento y soporte después de publicar el sitio web. Estos pueden incluir actualizaciones, corrección de errores, ajustes de contenido, mejoras de rendimiento y nuevas funcionalidades. El alcance y la periodicidad del servicio se definen según las necesidades del cliente y el tipo de proyecto.",
+  },
+];
 ---
 
-<section class="faq-section py-20" id="faq">
-  <div
-    class="faq__inner max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)] grid grid-cols-1 md:grid-cols-[1.1fr_1.6fr] gap-12 md:gap-16 lg:gap-20 items-start"
-  >
-    <!-- Columna izquierda -->
-    <div class="faq__left md:sticky md:top-24">
-      <span class="section-label inline-block mb-4">FAQ</span>
-      <h2 class="faq__titulo mb-4">Resolvemos todas tus&nbsp;dudas aquí</h2>
-      <p class="faq__subtitulo mb-8">
-        Si no encuentras lo que buscas, escríbenos directamente.
-      </p>
-      <a
-        href="https://cal.com/arkaagency/reunion-acercamiento"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="faq__cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
-      >
-        Habla con nosotros <span aria-hidden="true">→</span>
-      </a>
-    </div>
-
-    <!-- Columna derecha: acordeón -->
-    <div class="faq__lista flex flex-col gap-2 w-full" role="list">
-      {
-        [
-          {
-            pregunta: "¿Qué tipo de proyectos desarrollan?",
-            respuesta:
-              "Creamos sitios web para clinicas, ecommerce y para empresas que necesitan presencia digital profesional: landing pages, sitios corporativos, portafolios y tiendas en línea. Cada proyecto se construye a medida, sin plantillas genéricas.",
-          },
-          {
-            pregunta: "¿Cuánto tarda en estar listo mi sitio web?",
-            respuesta:
-              "Depende del alcance, pero un sitio estándar tarda entre 1 y 3 semanas. Proyectos más complejos como e-commerce o plataformas personalizadas pueden tomar de 3 a 6 semanas. Te damos un tiempo estimado desde la primera reunión.",
-          },
-          {
-            pregunta: "¿Trabajan con clientes fuera de Colombia?",
-            respuesta:
-              "Sí, trabajamos con clientes en toda Latinoamérica y Europa. Nos coordinamos de forma remota sin problema, con reuniones por videollamada y entregas por etapas.",
-          },
-          {
-            pregunta: "¿Qué incluye el precio del proyecto?",
-            respuesta:
-              "El presupuesto incluye diseño, desarrollo, optimización SEO, AEO, GEO, CRO, versión móvil responsiva y una ronda de ajustes. Servicios adicionales como mantenimiento mensual o se cotizan por separado.",
-          },
-          {
-            pregunta: "¿Me entregan el código o solo el acceso al sitio?",
-            respuesta:
-              "Te entregamos todo: el código fuente, acceso al hosting y al dominio a tu nombre. Tu sitio es tuyo al 100%, no dependes de nosotros para seguir operando.",
-          },
-          {
-            pregunta: "¿Ofrecen mantenimiento después de entregar el proyecto?",
-            respuesta:
-              "Sí, tenemos planes de mantenimiento mensual que incluyen actualizaciones, respaldos, corrección de errores y soporte técnico. Es opcional, pero lo recomendamos para mantener el sitio seguro y funcionando.",
-          },
-        ].map((item, i) => (
-          <div class="faq__item rounded-[14px] overflow-hidden" role="listitem">
-            <button
-              class="faq__pregunta w-full flex items-center justify-between gap-4 px-5 py-4"
-              aria-expanded="false"
-              aria-controls={`faq-respuesta-${i}`}
-              data-faq-btn
-            >
-              <span>{item.pregunta}</span>
-              <span
-                class="faq__icono flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full"
-                aria-hidden="true"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 7L9 12L14 7"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div
-              class="faq__respuesta overflow-hidden"
-              id={`faq-respuesta-${i}`}
-              role="region"
-              aria-hidden="true"
-              style="grid-template-rows: 0fr;"
-            >
-              <div class="min-h-0">
-                <p class="faq__respuesta-texto px-5 pb-5 pt-4">
-                  {item.respuesta}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+<div class="faq-section py-20">
+  <div class="max-w-[1200px] mx-auto px-[clamp(24px,6vw,80px)]">
+    <ServiceFAQ
+      id="faq"
+      faqs={faqs}
+      titulo="Resolvemos todas tus&nbsp;dudas aquí"
+      cta
+    />
   </div>
-</section>
-
-<script>
-  const btns = document.querySelectorAll<HTMLButtonElement>("[data-faq-btn]");
-
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      const targetId = btn.getAttribute("aria-controls")!;
-      const target = document.getElementById(targetId);
-
-      // Cerrar todos los demás
-      btns.forEach((other) => {
-        if (other !== btn) {
-          other.setAttribute("aria-expanded", "false");
-          const otherTarget = document.getElementById(
-            other.getAttribute("aria-controls")!,
-          );
-          if (otherTarget) {
-            otherTarget.style.gridTemplateRows = "0fr";
-            otherTarget.setAttribute("aria-hidden", "true");
-          }
-        }
-      });
-
-      // Toggle del actual
-      const nextState = !expanded;
-      btn.setAttribute("aria-expanded", String(nextState));
-      if (target) {
-        target.style.gridTemplateRows = nextState ? "1fr" : "0fr";
-        target.setAttribute("aria-hidden", String(!nextState));
-      }
-    });
-  });
-</script>
+</div>

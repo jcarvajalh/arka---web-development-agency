@@ -829,54 +829,8 @@ body {
 ============================================================ */
 
 .faq-section {
-    background: #ffffff;
+    background: #0a0a0a;
 }
-
-.faq-title {
-    font-family: "Inter", sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: #111827;
-    text-align: center;
-}
-
-.faq-item {
-    background: #f9fafb;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.faq-summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    color: #111827;
-    font-size: 18px;
-    list-style: none;
-    transition: color 0.2s;
-}
-
-.faq-summary:hover {
-    color: #2563eb;
-}
-
-.faq-toggle {
-    font-size: 24px;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-}
-
-details[open] .faq-toggle {
-    transform: rotate(180deg);
-}
-
-.faq-answer {
-    color: #374151;
-    line-height: 1.625;
-}
-
 
 /* ============================================================
    PRECIOS — Paquetes (mismo estilo que Proceso)
@@ -1225,124 +1179,6 @@ details[open] .faq-toggle {
 }
 
 /* ============================================================
-   FAQ — Preguntas Frecuentes
-============================================================ */
-
-.faq-section {
-    background: #0a0a0a;
-}
-
-/* Columna Izquierda */
-.faq__titulo {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.04em;
-    color: #ffffff;
-}
-
-.faq__subtitulo {
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: #888;
-    line-height: 1.65;
-}
-
-.faq__cta {
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    border: 1.5px solid #006aff;
-    background: transparent;
-    color: #ffffff;
-    text-decoration: none;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.faq__cta:hover {
-    background: #006aff;
-}
-
-/* Acordeón */
-.faq__item {
-    background: #111111;
-    border: 1px solid #1e1e1e;
-    transition: border-color 0.35s ease, background-color 0.35s ease;
-}
-
-.faq__item:has([aria-expanded="true"]) {
-    border-color: rgba(0, 106, 255, 0.45);
-    background: #161616;
-}
-
-.faq__pregunta {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ffffff;
-    text-align: left;
-    line-height: 1.5;
-    transition: color 0.25s ease;
-}
-
-.faq__pregunta:hover {
-    color: #006aff;
-}
-
-.faq__pregunta[aria-expanded="true"] {
-    color: #006aff;
-}
-
-/* Ícono Chevron */
-.faq__icono {
-    border: 1px solid #1e1e1e;
-    color: #888;
-    background: transparent;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.3s ease,
-        color 0.3s ease,
-        background-color 0.3s ease;
-}
-
-.faq__pregunta[aria-expanded="true"] .faq__icono {
-    transform: rotate(180deg);
-    border-color: #006aff;
-    color: #006aff;
-    background: rgba(0, 106, 255, 0.08);
-}
-
-/* Respuesta Contenedor y Animación */
-.faq__respuesta {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.faq__respuesta-texto {
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    color: #888;
-    line-height: 1.7;
-    border-top: 1px solid #1e1e1e;
-    opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.faq__item:has([aria-expanded="true"]) .faq__respuesta-texto {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.1s;
-}
-
-/* ============================================================
    FOOTER
 ============================================================ */
 .footer {
@@ -1414,11 +1250,8 @@ details[open] .faq-toggle {
 .proceso-sub,
 .paso-desc,
 .proyectos-sub,
-.faq-answer,
 .precios-sub,
 .paquete-desc,
-.faq__subtitulo,
-.faq__respuesta-texto,
 .footer__descripcion,
 .footer__texto {
     color: #888;
